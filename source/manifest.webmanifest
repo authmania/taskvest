@@ -1,0 +1,50 @@
+{
+    "name": "TaskVest",
+    "short_name": "TaskVest",
+    "description": "AI-powered surveys, music tasks, welcome rewards, and daily earnings.",
+    "id": "/",
+    "start_url": "/dashboard.html",
+    "scope": "/",
+    "display": "standalone",
+    "display_override": ["standalone", "minimal-ui", "window-controls-overlay"],
+    "orientation": "portrait-primary",
+    "background_color": "#7C3AED",
+    "theme_color": "#7C3AED",
+    "categories": ["business", "utilities", "productivity", "finance"],
+    "icons": [
+        {
+            "src": "/favicon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "/favicon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "/favicon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Dashboard",
+            "short_name": "Dashboard",
+            "description": "Open your TaskVest earnings dashboard",
+            "url": "/dashboard.html",
+            "icons": [{ "src": "/favicon-192x192.png", "sizes": "192x192" }]
+        },
+        {
+            "name": "Transactions",
+            "short_name": "Transactions",
+            "description": "View balance history & withdrawals",
+            "url": "/dashboard/transactions.html",
+            "icons": [{ "src": "/favicon-192x192.png", "sizes": "192x192" }]
+        }
+    ]
+}

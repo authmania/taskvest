@@ -1,0 +1,4 @@
+# Project-local SSH key (never commit)
+.ssh/
+# Local burner git identity/config
+.gitconfig

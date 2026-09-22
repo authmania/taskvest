@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="chk00nP8ZIcTYA5SaHiW0Sp4u5fAQKlWYiZD3yge">
+        <link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<meta name="theme-color" content="#7C3AED">
+
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="TaskVest">
+    <meta name="vapid-public-key" content="BNuVpJbogRobi1uJAD4BzB6CFWBrOsprOZbCYSw6UOo18KlOup11nnHBb_pu9yfZdvv2IAms6_PszFJxZcKi2CQ">
+
+        <title>TaskVest — AI-Powered Surveys & Music Rewards</title>
+        <meta name="description" content="TaskVest is an AI-powered rewards hub. Sign up free, claim a ₦200,000 welcome bonus, and earn up to ₦10,000 for every AI survey and music-listening task you complete.">
+        <meta name="author" content="TaskVest">
+        <meta property="og:title" content="TaskVest — AI-Powered Surveys & Music Rewards">
+        <meta property="og:description" content="TaskVest is an AI-powered rewards hub. Sign up free, claim a ₦200,000 welcome bonus, and earn up to ₦10,000 for every AI survey and music-listening task you complete.">
+        <meta property="og:type" content="website">
+        <meta property="og:image" content="/images/public/logo-dark.png">
+        <meta property="og:site_name" content="TaskVest">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="TaskVest — AI-Powered Surveys & Music Rewards">
+        <meta name="twitter:description" content="TaskVest is an AI-powered rewards hub. Sign up free, claim a ₦200,000 welcome bonus, and earn up to ₦10,000 for every AI survey and music-listening task you complete.">
+        <meta name="twitter:image" content="/images/public/logo-dark.png">
+
+        <link rel="preload" as="style" href="build/assets/app-BNec2NMu.css" /><link rel="modulepreload" as="script" href="build/assets/app-Dpy8HP2u.js" /><link rel="stylesheet" href="build/assets/app-BNec2NMu.css" data-navigate-track="reload" /><script type="module" src="build/assets/app-Dpy8HP2u.js" data-navigate-track="reload"></script>        
+        <script>
+            (function () {
+                try {
+                    var s = localStorage.getItem('nx_session');
+                    if (s && s !== 'null' && s !== '{}' && s !== 'undefined') {
+                        var p = JSON.parse(s);
+                        if (p && (p.email || p.username || p.id)) {
+                            window.location.replace('dashboard.html');
+                        }
+                    }
+                } catch (_) {}
+            })();
+        </script>
+    </head>
+    <body class="antialiased bg-background text-text font-sans">
+        <div x-data="{ open: false, scrolled: false }" @scroll.window="scrolled = window.scrollY > 8">
+
+    <nav class="fixed top-0 inset-x-0 z-50 backdrop-blur-md transition-all duration-300"
+         :class="scrolled ? 'bg-background/85 border-b border-primary/10 shadow-[0_2px_24px_rgba(0,0,0,0.05)]' : 'bg-background/30'">
+
+        <div class="max-w-[1280px] mx-auto px-5 md:px-[60px]">
+            <div class="flex items-center justify-between h-16 md:h-20">
+
+                <a href="index.html" aria-label="TaskVest home" class="shrink-0">
+                    <img src="images/public/logo-dark.png" alt="TaskVest" class="h-9 md:h-11 w-auto object-contain">
+                </a>
+
+                <div class="hidden md:flex items-center gap-9 font-sans text-[15px]">
+                    <a href="index.html" class="text-text hover:text-primary transition-colors">Home</a>
+                    <a href="privacy.html" class="text-muted hover:text-primary transition-colors">Privacy</a>
+                    <a href="terms.html" class="text-muted hover:text-primary transition-colors">Terms</a>
+                </div>
+
+                <div class="hidden md:flex items-center gap-5">
+                    <a href="auth/login.html" class="font-sans text-[15px] text-text hover:text-primary transition-colors">Sign in</a>
+                    <a href="auth/register.html" class="btn-primary btn-md">Sign Up</a>
+                </div>
+
+                <button @click="open = true"
+                        class="md:hidden size-10 rounded-full bg-surface/90 shadow-sm flex items-center justify-center text-text"
+                        aria-label="Open menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div x-show="open" x-cloak
+         x-transition:enter="transition ease-out duration-300"
+         x-transition:enter-start="opacity-0"
+         x-transition:enter-end="opacity-100"
+         x-transition:leave="transition ease-in duration-200"
+         x-transition:leave-start="opacity-100"
+         x-transition:leave-end="opacity-0"
+         @keydown.escape.window="open = false"
+         class="md:hidden fixed inset-0 z-[60] flex flex-col text-white px-6 pt-12 pb-8 overflow-y-auto"
+         style="background: radial-gradient(120% 85% at 60% 18%, #8B5CF6 0%, #7C3AED 55%, #5B21B6 100%); background-color: #7C3AED;">
+
+        <div class="flex items-center justify-between mb-9 shrink-0">
+            <a href="index.html" @click="open=false" aria-label="TaskVest home">
+                <img src="images/public/logo-coloured.png" alt="TaskVest" class="h-8 w-auto object-contain">
+            </a>
+            <button @click="open=false" class="size-10 rounded-full bg-white flex items-center justify-center text-text" aria-label="Close menu">
+                <i class="ri-close-line text-[22px]"></i>
+            </button>
+        </div>
+
+        <nav class="flex flex-col gap-1 font-sans text-[16px]">
+            <a href="index.html" @click="open=false" class="py-3 hover:text-secondary transition-colors">Home</a><div x-data="{ m: false }" class="border-t border-white/10">
+                <button @click="m = !m" class="w-full flex items-center justify-between py-3 text-white/85">
+                    <span>More</span>
+                    <i class="ri-arrow-down-s-line text-[20px] transition-transform" :class="m && 'rotate-180'"></i>
+                </button>
+                <div x-show="m" x-collapse class="flex flex-col pl-3 pb-2 text-white/70 text-[15px]">
+                    <a href="privacy.html" @click="open=false" class="py-2.5 hover:text-secondary transition-colors">Privacy Policy</a>
+                    <a href="terms.html" @click="open=false" class="py-2.5 hover:text-secondary transition-colors">Terms</a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="mt-auto pt-8 flex flex-col gap-3">
+            <a href="auth/login.html" @click="open=false"
+               class="h-[52px] rounded-full border border-white/40 text-white flex items-center justify-center font-sans font-semibold text-[14px] hover:bg-white/10 transition-colors">Sign in</a>
+            <a href="auth/register.html" @click="open=false"
+               class="h-[52px] rounded-full bg-secondary text-primary flex items-center justify-center font-sans font-semibold text-[14px] hover:opacity-95 transition">Sign Up</a>
+        </div>
+    </div>
+</div>
+
+        <div class="relative overflow-x-clip">
+            <main>
+                <div class="bg-background">
+
+    <section id="home" class="relative overflow-hidden bg-background">
+        <div class="md:hidden relative overflow-hidden bg-background" style="height: 874px;">
+
+    
+    <img src="images/hero/lines-bg-mobile.svg" alt=""
+         class="absolute pointer-events-none max-w-none"
+         style="left: -752.51px; top: -167px; width: 1464.517px; height: 1047px;" />
+
+    <div class="absolute z-20 -translate-x-1/2 flex flex-col items-center gap-[40px] justify-center w-[323px]"
+         style="left: calc(50% - 0.41px); top: 176px;">
+
+        <div class="flex items-center gap-[5px] px-[10px] py-[6px] rounded-[66px] bg-background"
+             style="border: 0.5px solid #7C3AED;">
+            <span class="w-[6px] h-[6px] rounded-full bg-primary flex-shrink-0"></span>
+            <span class="font-sans text-[12px] text-text whitespace-nowrap">AI-powered rewards network.</span>
+        </div>
+
+        <h1 class="font-heading font-semibold text-primary text-[24px] leading-tight text-center">
+            <span class="text-text">Get paid for your opinion:</span><br>Complete AI surveys &amp; music tasks — get paid for every one.
+        </h1>
+
+        <a href="auth/register.html"
+           class="bg-primary text-surface font-sans font-semibold text-[14px] h-[50px] px-[25px]
+                  rounded-[39px] flex items-center justify-center whitespace-nowrap">
+            Start Earning Now
+        </a>
+    </div>
+
+    <div class="absolute pointer-events-none -translate-x-1/2"
+         style="left: calc(50% - 14px); top: 445px; width: 300px; height: 246px;">
+
+        <div class="absolute flex flex-col gap-[3px] items-start justify-end overflow-hidden
+                    pb-[29px] pt-[20px] px-[16px] rounded-[40px] bg-surface"
+             style="inset: 0 38.67% 27.64% 0; box-shadow: 0 12px 26px -8px rgba(124, 58, 237, 0.12), 0 32px 56px -16px rgba(124, 58, 237, 0.20);">
+
+            <div class="relative shrink-0 mb-1" style="width: 64px; height: 30px;">
+                <img src="images/hero/avatar-mobile-1.svg" alt=""
+                     class="absolute w-[30px] h-[30px] rounded-full object-cover ring-2 ring-surface"
+                     style="left: 0; top: 0; z-index: 3;" />
+                <img src="images/hero/avatar-mobile-2.svg" alt=""
+                     class="absolute w-[30px] h-[30px] rounded-full object-cover ring-2 ring-surface"
+                     style="left: 17px; top: 0; z-index: 2;" />
+                <img src="images/hero/avatar-mobile-1.svg" alt=""
+                     class="absolute w-[30px] h-[30px] rounded-full object-cover ring-2 ring-surface"
+                     style="left: 34px; top: 0; z-index: 1;" />
+            </div>
+
+            <p class="font-heading font-medium text-primary text-[38px] leading-none">1M+</p>
+            <p class="font-sans text-muted text-[18px] leading-none">Active Members</p>
+        </div>
+
+        <div class="absolute flex items-center gap-[8px] px-[9px] py-[7px] rounded-full overflow-hidden bg-surface"
+             style="inset: 77.24% 0 0 26.67%; box-shadow: 0 8px 18px -6px rgba(124, 58, 237, 0.12), 0 22px 44px -12px rgba(124, 58, 237, 0.22);">
+            <div class="flex-shrink-0 w-[42px] h-[42px] rounded-full flex items-center justify-center"
+                 style="background: rgba(221, 214, 254, 0.6); border: 1px solid rgba(255,255,255,0.5);">
+                <span style="font-size: 25px; line-height: 1;">🙂</span>
+            </div>
+            <div class="flex flex-col whitespace-nowrap">
+                <p class="font-heading font-medium text-primary text-[14px] leading-normal">₦500M+ Paid Out</p>
+                <p class="font-sans text-muted text-[12px] leading-normal">Rewards delivered to members</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="absolute pointer-events-none flex flex-col gap-[15px]" style="left: 20px; top: 739px;">
+        <img src="images/hero/coin-icon-mobile.svg" alt="" class="w-[45px] h-[45px]" />
+        <p class="font-heading text-text text-[16px] leading-normal whitespace-nowrap">
+            Register for free, claim<br>
+            your ₦200,000 bonus, and<br>
+            start earning!
+        </p>
+    </div>
+
+</div>
+        <div class="hidden md:block relative overflow-hidden bg-background" style="min-height: 100vh;">
+
+    <img src="images/hero/hero-bg.png" alt=""
+         class="absolute inset-0 w-full h-full object-cover pointer-events-none" />
+
+    <img src="images/hero/lines-bg-desktop.svg" alt=""
+         class="absolute inset-0 w-full h-full object-cover pointer-events-none" />
+
+    
+    <div class="relative mx-auto" style="max-width: 1440px; min-height: 100vh;">
+
+    <img src="images/hero/decoratives.svg" alt=""
+         class="absolute pointer-events-none"
+         style="left: 296px; top: 286px; width: 847px; height: 568px;" />
+
+    <div class="relative z-10 flex flex-col items-center gap-[25px]" style="padding-top: 16.3vh;">
+
+        <div class="flex items-center gap-[8px] px-[23px] py-[15px] rounded-[66px] bg-background"
+             style="border: 0.5px solid #7C3AED; box-shadow: 0 10px 25px rgba(124, 58, 237, 0.3);">
+            <img src="images/hero/badge-dot.svg" alt="" class="w-[10px] h-[10px] flex-shrink-0" />
+            <span class="font-sans text-[18px] text-primary whitespace-nowrap">AI-powered rewards network.</span>
+        </div>
+
+        <div class="font-heading font-normal text-[46px] leading-tight text-center max-w-[860px]">
+            <p class="text-text">Get paid for your opinion:</p>
+            <p class="text-primary">Complete AI surveys &amp; music tasks — get paid for every one.</p>
+        </div>
+
+        <div class="flex items-center gap-[30px]">
+            <a href="auth/register.html"
+               class="flex items-center gap-[10px] bg-primary text-surface font-heading font-medium text-[24px]
+                      px-[30px] py-[20px] rounded-[35px] hover:opacity-90 transition-opacity whitespace-nowrap">
+                Start Earning Now
+                <img src="images/hero/cta-arrow.svg" alt="" class="w-[16px] h-[16px] flex-shrink-0" />
+            </a>
+            <a href="auth/login.html"
+               class="flex items-center justify-center border border-primary text-primary font-heading font-medium text-[24px]
+                      px-[30px] py-[20px] rounded-[35px] hover:bg-primary hover:text-surface transition-colors whitespace-nowrap"
+               style="width: 241px;">
+                Sign In
+            </a>
+        </div>
+    </div>
+
+    <div class="absolute flex flex-col gap-[15px] z-10" style="left: 321px; top: 701px;">
+        <img src="images/hero/coin-icon.svg" alt="" class="w-[45px] h-[45px]" />
+        <p class="font-heading text-text text-[18px] leading-normal whitespace-nowrap">
+            Register for free, claim<br>
+            your ₦200,000 bonus, and<br>
+            start earning!
+        </p>
+    </div>
+
+    <div class="absolute flex flex-col gap-[8px] items-end z-10" style="left: 932px; top: 691px;">
+        <div class="bg-surface flex items-center gap-[10px] p-[10px] rounded-[23px]">
+            <img src="images/hero/icon-customizable.svg" alt="" class="w-[20px] h-[20px] flex-shrink-0" />
+            <span class="font-heading text-text text-[18px] whitespace-nowrap">AI SURVEYS</span>
+        </div>
+        <div class="bg-surface flex items-center gap-[10px] p-[10px] rounded-[23px]">
+            <img src="images/hero/icon-flexible.svg" alt="" class="w-[16px] h-[14px] flex-shrink-0" />
+            <span class="font-heading text-text text-[18px] whitespace-nowrap">INSTANT PAYOUTS</span>
+        </div>
+        <div class="bg-surface flex items-center gap-[10px] p-[10px] rounded-[23px]">
+            <img src="images/hero/icon-fullcontrol.svg" alt="" class="w-[20px] h-[20px] flex-shrink-0" />
+            <span class="font-heading text-text text-[18px] whitespace-nowrap">MUSIC TASKS</span>
+        </div>
+    </div>
+
+    <div class="absolute z-10 flex items-center justify-end rounded-[35px]"
+         style="left: 558px; top: 672px; width: 80px; height: 38px; background: #DDD6FE; padding: 4px 5px;">
+        <div class="rounded-[35px] bg-surface" style="width: 39px; height: 30px;"></div>
+    </div>
+
+    <div class="absolute bg-surface rounded-[12px] z-10"
+         style="left: 628px; top: 635px; width: 184px; height: 179px;">
+        <div class="absolute border-b border-border" style="left: 10px; right: 10px; top: 29px;"></div>
+        <div class="absolute border-b border-border" style="left: 10px; right: 10px; top: 49px;"></div>
+        <div class="absolute border-b border-border" style="left: 10px; right: 10px; top: 69px;"></div>
+        <p class="absolute font-heading font-semibold text-primary leading-none whitespace-nowrap"
+           style="font-size: 38px; left: 10px; top: 89px;">1M+</p>
+        <p class="absolute font-heading text-text leading-none whitespace-nowrap"
+           style="font-size: 18px; left: 11px; top: 137px;">Active Members</p>
+        <img src="images/hero/avatar.png" alt=""
+             class="absolute rounded-full object-cover"
+             style="width: 50px; height: 50px; left: 134px; top: 101px;" />
+    </div>
+
+    <div class="absolute bg-surface flex items-center gap-2 rounded-[12px] z-10"
+         style="left: 628px; top: 824px; width: 184px; padding: 5px 7px;">
+        <div class="flex-shrink-0 flex items-center justify-center rounded-full"
+             style="width: 30px; height: 31px; background: rgba(221, 214, 254, 0.2);">
+            <span style="font-size: 16px; line-height: 1;">🙂</span>
+        </div>
+        <div class="flex flex-col whitespace-nowrap">
+            <p class="font-sans font-medium text-primary leading-snug" style="font-size: 16px;">Track Activity</p>
+            <p class="font-sans text-text leading-snug" style="font-size: 14px;">Your earning hub</p>
+        </div>
+    </div>
+
+    </div>
+</div>
+    </section>
+
+    <section id="packages" class="relative overflow-hidden bg-background" style="border-top: 1px solid #8c8c8c;"
+    x-data="{
+        callsPerDay: 5,
+        avgDuration: 20,
+        earningPerMin: 2000,
+        selectedPackage: '300',
+        get taskLimit() {
+            return this.selectedPackage === '500' ? 25 : 5;
+        },
+        get projectedEarning() {
+            return Math.min(250000, Math.round(this.callsPerDay * this.avgDuration * this.earningPerMin));
+        },
+        setPlan(p) {
+            this.selectedPackage = p;
+            this.callsPerDay = Math.min(this.callsPerDay, this.taskLimit);
+        },
+        formatNaira(amount) {
+            return '₦' + amount.toLocaleString('en-NG');
+        }
+    }">
+
+    <div class="absolute top-0 right-0 pointer-events-none"
+         style="width: 900px; height: 900px; background: radial-gradient(circle at 65% 25%, rgba(167, 139, 250, 0.32) 0%, rgba(196, 181, 253, 0.12) 40%, transparent 68%); transform: translate(18%, -18%);"></div>
+
+    <div class="hidden md:block relative z-10 pt-[150px] pb-[100px]">
+        <div class="max-w-[1280px] mx-auto px-[60px]">
+
+            <div class="mb-[150px] max-w-[700px]">
+                <h2 class="font-heading font-semibold text-primary text-[96px] leading-[1.05] mb-5">
+                    See Your Earning<br>Potential
+                </h2>
+                <p class="font-sans text-muted text-[24px] leading-relaxed">
+                    Estimate how much you can earn from AI surveys and music tasks based on your daily activity.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-[385px_1fr] gap-[148px] items-start">
+
+                <div>
+                    <div class="flex items-center gap-[10px] mb-8">
+                        <svg class="w-[18px] h-[18px] text-muted flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/>
+                        </svg>
+                        <span class="font-heading font-medium text-[24px] text-text">PARAMETERS</span>
+                    </div>
+
+                    <div class="mb-8">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="font-heading font-semibold text-[16px] text-muted uppercase">Tasks Per Day</span>
+                            <span class="font-sans text-xs text-muted">Qty</span>
+                        </div>
+                        <div class="flex items-center gap-5">
+                            <div class="flex items-center border border-border rounded-full overflow-hidden bg-background flex-shrink-0">
+                                <button @click="callsPerDay = Math.min(taskLimit, callsPerDay + 1)"
+                                        class="w-[60px] h-[60px] flex items-center justify-center text-xl font-light text-text hover:bg-border/40 transition-colors">+</button>
+                                <span class="w-12 text-center font-heading font-light text-[30px] text-text select-none" x-text="String(callsPerDay).padStart(2,'0')"></span>
+                                <button @click="callsPerDay = Math.max(1, callsPerDay - 1)"
+                                        class="w-[60px] h-[60px] flex items-center justify-center text-xl font-light text-text hover:bg-border/40 transition-colors">−</button>
+                            </div>
+                            <div class="flex-1 h-[5px] bg-primary/20 rounded-full overflow-hidden">
+                                <div class="h-full bg-primary rounded-full transition-all duration-300"
+                                     :style="'width:' + Math.min(100, (callsPerDay / taskLimit) * 100) + '%'"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-8">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="font-heading font-semibold text-[16px] text-muted uppercase">Active Days / Month</span>
+                            <span class="font-sans text-xs text-muted">Days</span>
+                        </div>
+                        <div class="flex items-center gap-5">
+                            <div class="flex items-center border border-border rounded-full overflow-hidden bg-background flex-shrink-0">
+                                <button @click="avgDuration = Math.min(30, avgDuration + 1)"
+                                        class="w-[60px] h-[60px] flex items-center justify-center text-xl font-light text-text hover:bg-border/40 transition-colors">+</button>
+                                <span class="w-12 text-center font-heading font-light text-[30px] text-text select-none" x-text="String(avgDuration).padStart(2,'0')"></span>
+                                <button @click="avgDuration = Math.max(1, avgDuration - 1)"
+                                        class="w-[60px] h-[60px] flex items-center justify-center text-xl font-light text-text hover:bg-border/40 transition-colors">−</button>
+                            </div>
+                            <div class="flex-1 h-[5px] bg-primary/20 rounded-full overflow-hidden">
+                                <div class="h-full bg-primary rounded-full transition-all duration-300"
+                                     :style="'width:' + Math.min(100, (avgDuration / 30) * 100) + '%'"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-10">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="font-heading font-semibold text-[16px] text-muted uppercase">Earning Per Task</span>
+                            <span class="font-sans text-xs text-muted">₦</span>
+                        </div>
+                        <div class="flex items-center gap-5">
+                            <div class="flex items-center border border-border rounded-full overflow-hidden bg-background flex-shrink-0">
+                                <button @click="earningPerMin = Math.min(10000, earningPerMin + 500)"
+                                        class="w-[60px] h-[60px] flex items-center justify-center text-xl font-light text-text hover:bg-border/40 transition-colors">+</button>
+                                <span class="w-12 text-center font-heading font-light text-[30px] text-text select-none" x-text="earningPerMin"></span>
+                                <button @click="earningPerMin = Math.max(500, earningPerMin - 500)"
+                                        class="w-[60px] h-[60px] flex items-center justify-center text-xl font-light text-text hover:bg-border/40 transition-colors">−</button>
+                            </div>
+                            <div class="flex-1 h-[5px] bg-primary/20 rounded-full overflow-hidden">
+                                <div class="h-full bg-primary rounded-full transition-all duration-300"
+                                     :style="'width:' + Math.min(100, (earningPerMin / 10000) * 100) + '%'"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <span class="font-heading font-semibold text-[16px] text-muted uppercase block mb-3">Plan Selection</span>
+                        <div class="flex gap-3">
+                            <button @click="setPlan('300')"
+                                    :class="selectedPackage === '300' ? 'bg-primary text-secondary' : 'bg-surface text-text border border-border hover:bg-border/40'"
+                                    class="px-7 py-5 rounded-2xl font-heading font-medium text-sm transition-all">Starter</button>
+                            <button @click="setPlan('500')"
+                                    :class="selectedPackage === '500' ? 'bg-primary text-secondary' : 'bg-surface text-text border border-border hover:bg-border/40'"
+                                    class="px-7 py-5 rounded-2xl font-heading font-medium text-sm transition-all">Elite</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rounded-[30px] p-[30px] border border-[rgba(221, 214, 254, 0.39)]" style="background: linear-gradient(46.96deg, rgba(250, 249, 255) 1.49%, rgba(250, 249, 255, 0.58) 98.62%);">
+
+                    <div class="flex items-start justify-between mb-5">
+                        <div>
+                            <p class="font-heading font-semibold text-[16px] text-muted uppercase mb-1.5">Projected Earnings</p>
+                            <p class="font-heading font-semibold text-[38px] text-text" x-text="formatNaira(projectedEarning)"></p>
+                        </div>
+                        <button class="w-[50px] h-[50px] rounded-2xl bg-background border border-border flex items-center justify-center hover:bg-border/40 transition-colors flex-shrink-0 mt-1">
+                            <svg class="w-5 h-5 text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span class="font-heading font-semibold text-[16px] text-muted uppercase">Earning Trend</span>
+                        </div>
+                        <span class="font-heading text-xs text-text bg-[rgba(26,26,26,0.11)] rounded-[24px] px-2.5 py-1.5">This Month</span>
+                    </div>
+
+                    <div class="flex gap-4 mb-6">
+                        <div class="flex flex-col justify-between text-right shrink-0 w-20 pb-10">
+                            <span class="font-heading text-[18px] text-text">₦250,000</span>
+                            <span class="font-heading text-[18px] text-text">₦200,000</span>
+                            <span class="font-heading text-[18px] text-text">₦150,000</span>
+                            <span class="font-heading text-[18px] text-text">₦100,000</span>
+                            <span class="font-heading text-[18px] text-text">₦0</span>
+                        </div>
+                        <div class="relative flex-1" style="height: 210px;">
+                            <div class="absolute top-0 left-[38%] -translate-x-1/2 bg-primary text-surface rounded-[24px] px-4 py-[15px] z-10 text-center pointer-events-none">
+                                <div class="font-heading font-semibold text-[18px] leading-tight" x-text="formatNaira(projectedEarning)"></div>
+                                <div class="font-sans text-[14px] text-surface/80 leading-tight">This Month</div>
+                            </div>
+                            <div class="absolute top-[52px] left-[38%] -translate-x-1/2 w-px h-10 border-l border-dashed border-muted/40 z-10"></div>
+                            <div class="absolute bottom-0 left-0 right-0 flex items-end justify-between gap-1" style="height: 175px;">
+                                                                                                <div class="flex flex-col items-center gap-1 flex-1">
+                                    <div class="w-full rounded-full bg-primary" style="height: 81px; max-width: 36px;"></div>
+                                    <div class="w-8 h-8 rounded-full bg-secondary flex items-center justify-center flex-shrink-0">
+                                        <span class="font-sans text-[10px] font-semibold text-primary leading-none">Mon</span>
+                                    </div>
+                                </div>
+                                                                <div class="flex flex-col items-center gap-1 flex-1">
+                                    <div class="w-full rounded-full bg-primary" style="height: 52px; max-width: 36px;"></div>
+                                    <div class="w-8 h-8 rounded-full bg-secondary flex items-center justify-center flex-shrink-0">
+                                        <span class="font-sans text-[10px] font-semibold text-primary leading-none">Tue</span>
+                                    </div>
+                                </div>
+                                                                <div class="flex flex-col items-center gap-1 flex-1">
+                                    <div class="w-full rounded-full bg-primary" style="height: 96px; max-width: 36px;"></div>
+                                    <div class="w-8 h-8 rounded-full bg-secondary flex items-center justify-center flex-shrink-0">
+                                        <span class="font-sans text-[10px] font-semibold text-primary leading-none">Wed</span>
+                                    </div>
+                                </div>
+                                                                <div class="flex flex-col items-center gap-1 flex-1">
+                                    <div class="w-full rounded-full bg-primary" style="height: 71px; max-width: 36px;"></div>
+                                    <div class="w-8 h-8 rounded-full bg-secondary flex items-center justify-center flex-shrink-0">
+                                        <span class="font-sans text-[10px] font-semibold text-primary leading-none">Thu</span>
+                                    </div>
+                                </div>
+                                                                <div class="flex flex-col items-center gap-1 flex-1">
+                                    <div class="w-full rounded-full bg-primary" style="height: 42px; max-width: 36px;"></div>
+                                    <div class="w-8 h-8 rounded-full bg-secondary flex items-center justify-center flex-shrink-0">
+                                        <span class="font-sans text-[10px] font-semibold text-primary leading-none">Fri</span>
+                                    </div>
+                                </div>
+                                                                <div class="flex flex-col items-center gap-1 flex-1">
+                                    <div class="w-full rounded-full bg-primary" style="height: 90px; max-width: 36px;"></div>
+                                    <div class="w-8 h-8 rounded-full bg-secondary flex items-center justify-center flex-shrink-0">
+                                        <span class="font-sans text-[10px] font-semibold text-primary leading-none">Sat</span>
+                                    </div>
+                                </div>
+                                                                <div class="flex flex-col items-center gap-1 flex-1">
+                                    <div class="w-full rounded-full bg-primary" style="height: 79px; max-width: 36px;"></div>
+                                    <div class="w-8 h-8 rounded-full bg-secondary flex items-center justify-center flex-shrink-0">
+                                        <span class="font-sans text-[10px] font-semibold text-primary leading-none">Sun</span>
+                                    </div>
+                                </div>
+                                                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-end">
+                        <div class="flex items-start gap-[10px] bg-[rgba(124,58,237,0.10)] border border-[#7C3AED] rounded-[24px] p-[20px] w-[370px]">
+                            <svg class="w-[22px] h-[22px] text-[#7C3AED] flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.5l1.5 8 8 1.5-8 1.5-1.5 8-1.5-8-8-1.5 8-1.5z"/>
+                            </svg>
+                            <div class="flex flex-col gap-[5px]">
+                                <p class="font-heading font-medium text-[14px] text-text whitespace-nowrap">Boost Your Daily Earnings</p>
+                                <p class="font-sans text-[12px] text-muted leading-relaxed">Complete your daily tasks to earn up to ₦250,000.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="md:hidden relative z-10 px-5 pt-[100px] pb-16">
+
+        <div class="absolute pointer-events-none" style="left: -8px; top: 83px; width: 450px; height: 252px; z-index: 0;">
+            <img src="images/calculator/gradient-mobile.svg" alt="" class="w-full h-full object-cover" />
+        </div>
+
+        <div class="mb-[30px] relative z-10">
+            <h2 class="font-heading font-semibold text-primary text-[36px] leading-tight mb-3">
+                See Your Earning<br>Potential
+            </h2>
+            <p class="font-sans text-muted text-sm leading-relaxed">
+                Estimate how much you can earn from AI surveys and music tasks based on your daily activity..
+            </p>
+        </div>
+
+        <div class="mb-[30px]">
+            <div class="flex items-center gap-[10px] mb-7 p-[10px]">
+                <svg class="w-[18px] h-[17px] text-muted flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/>
+                </svg>
+                <span class="font-heading font-medium text-[18px] text-text">PARAMETERS</span>
+            </div>
+
+            <div class="mb-5">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="font-sans text-[10px] font-semibold tracking-[0.15em] text-muted uppercase">Tasks Per Day</span>
+                    <span class="font-sans text-[10px] text-muted">Qty</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div class="flex items-center border border-border rounded-full overflow-hidden bg-background flex-shrink-0">
+                        <button @click="callsPerDay = Math.min(taskLimit, callsPerDay + 1)"
+                                class="w-10 h-10 flex items-center justify-center text-xl font-light text-text hover:bg-border/40 transition-colors">+</button>
+                        <span class="w-10 text-center font-heading font-semibold text-xl text-text select-none" x-text="String(callsPerDay).padStart(2,'0')"></span>
+                        <button @click="callsPerDay = Math.max(1, callsPerDay - 1)"
+                                class="w-10 h-10 flex items-center justify-center text-xl font-light text-text hover:bg-border/40 transition-colors">−</button>
+                    </div>
+                    <div class="flex-1 h-[5px] bg-primary/20 rounded-full overflow-hidden">
+                        <div class="h-full bg-primary rounded-full transition-all duration-300"
+                             :style="'width:' + Math.min(100, (callsPerDay / taskLimit) * 100) + '%'"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-5">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="font-sans text-[10px] font-semibold tracking-[0.15em] text-muted uppercase">Active Days / Month</span>
+                    <span class="font-sans text-[10px] text-muted">Days</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div class="flex items-center border border-border rounded-full overflow-hidden bg-background flex-shrink-0">
+                        <button @click="avgDuration = Math.min(30, avgDuration + 1)"
+                                class="w-10 h-10 flex items-center justify-center text-xl font-light text-text hover:bg-border/40 transition-colors">+</button>
+                        <span class="w-10 text-center font-heading font-semibold text-xl text-text select-none" x-text="String(avgDuration).padStart(2,'0')"></span>
+                        <button @click="avgDuration = Math.max(1, avgDuration - 1)"
+                                class="w-10 h-10 flex items-center justify-center text-xl font-light text-text hover:bg-border/40 transition-colors">−</button>
+                    </div>
+                    <div class="flex-1 h-[5px] bg-primary/20 rounded-full overflow-hidden">
+                        <div class="h-full bg-primary rounded-full transition-all duration-300"
+                             :style="'width:' + Math.min(100, (avgDuration / 30) * 100) + '%'"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-6">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="font-sans text-[10px] font-semibold tracking-[0.15em] text-muted uppercase">Earning Per Task</span>
+                    <span class="font-sans text-[10px] text-muted">₦</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div class="flex items-center border border-border rounded-full overflow-hidden bg-background flex-shrink-0">
+                        <button @click="earningPerMin = Math.min(10000, earningPerMin + 500)"
+                                class="w-10 h-10 flex items-center justify-center text-xl font-light text-text hover:bg-border/40 transition-colors">+</button>
+                        <span class="w-10 text-center font-heading font-semibold text-xl text-text select-none" x-text="earningPerMin"></span>
+                        <button @click="earningPerMin = Math.max(500, earningPerMin - 500)"
+                                class="w-10 h-10 flex items-center justify-center text-xl font-light text-text hover:bg-border/40 transition-colors">−</button>
+                    </div>
+                    <div class="flex-1 h-[5px] bg-primary/20 rounded-full overflow-hidden">
+                        <div class="h-full bg-primary rounded-full transition-all duration-300"
+                             :style="'width:' + Math.min(100, (earningPerMin / 10000) * 100) + '%'"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <span class="font-heading font-semibold text-[12px] text-muted uppercase block mb-2">PLAN SELECTION</span>
+                <div class="flex gap-[15px]">
+                    <button @click="setPlan('300')"
+                            :class="selectedPackage === '300' ? 'bg-primary text-secondary' : 'bg-surface text-text'"
+                            class="h-[80px] px-[20px] rounded-[20px] font-heading text-[16px] transition-all">Starter</button>
+                    <button @click="setPlan('500')"
+                            :class="selectedPackage === '500' ? 'bg-primary text-secondary' : 'bg-surface text-text'"
+                            class="h-[80px] px-[20px] rounded-[20px] font-heading text-[16px] transition-all">Elite</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="rounded-[30px] p-[30px]" style="background: linear-gradient(59.85deg, rgba(250, 249, 255) 1.49%, rgba(250, 249, 255, 0.58) 98.62%);" >
+
+            <div class="flex items-start justify-between mb-4">
+                <div>
+                    <p class="font-sans text-[10px] font-semibold tracking-[0.15em] text-muted uppercase mb-1">Projected Earnings</p>
+                    <p class="font-heading font-bold text-[38px] text-text" x-text="formatNaira(projectedEarning)"></p>
+                </div>
+                <button class="w-10 h-10 rounded-xl bg-background border border-border flex items-center justify-center hover:bg-border/40 transition-colors flex-shrink-0 mt-1">
+                    <svg class="w-4 h-4 text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span class="font-sans text-[10px] font-semibold tracking-[0.15em] text-muted uppercase">Earning Trend</span>
+                </div>
+                <span class="font-heading text-[10px] text-text bg-[rgba(26,26,26,0.11)] rounded-[24px] px-2.5 py-1">This Month</span>
+            </div>
+
+            <div class="relative mb-4" style="height: 200px;">
+                <div class="absolute top-0 left-[38%] -translate-x-1/2 bg-[#dfdfdc] text-text rounded-[18px] px-[16px] py-[16px] z-10 text-center pointer-events-none">
+                    <div class="font-heading font-semibold text-[14px] leading-tight" x-text="formatNaira(projectedEarning)"></div>
+                    <div class="font-sans text-[12px] text-muted leading-tight">This Month</div>
+                </div>
+                <div class="absolute top-[44px] left-[38%] -translate-x-1/2 w-px h-8 border-l border-dashed border-muted/40 z-10"></div>
+                <div class="absolute bottom-0 left-0 right-0 flex items-end justify-between gap-1" style="height: 170px;">
+                                                            <div class="flex flex-col items-center gap-1 flex-1">
+                        <div class="w-full rounded-full bg-primary" style="height: 81px; max-width: 30px;"></div>
+                        <div class="w-6 h-6 rounded-full bg-secondary flex items-center justify-center flex-shrink-0">
+                            <span class="font-sans text-[8px] font-semibold text-primary leading-none">Mon</span>
+                        </div>
+                    </div>
+                                        <div class="flex flex-col items-center gap-1 flex-1">
+                        <div class="w-full rounded-full bg-primary" style="height: 52px; max-width: 30px;"></div>
+                        <div class="w-6 h-6 rounded-full bg-secondary flex items-center justify-center flex-shrink-0">
+                            <span class="font-sans text-[8px] font-semibold text-primary leading-none">Tue</span>
+                        </div>
+                    </div>
+                                        <div class="flex flex-col items-center gap-1 flex-1">
+                        <div class="w-full rounded-full bg-primary" style="height: 96px; max-width: 30px;"></div>
+                        <div class="w-6 h-6 rounded-full bg-secondary flex items-center justify-center flex-shrink-0">
+                            <span class="font-sans text-[8px] font-semibold text-primary leading-none">Wed</span>
+                        </div>
+                    </div>
+                                        <div class="flex flex-col items-center gap-1 flex-1">
+                        <div class="w-full rounded-full bg-primary" style="height: 71px; max-width: 30px;"></div>
+                        <div class="w-6 h-6 rounded-full bg-secondary flex items-center justify-center flex-shrink-0">
+                            <span class="font-sans text-[8px] font-semibold text-primary leading-none">Thu</span>
+                        </div>
+                    </div>
+                                        <div class="flex flex-col items-center gap-1 flex-1">
+                        <div class="w-full rounded-full bg-primary" style="height: 42px; max-width: 30px;"></div>
+                        <div class="w-6 h-6 rounded-full bg-secondary flex items-center justify-center flex-shrink-0">
+                            <span class="font-sans text-[8px] font-semibold text-primary leading-none">Fri</span>
+                        </div>
+                    </div>
+                                        <div class="flex flex-col items-center gap-1 flex-1">
+                        <div class="w-full rounded-full bg-primary" style="height: 90px; max-width: 30px;"></div>
+                        <div class="w-6 h-6 rounded-full bg-secondary flex items-center justify-center flex-shrink-0">
+                            <span class="font-sans text-[8px] font-semibold text-primary leading-none">Sat</span>
+                        </div>
+                    </div>
+                                        <div class="flex flex-col items-center gap-1 flex-1">
+                        <div class="w-full rounded-full bg-primary" style="height: 79px; max-width: 30px;"></div>
+                        <div class="w-6 h-6 rounded-full bg-secondary flex items-center justify-center flex-shrink-0">
+                            <span class="font-sans text-[8px] font-semibold text-primary leading-none">Sun</span>
+                        </div>
+                    </div>
+                                    </div>
+            </div>
+
+            <div class="flex justify-end pt-[30px]">
+                <div class="flex items-start gap-[10px] bg-[rgba(124,58,237,0.10)] border border-[#7C3AED] rounded-[24px] p-[20px] w-[268px]">
+                    <svg class="w-[22px] h-[22px] text-[#7C3AED] flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2.5l1.5 8 8 1.5-8 1.5-1.5 8-1.5-8-8-1.5 8-1.5z"/>
+                    </svg>
+                    <div class="flex flex-col gap-[5px]">
+                        <p class="font-heading font-medium text-[14px] text-text whitespace-nowrap">Boost Your Daily Earnings</p>
+                        <p class="font-sans text-[12px] text-muted leading-relaxed">Complete your daily tasks to earn up to ₦250,000.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+    
+    <section id="how-it-works" class="bg-surface">
+
+    <div class="md:hidden flex flex-col gap-[60px] px-[20px] py-[100px]">
+
+        <div class="flex flex-col gap-[20px] items-center text-center w-full">
+            <div class="flex flex-col gap-[10px] items-center">
+                <p class="font-sans font-semibold text-primary text-[14px]">The Process</p>
+                <p class="font-heading font-medium text-text text-[36px] leading-tight">How it Works?</p>
+            </div>
+            <p class="font-sans text-muted text-[14px] leading-relaxed">
+                Follow three simple steps to claim your ₦200,000 welcome bonus and start earning from AI surveys and music tasks.
+            </p>
+        </div>
+
+        <div class="flex flex-col gap-[60px] w-full">
+
+            <div class="flex flex-col gap-[20px]">
+                <div class="flex items-center gap-[6px]">
+                    <img src="images/how-it-works/step-2-icon.svg" alt="" class="w-[40px] h-[40px]" />
+                    <span class="font-heading font-medium text-[24px] leading-none" style="color: rgba(124, 58, 237, 0.1)">01</span>
+                </div>
+                <div class="flex flex-col gap-[10px]">
+                    <p class="font-heading font-medium text-text text-[24px] leading-tight">Create Your Free Account</p>
+                    <p class="font-sans text-muted text-[14px] leading-relaxed">Sign up in under a minute, claim your ₦200,000 welcome bonus, and unlock your survey dashboard instantly.</p>
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-[20px]">
+                <div class="flex items-center gap-[6px]">
+                    <img src="images/how-it-works/step-3-icon.svg" alt="" class="w-[40px] h-[40px]" />
+                    <span class="font-heading font-medium text-[24px] leading-none" style="color: rgba(124, 58, 237, 0.1)">02</span>
+                </div>
+                <div class="flex flex-col gap-[10px] pb-[20px]">
+                    <p class="font-heading font-medium text-text text-[24px] leading-tight">Complete AI Tasks &amp; Earn</p>
+                    <p class="font-sans text-muted text-[14px] leading-relaxed">Answer short AI surveys and listen to music tracks, earning up to ₦10,000 for each task you finish. Rewards are credited to your balance instantly.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="flex flex-col gap-[20px] items-center justify-center w-full">
+            <p class="font-heading text-muted text-[16px] text-center">READY TO START?</p>
+            <a href="auth/register.html"
+               class="inline-flex items-center gap-[16px] bg-primary text-surface font-heading font-medium text-[15px] rounded-[90px] px-[30px] py-[20px]">
+                Create Your Free Account
+                <img src="images/how-it-works/arrow.svg" alt="" class="w-[18px] h-[18px]" />
+            </a>
+        </div>
+
+    </div>
+
+    <div class="hidden md:block py-[150px]">
+        <div class="max-w-[1280px] mx-auto px-[60px]">
+
+        <div class="text-center mb-[80px]">
+            <p class="font-sans text-[24px] font-semibold text-primary mb-3">The Process</p>
+            <h2 class="font-heading font-medium text-text text-[50px] leading-tight mb-5">How it Works?</h2>
+            <p class="font-sans text-muted text-[24px] max-w-2xl mx-auto">Follow three simple steps to claim your ₦200,000 welcome bonus and start earning from AI surveys and music tasks.</p>
+        </div>
+
+        
+        <div class="relative mx-auto" style="height: 520px; max-width: 1140px;">
+
+            <div class="absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2" style="background: rgba(140,140,140,0.25);"></div>
+
+            <!-- Step 1: Create Your Free Account -->
+            <div class="absolute flex items-center gap-4" style="left: 340px; top: 40px;">
+                <span class="font-heading font-medium text-[46px] leading-none select-none" style="color: rgba(124, 58, 237, 0.1)">01</span>
+                <div class="w-[80px] h-[80px] rounded-full border border-primary/25 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-9 h-9 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="absolute" style="left: 620px; top: 40px; width: 420px;">
+                <h3 class="font-heading font-medium text-text text-[32px] mb-3">Create Your Free Account</h3>
+                <p class="font-sans text-muted text-[22px] leading-relaxed">Sign up in under a minute, claim your ₦200,000 welcome bonus, and unlock your survey dashboard instantly.</p>
+            </div>
+
+            <!-- Step 2: Connect, grow & earn -->
+            <div class="absolute" style="left: 0; top: 310px; width: 420px;">
+                <h3 class="font-heading font-medium text-text text-[32px] mb-3">Complete AI Tasks &amp; Earn</h3>
+                <p class="font-sans text-muted text-[22px] leading-relaxed">Answer short AI surveys and listen to music tracks, earning up to ₦10,000 for each task you finish. Rewards are credited to your balance instantly.</p>
+            </div>
+            <div class="absolute flex items-center gap-4" style="left: 600px; top: 310px;">
+                <div class="w-[80px] h-[80px] rounded-full border border-primary/25 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-9 h-9 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                    </svg>
+                </div>
+                <span class="font-heading font-medium text-[46px] leading-none select-none" style="color: rgba(124, 58, 237, 0.1)">02</span>
+            </div>
+
+        </div>
+
+        <div class="text-center mt-[80px]">
+            <p class="font-heading text-[22px] text-muted mb-6">READY TO START?</p>
+            <a href="auth/register.html"
+               class="inline-flex items-center gap-[16px] bg-primary text-surface font-heading font-medium text-[24px] rounded-[90px] px-[40px] py-[29px]">
+                Create Your Free Account
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                </svg>
+            </a>
+        </div>
+        </div>
+
+    </div>
+
+</section>
+
+    
+        <section id="packages" class="hidden md:block bg-background pt-[100px] pb-[80px] max-w-[1280px] mx-auto px-[60px]">
+
+        <div class="flex flex-col gap-[30px] mb-[60px]">
+            <h2 class="font-heading font-semibold text-primary text-[50px]">Choose Your Earning Plan</h2>
+            <p class="font-sans text-muted text-[24px] leading-normal">Unlock more daily AI surveys and music tasks with higher rewards. Start free or go bigger — the choice is yours!</p>
+        </div>
+
+        <div class="grid grid-cols-2 gap-10">
+                                            <div
+                     class="bg-surface rounded-[60px] px-[40px] py-[60px] flex flex-col gap-[40px] border-[3px] border-[#E9E9E9]"
+                     >
+                    <div class="flex items-start justify-between gap-4">
+                        <div class="flex flex-col gap-2.5">
+                            <p class="font-heading text-[24px] text-muted">Starter Plan</p>
+                            <p class="font-heading font-semibold text-[38px] text-text">Free</p>
+                        </div>
+                                            </div>
+
+                                            <p class="font-sans text-muted text-[20px] leading-relaxed">Perfect for new members: claim your welcome bonus and start completing surveys today.</p>
+                    
+                    <a href="auth/register.html"
+                       class="inline-flex items-center justify-center w-full font-heading font-medium text-[24px] rounded-[35px] px-[30px] py-[20px] text-center hover:opacity-90 transition-opacity text-primary bg-background">
+                        Get Started
+                    </a>
+
+                                            <div class="flex flex-col gap-[30px]">
+                            <p class="font-heading font-semibold text-[20px] text-muted">Key Features:</p>
+                            <ul class="flex flex-col gap-5">
+                                                                    <li class="flex items-center gap-2.5">
+                                        <svg class="w-[25px] h-[25px] flex-shrink-0 text-muted" fill="none" viewBox="0 0 24 24">
+                                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+                                            <path d="M8 12.5l2.4 2.4 5.1-5.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                        <span class="font-sans text-[20px] text-muted">₦200,000 welcome bonus</span>
+                                    </li>
+                                                                    <li class="flex items-center gap-2.5">
+                                        <svg class="w-[25px] h-[25px] flex-shrink-0 text-muted" fill="none" viewBox="0 0 24 24">
+                                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+                                            <path d="M8 12.5l2.4 2.4 5.1-5.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                        <span class="font-sans text-[20px] text-muted">2 surveys + 3 music tasks every day</span>
+                                    </li>
+                                                                    <li class="flex items-center gap-2.5">
+                                        <svg class="w-[25px] h-[25px] flex-shrink-0 text-muted" fill="none" viewBox="0 0 24 24">
+                                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+                                            <path d="M8 12.5l2.4 2.4 5.1-5.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                        <span class="font-sans text-[20px] text-muted">Earn up to ₦10,000 per task</span>
+                                    </li>
+                                                                    <li class="flex items-center gap-2.5">
+                                        <svg class="w-[25px] h-[25px] flex-shrink-0 text-muted" fill="none" viewBox="0 0 24 24">
+                                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+                                            <path d="M8 12.5l2.4 2.4 5.1-5.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                        <span class="font-sans text-[20px] text-muted">Real-time earnings dashboard</span>
+                                    </li>
+                                                                    <li class="flex items-center gap-2.5">
+                                        <svg class="w-[25px] h-[25px] flex-shrink-0 text-muted" fill="none" viewBox="0 0 24 24">
+                                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+                                            <path d="M8 12.5l2.4 2.4 5.1-5.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                        <span class="font-sans text-[20px] text-muted">Withdraw to any Nigerian bank</span>
+                                    </li>
+                                                            </ul>
+                        </div>
+                                    </div>
+                                            <div
+                     class="bg-surface rounded-[60px] px-[40px] py-[60px] flex flex-col gap-[40px] border-[3px] border-[#A78BFA]"
+                      style="box-shadow: 0px 0px 24px 1px rgba(124, 58, 237, 0.2);" >
+                    <div class="flex items-start justify-between gap-4">
+                        <div class="flex flex-col gap-2.5">
+                            <p class="font-heading text-[24px] text-muted">Elite Plan</p>
+                            <p class="font-heading font-semibold text-[38px] text-text">₦14,000</p>
+                        </div>
+                                                    <span class="bg-primary text-surface text-xs font-medium font-heading p-[10px] rounded-[35px] flex-shrink-0">Popular</span>
+                                            </div>
+
+                                            <p class="font-sans text-muted text-[20px] leading-relaxed">For members ready to earn more with extra daily AI tasks and priority rewards.</p>
+                    
+                    <a href="auth/register.html"
+                       class="inline-flex items-center justify-center w-full font-heading font-medium text-[24px] rounded-[35px] px-[30px] py-[20px] text-center hover:opacity-90 transition-opacity text-surface bg-primary">
+                        Upgrade & Earn More
+                    </a>
+
+                                            <div class="flex flex-col gap-[30px]">
+                            <p class="font-heading font-semibold text-[20px] text-muted">Key Features:</p>
+                            <ul class="flex flex-col gap-5">
+                                                                    <li class="flex items-center gap-2.5">
+                                        <svg class="w-[25px] h-[25px] flex-shrink-0 text-muted" fill="none" viewBox="0 0 24 24">
+                                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+                                            <path d="M8 12.5l2.4 2.4 5.1-5.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                        <span class="font-sans text-[20px] text-muted">Everything in Starter</span>
+                                    </li>
+                                                                    <li class="flex items-center gap-2.5">
+                                        <svg class="w-[25px] h-[25px] flex-shrink-0 text-muted" fill="none" viewBox="0 0 24 24">
+                                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+                                            <path d="M8 12.5l2.4 2.4 5.1-5.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                        <span class="font-sans text-[20px] text-muted">Up to 25 AI tasks every day</span>
+                                    </li>
+                                                                    <li class="flex items-center gap-2.5">
+                                        <svg class="w-[25px] h-[25px] flex-shrink-0 text-muted" fill="none" viewBox="0 0 24 24">
+                                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+                                            <path d="M8 12.5l2.4 2.4 5.1-5.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                        <span class="font-sans text-[20px] text-muted">Priority high-paying AI tasks</span>
+                                    </li>
+                                                                    <li class="flex items-center gap-2.5">
+                                        <svg class="w-[25px] h-[25px] flex-shrink-0 text-muted" fill="none" viewBox="0 0 24 24">
+                                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+                                            <path d="M8 12.5l2.4 2.4 5.1-5.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                        <span class="font-sans text-[20px] text-muted">Faster withdrawal processing</span>
+                                    </li>
+                                                                    <li class="flex items-center gap-2.5">
+                                        <svg class="w-[25px] h-[25px] flex-shrink-0 text-muted" fill="none" viewBox="0 0 24 24">
+                                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+                                            <path d="M8 12.5l2.4 2.4 5.1-5.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                        <span class="font-sans text-[20px] text-muted">Dedicated VIP support</span>
+                                    </li>
+                                                            </ul>
+                        </div>
+                                    </div>
+                    </div>
+    </section>
+
+    
+    <div class="flex flex-col">
+        <div class="order-2 md:order-1"><section class="md:hidden bg-background py-[50px] px-[16px]">
+    <div class="relative rounded-[20px] overflow-hidden px-[20px] py-[40px]">
+
+        <img src="images/cta/cta-mobile-bg.jpg"
+             alt=""
+             class="absolute inset-0 w-full h-full object-cover pointer-events-none rounded-[20px]" />
+
+        <div class="relative z-10 flex flex-col gap-[30px] items-center text-center">
+            <div class="flex flex-col gap-[10px] items-center">
+                <p class="font-heading font-medium text-[#EDE9FE] text-[24px] leading-tight">Get Started in Minutes</p>
+                <p class="font-sans text-[#FAF9FF] text-[12px] leading-relaxed">Sign up free, claim your ₦200,000 welcome bonus, and start earning from AI surveys and music tasks.</p>
+            </div>
+            <a href="auth/register.html"
+               class="flex items-center justify-center w-full h-[50px] font-sans font-semibold text-primary text-[14px] rounded-[39px] bg-white">
+                Start Earning Now
+            </a>
+        </div>
+
+    </div>
+</section>
+
+<section class="hidden md:block bg-background pt-[20px] pb-[100px]">
+    <div class="max-w-[1280px] mx-auto px-[60px]">
+    <div class="relative rounded-[60px] overflow-hidden flex flex-col items-center justify-center gap-[40px] px-[100px] py-[90px] w-full">
+
+        <img src="images/cta/cta-desktop-bg.jpg"
+             alt=""
+             class="absolute inset-0 w-full h-full object-cover pointer-events-none rounded-[60px]" />
+
+        <p class="relative z-10 font-heading font-semibold text-[#FAF9FF] text-[50px] leading-tight whitespace-nowrap">Get Started in Minutes</p>
+        <p class="relative z-10 font-heading font-medium text-[#FAF9FF] text-[24px] text-center leading-relaxed max-w-3xl">
+            Sign up free, claim your ₦200,000 welcome bonus, and start earning from AI surveys and music tasks. Your dashboard tracks every task and payout.
+        </p>
+        <a href="auth/register.html"
+           class="relative z-10 inline-flex items-center justify-center font-heading font-medium text-primary text-[18px] rounded-[35px] bg-background px-[30px] py-[20px] w-[306px] hover:opacity-90 transition-opacity">
+            Start Earning Now
+        </a>
+
+    </div>
+    </div>
+</section>
+</div>
+        <div class="order-1 md:order-2"><section id="faq" class="bg-background" x-data="{ open: null }">
+
+    
+    <div class="md:hidden flex flex-col gap-[30px] px-[16px] py-[100px]">
+
+        <div class="flex flex-col gap-[10px] pb-[20px]">
+            <p class="font-heading text-[24px] text-muted leading-normal">FAQ</p>
+            <p class="font-heading font-semibold leading-tight">
+                <span class="text-primary text-[32px]">Common questions </span><span class="text-[32px]" style="color: #1a1a1a">answered</span>
+            </p>
+        </div>
+
+        <div class="w-full">
+                        <div class="border-t border-[#E7E3F5]">
+                <button
+                    @click="open === 0 ? open = null : open = 0"
+                    class="w-full flex items-center justify-between px-[20px] py-[25px] text-left"
+                    :class="open === 0 ? 'gap-[20px] py-[30px]' : 'gap-[20px]'">
+                    <span class="font-heading font-medium text-text text-[18px] leading-snug flex-1 min-w-0">
+                        What is TaskVest?
+                    </span>
+                    <div class="w-[35px] h-[35px] rounded-full border flex-shrink-0 flex items-center justify-center transition-all duration-200"
+                         :class="open === 0 ? 'bg-text border-text' : 'bg-transparent border-[#E7E3F5]'">
+                        <svg x-show="open !== 0" class="w-[11px] h-[11px] text-text" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 5v14M5 12h14"/>
+                        </svg>
+                        <svg x-show="open === 0" class="w-[11px] h-[11px] text-surface" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 12h14"/>
+                        </svg>
+                    </div>
+                </button>
+                <div x-show="open === 0" x-collapse class="px-[20px] pb-[30px]">
+                    <p class="font-sans text-muted text-[16px] leading-relaxed">TaskVest is an AI-powered rewards hub where you earn real money for completing surveys and listening to music. Your answers and feedback help train real AI models, and you get paid for every task you complete.</p>
+                </div>
+            </div>
+                        <div class="border-t border-[#E7E3F5]">
+                <button
+                    @click="open === 1 ? open = null : open = 1"
+                    class="w-full flex items-center justify-between px-[20px] py-[25px] text-left"
+                    :class="open === 1 ? 'gap-[20px] py-[30px]' : 'gap-[20px]'">
+                    <span class="font-heading font-medium text-text text-[18px] leading-snug flex-1 min-w-0">
+                        How does TaskVest work?
+                    </span>
+                    <div class="w-[35px] h-[35px] rounded-full border flex-shrink-0 flex items-center justify-center transition-all duration-200"
+                         :class="open === 1 ? 'bg-text border-text' : 'bg-transparent border-[#E7E3F5]'">
+                        <svg x-show="open !== 1" class="w-[11px] h-[11px] text-text" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 5v14M5 12h14"/>
+                        </svg>
+                        <svg x-show="open === 1" class="w-[11px] h-[11px] text-surface" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 12h14"/>
+                        </svg>
+                    </div>
+                </button>
+                <div x-show="open === 1" x-collapse class="px-[20px] pb-[30px]">
+                    <p class="font-sans text-muted text-[16px] leading-relaxed">TaskVest connects you with paid AI surveys and music-listening tasks. Complete a task, earn up to ₦50, and watch your balance grow in real time — with total earnings of up to ₦250,000.</p>
+                </div>
+            </div>
+                        <div class="border-t border-[#E7E3F5]">
+                <button
+                    @click="open === 2 ? open = null : open = 2"
+                    class="w-full flex items-center justify-between px-[20px] py-[25px] text-left"
+                    :class="open === 2 ? 'gap-[20px] py-[30px]' : 'gap-[20px]'">
+                    <span class="font-heading font-medium text-text text-[18px] leading-snug flex-1 min-w-0">
+                        How do I get started?
+                    </span>
+                    <div class="w-[35px] h-[35px] rounded-full border flex-shrink-0 flex items-center justify-center transition-all duration-200"
+                         :class="open === 2 ? 'bg-text border-text' : 'bg-transparent border-[#E7E3F5]'">
+                        <svg x-show="open !== 2" class="w-[11px] h-[11px] text-text" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 5v14M5 12h14"/>
+                        </svg>
+                        <svg x-show="open === 2" class="w-[11px] h-[11px] text-surface" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 12h14"/>
+                        </svg>
+                    </div>
+                </button>
+                <div x-show="open === 2" x-collapse class="px-[20px] pb-[30px]">
+                    <p class="font-sans text-muted text-[16px] leading-relaxed">Create a free account, claim your ₦200,000 welcome bonus, and start completing surveys right away.</p>
+                </div>
+            </div>
+                        <div class="border-t border-[#E7E3F5]">
+                <button
+                    @click="open === 3 ? open = null : open = 3"
+                    class="w-full flex items-center justify-between px-[20px] py-[25px] text-left"
+                    :class="open === 3 ? 'gap-[20px] py-[30px]' : 'gap-[20px]'">
+                    <span class="font-heading font-medium text-text text-[18px] leading-snug flex-1 min-w-0">
+                        What tasks can I do?
+                    </span>
+                    <div class="w-[35px] h-[35px] rounded-full border flex-shrink-0 flex items-center justify-center transition-all duration-200"
+                         :class="open === 3 ? 'bg-text border-text' : 'bg-transparent border-[#E7E3F5]'">
+                        <svg x-show="open !== 3" class="w-[11px] h-[11px] text-text" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 5v14M5 12h14"/>
+                        </svg>
+                        <svg x-show="open === 3" class="w-[11px] h-[11px] text-surface" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 12h14"/>
+                        </svg>
+                    </div>
+                </button>
+                <div x-show="open === 3" x-collapse class="px-[20px] pb-[30px]">
+                    <p class="font-sans text-muted text-[16px] leading-relaxed">Two task types: short AI surveys (products, shopping, media, lifestyle) and music-listening tasks where you rate tracks. Each pays up to ₦10,000 and most take 3–10 minutes.</p>
+                </div>
+            </div>
+                        <div class="border-t border-[#E7E3F5]">
+                <button
+                    @click="open === 4 ? open = null : open = 4"
+                    class="w-full flex items-center justify-between px-[20px] py-[25px] text-left"
+                    :class="open === 4 ? 'gap-[20px] py-[30px]' : 'gap-[20px]'">
+                    <span class="font-heading font-medium text-text text-[18px] leading-snug flex-1 min-w-0">
+                        What is the ₦200,000 welcome bonus?
+                    </span>
+                    <div class="w-[35px] h-[35px] rounded-full border flex-shrink-0 flex items-center justify-center transition-all duration-200"
+                         :class="open === 4 ? 'bg-text border-text' : 'bg-transparent border-[#E7E3F5]'">
+                        <svg x-show="open !== 4" class="w-[11px] h-[11px] text-text" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 5v14M5 12h14"/>
+                        </svg>
+                        <svg x-show="open === 4" class="w-[11px] h-[11px] text-surface" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 12h14"/>
+                        </svg>
+                    </div>
+                </button>
+                <div x-show="open === 4" x-collapse class="px-[20px] pb-[30px]">
+                    <p class="font-sans text-muted text-[16px] leading-relaxed">Every new member gets a ₦200,000 welcome bonus credited to their account on signup — no deposit required.</p>
+                </div>
+            </div>
+                        
+                    </div>
+
+    </div>
+
+    <div class="hidden md:block py-[150px]" style="border-top: 1px solid #8c8c8c;">
+        <div class="max-w-[1280px] mx-auto px-[60px]">
+
+        <div class="mb-16">
+            <p class="font-heading text-[24px] text-muted mb-4">FAQ</p>
+            <h2 class="font-heading font-semibold leading-tight">
+                <span class="text-primary text-[50px]">Common questions </span><span class="text-[50px]" style="color: #1a1a1a">answered</span>
+            </h2>
+        </div>
+
+        <div class="max-w-5xl">
+                        <div class="border-t border-border">
+                <button
+                    @click="open === 0 ? open = null : open = 0"
+                    class="w-full flex items-center justify-between p-[30px] text-left gap-6">
+                    <span class="font-heading font-medium text-text text-[26px] leading-snug">
+                        What is TaskVest?
+                    </span>
+                    <div class="w-[60px] h-[60px] rounded-full border flex-shrink-0 flex items-center justify-center transition-all duration-200"
+                         :class="open === 0 ? 'bg-text border-text' : 'bg-transparent border-border'">
+                        <svg x-show="open !== 0" class="w-[14px] h-[14px] text-text" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 5v14M5 12h14"/>
+                        </svg>
+                        <svg x-show="open === 0" class="w-[14px] h-[14px] text-surface" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 12h14"/>
+                        </svg>
+                    </div>
+                </button>
+                <div x-show="open === 0" x-collapse class="px-[30px] pb-[30px]">
+                    <p class="font-sans text-muted text-[20px] leading-relaxed max-w-4xl">TaskVest is an AI-powered rewards hub where you earn real money for completing surveys and listening to music. Your answers and feedback help train real AI models, and you get paid for every task you complete.</p>
+                </div>
+            </div>
+                        <div class="border-t border-border">
+                <button
+                    @click="open === 1 ? open = null : open = 1"
+                    class="w-full flex items-center justify-between p-[30px] text-left gap-6">
+                    <span class="font-heading font-medium text-text text-[26px] leading-snug">
+                        How does TaskVest work?
+                    </span>
+                    <div class="w-[60px] h-[60px] rounded-full border flex-shrink-0 flex items-center justify-center transition-all duration-200"
+                         :class="open === 1 ? 'bg-text border-text' : 'bg-transparent border-border'">
+                        <svg x-show="open !== 1" class="w-[14px] h-[14px] text-text" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 5v14M5 12h14"/>
+                        </svg>
+                        <svg x-show="open === 1" class="w-[14px] h-[14px] text-surface" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 12h14"/>
+                        </svg>
+                    </div>
+                </button>
+                <div x-show="open === 1" x-collapse class="px-[30px] pb-[30px]">
+                    <p class="font-sans text-muted text-[20px] leading-relaxed max-w-4xl">TaskVest connects you with paid AI surveys and music-listening tasks. Complete a task, earn up to ₦50, and watch your balance grow in real time — with total earnings of up to ₦250,000.</p>
+                </div>
+            </div>
+                        <div class="border-t border-border">
+                <button
+                    @click="open === 2 ? open = null : open = 2"
+                    class="w-full flex items-center justify-between p-[30px] text-left gap-6">
+                    <span class="font-heading font-medium text-text text-[26px] leading-snug">
+                        How do I get started?
+                    </span>
+                    <div class="w-[60px] h-[60px] rounded-full border flex-shrink-0 flex items-center justify-center transition-all duration-200"
+                         :class="open === 2 ? 'bg-text border-text' : 'bg-transparent border-border'">
+                        <svg x-show="open !== 2" class="w-[14px] h-[14px] text-text" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 5v14M5 12h14"/>
+                        </svg>
+                        <svg x-show="open === 2" class="w-[14px] h-[14px] text-surface" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 12h14"/>
+                        </svg>
+                    </div>
+                </button>
+                <div x-show="open === 2" x-collapse class="px-[30px] pb-[30px]">
+                    <p class="font-sans text-muted text-[20px] leading-relaxed max-w-4xl">Create a free account, claim your ₦200,000 welcome bonus, and start completing surveys right away.</p>
+                </div>
+            </div>
+                        <div class="border-t border-border">
+                <button
+                    @click="open === 3 ? open = null : open = 3"
+                    class="w-full flex items-center justify-between p-[30px] text-left gap-6">
+                    <span class="font-heading font-medium text-text text-[26px] leading-snug">
+                        What tasks can I do?
+                    </span>
+                    <div class="w-[60px] h-[60px] rounded-full border flex-shrink-0 flex items-center justify-center transition-all duration-200"
+                         :class="open === 3 ? 'bg-text border-text' : 'bg-transparent border-border'">
+                        <svg x-show="open !== 3" class="w-[14px] h-[14px] text-text" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 5v14M5 12h14"/>
+                        </svg>
+                        <svg x-show="open === 3" class="w-[14px] h-[14px] text-surface" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 12h14"/>
+                        </svg>
+                    </div>
+                </button>
+                <div x-show="open === 3" x-collapse class="px-[30px] pb-[30px]">
+                    <p class="font-sans text-muted text-[20px] leading-relaxed max-w-4xl">Two task types: short AI surveys (products, shopping, media, lifestyle) and music-listening tasks where you rate tracks. Each pays up to ₦10,000 and most take 3–10 minutes.</p>
+                </div>
+            </div>
+                        <div class="border-t border-border">
+                <button
+                    @click="open === 4 ? open = null : open = 4"
+                    class="w-full flex items-center justify-between p-[30px] text-left gap-6">
+                    <span class="font-heading font-medium text-text text-[26px] leading-snug">
+                        What is the ₦200,000 welcome bonus?
+                    </span>
+                    <div class="w-[60px] h-[60px] rounded-full border flex-shrink-0 flex items-center justify-center transition-all duration-200"
+                         :class="open === 4 ? 'bg-text border-text' : 'bg-transparent border-border'">
+                        <svg x-show="open !== 4" class="w-[14px] h-[14px] text-text" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 5v14M5 12h14"/>
+                        </svg>
+                        <svg x-show="open === 4" class="w-[14px] h-[14px] text-surface" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 12h14"/>
+                        </svg>
+                    </div>
+                </button>
+                <div x-show="open === 4" x-collapse class="px-[30px] pb-[30px]">
+                    <p class="font-sans text-muted text-[20px] leading-relaxed max-w-4xl">Every new member gets a ₦200,000 welcome bonus credited to their account on signup — no deposit required.</p>
+                </div>
+            </div>
+                        
+                    </div>
+        </div>
+
+    </div>
+
+</section>
+</div>
+    </div>
+
+</div>
+            </main>
+
+            <footer>
+    <div class="md:hidden relative overflow-hidden px-4 py-[30px] flex flex-col gap-[30px]">
+        <img src="images/public/footer-bg.jpg" alt="" class="absolute inset-0 w-full h-full object-cover pointer-events-none">
+
+        <img src="images/public/logo-coloured.png" alt="TaskVest" class="relative z-10 self-start h-[40px] w-auto object-contain">
+
+
+        <p class="relative z-10 font-sans text-[14px] text-muted leading-relaxed">
+            Complete surveys, track your rewards, and grow your income in one place.
+        </p>
+
+        <div class="relative z-10 flex flex-col gap-[25px]">
+            <p class="font-sans text-[18px] text-surface">Quick Links</p>
+            <ul class="flex flex-col gap-[15px] font-sans text-[14px] text-muted">
+                <li><a href="index.html" class="hover:text-surface transition-colors">Home</a></li>
+                <li></li>
+                <li><a href="privacy.html" class="hover:text-surface transition-colors">Privacy Policy</a></li>
+                <li><a href="terms.html" class="hover:text-surface transition-colors">Terms</a></li>
+            </ul>
+        </div>
+
+        <div class="relative z-10 flex flex-col gap-[15px]">
+            <p class="font-sans text-[18px] text-surface">Support</p>
+            <p class="font-sans text-[14px] text-muted leading-relaxed">
+                Need help? We typically respond within 24 hours. You are our priority.
+            </p>
+        </div>
+
+        <div class="relative z-10 flex flex-col gap-[15px] items-center">
+            <p class="font-sans text-[14px] text-muted">Follow our social media handles</p>
+            <div class="flex items-center gap-5">
+                                    <a href="index.html" target="_blank" rel="noopener" aria-label="Website" class="text-surface hover:opacity-80 transition-opacity">
+                        <i class="ri-global-line text-[20px]"></i>
+                    </a>
+                            </div>
+        </div>
+    </div>
+
+    <div class="hidden md:block relative overflow-hidden py-[90px]">
+        <img src="images/public/footer-bg.jpg" alt="" class="absolute inset-0 w-full h-full object-cover pointer-events-none">
+        <div class="relative z-10 max-w-[1280px] mx-auto px-5 md:px-[60px] flex items-start justify-between gap-16">
+            <div class="flex flex-col gap-5 max-w-[420px]">
+                <img src="images/public/logo-coloured.png" alt="TaskVest" class="h-[48px] w-auto object-contain self-start">
+                <p class="font-sans text-[18px] text-muted leading-relaxed">
+                    With TaskVest, you complete AI surveys and music tasks, earn rewards, and get paid every day.
+                </p>
+                <div class="flex items-center gap-[10px] pt-[50px]">
+                                            <a href="index.html" target="_blank" rel="noopener" aria-label="Website" class="size-[50px] rounded-full bg-white/10 flex items-center justify-center text-surface hover:bg-white/20 transition-colors">
+                            <i class="ri-global-line text-[20px]"></i>
+                        </a>
+                                    </div>
+            </div>
+
+            <div class="flex gap-24">
+                <div class="flex flex-col gap-6">
+                    <p class="font-heading font-medium text-surface text-[22px]">Legal</p>
+                    <ul class="flex flex-col gap-4 font-sans text-[16px] text-muted">
+                        <li><a href="privacy.html" class="hover:text-surface transition-colors">Privacy Policy</a></li>
+                        <li><a href="terms.html" class="hover:text-surface transition-colors">Terms</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+        </div>
+
+        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"></script>
+        <script src="auth.js" defer></script>
+    </body>
+</html>

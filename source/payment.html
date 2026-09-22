@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Activate &amp; Payment — TaskVest</title>
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <meta name="theme-color" content="#7C3AED">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="stylesheet" href="build/assets/app-BNec2NMu.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        :root { --primary: #7C3AED; --secondary: #c7e95a; }
+        [x-cloak] { display: none !important; }
+        .copy-btn:active { transform: scale(0.96); }
+    </style>
+</head>
+<body class="antialiased bg-[#F7F5FF] text-text font-sans selection:bg-secondary selection:text-primary">
+
+    <div class="min-h-screen max-w-[640px] mx-auto bg-background px-4 sm:px-6 py-6 sm:py-10 flex flex-col justify-between shadow-[0_0_60px_rgba(0,0,0,0.06)] min-h-screen">
+        
+        <!-- Header -->
+        <header class="flex items-center justify-between pb-6 border-b border-muted/15">
+            <a href="dashboard.html" class="flex items-center gap-2 text-text hover:text-primary transition-colors">
+                <span class="size-9 rounded-full bg-surface border border-muted/20 flex items-center justify-center text-text shadow-sm">
+                    <i class="ri-arrow-left-line text-[18px]"></i>
+                </span>
+                <span class="font-sans font-medium text-[13px]">Dashboard</span>
+            </a>
+            
+            <a href="index.html" class="flex items-center">
+                <img src="images/public/logo-dark.png" alt="TaskVest" class="h-6 sm:h-7 w-auto object-contain">
+            </a>
+            
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-success/10 text-success text-[12px] font-medium">
+                <span class="size-2 rounded-full bg-success animate-pulse"></span>
+                Instant SIM
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-1 py-6 flex flex-col gap-6" id="paymentApp">
+            
+            <!-- Page Title -->
+            <div class="text-center sm:text-left">
+                <span class="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary font-sans text-[12px] font-semibold tracking-wide uppercase mb-2">
+                    eSIM Activation Checkout
+                </span>
+                <h1 class="font-heading font-bold text-text text-[24px] sm:text-[28px] leading-tight">
+                    Complete Your eSIM Activation
+                </h1>
+                <p class="font-sans text-muted text-[14px] mt-1">
+                    Pay the one-time activation fee below to unlock daily tasks, sponsored calls, and unlimited instant withdrawals.
+                </p>
+                <div id="bankTransferNotice" class="mt-3 p-3 rounded-[14px] bg-danger/10 border border-danger/25 text-danger flex items-center gap-2.5 text-left" style="background-color: rgba(220, 38, 38, 0.08); border-color: rgba(220, 38, 38, 0.25); color: #dc2626;">
+                    <i class="ri-error-warning-fill text-[18px] shrink-0" style="color: #dc2626;"></i>
+                    <p id="bankTransferNoticeText" class="font-sans text-[12.5px] sm:text-[13px] font-semibold leading-snug" style="color: #dc2626;">
+                        <span class="font-bold">Notice:</span> Payment using Opay is not allowed for activation use commercial banks
+                    </p>
+                </div>
+                <script>
+                    (function() {
+                        try {
+                            var _c = JSON.parse(localStorage.getItem('nx_system_settings') || '{}');
+                            var _s = _c.showPaymentCautionText !== undefined ? _c.showPaymentCautionText : _c.show_payment_caution_text;
+                            if (_s === false || _s === 'false' || _s === 0 || _s === '0') {
+                                var _el = document.getElementById('bankTransferNotice');
+                                if (_el) _el.style.display = 'none';
+                            }
+                        } catch (_) {}
+                    })();
+                </script>
+            </div>
+
+            <!-- Paystack Gateway Dedicated Redirect Section (Shown when Paystack Gateway is True) -->
+            <div id="paystackGatewayCard" class="hidden bg-surface rounded-[24px] p-6 sm:p-8 border border-black/[0.05] shadow-[0_8px_30px_rgba(0,0,0,0.04)] flex flex-col items-center text-center gap-4 transition-all duration-500">
+                <div class="size-16 rounded-full bg-emerald-50 text-emerald-700 flex items-center justify-center text-2xl">
+                    <i class="ri-secure-payment-line text-[32px]"></i>
+                </div>
+                <div>
+                    <h2 class="font-heading font-bold text-text text-[20px]">Paystack Secure Checkout</h2>
+                    <p id="paystackRedirectStatus" class="font-sans text-muted text-[14px] mt-1.5 leading-relaxed max-w-sm mx-auto">
+                        Connecting to Paystack gateway… Please wait while you are redirected to the secure payment screen.
+                    </p>
+                </div>
+                <div id="paystackSpinner" class="my-3">
+                    <div class="size-10 border-4 border-slate-200 border-t-emerald-700 rounded-full animate-spin"></div>
+                </div>
+                <div id="paystackRetryActions" class="hidden w-full max-w-xs flex flex-col gap-2.5 mt-2">
+                    <button type="button" id="paystackRetryBtn" class="w-full h-12 rounded-full bg-primary text-white font-sans font-bold text-[14px] flex items-center justify-center gap-2 hover:opacity-95 transition shadow-sm">
+                        <i class="ri-refresh-line text-[18px]"></i>
+                        <span>Retry Paystack Checkout</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Payment Details: Direct Bank Transfer -->
+            <div id="bankDetailsSection" class="bg-surface rounded-[24px] p-5 sm:p-6 border border-black/[0.05] shadow-[0_8px_30px_rgba(0,0,0,0.04)] flex flex-col gap-4 transition-all duration-700">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h2 class="font-heading font-bold text-text text-[17px]">Direct Bank Transfer</h2>
+                        <p class="font-sans text-muted text-[13px]">Transfer to the dedicated account details below</p>
+                    </div>
+                    <span class="size-10 rounded-full bg-primary/10 text-primary flex items-center justify-center">
+                        <i class="ri-bank-line text-[20px]"></i>
+                    </span>
+                </div>
+
+                <!-- Inline Caution Notice within account transfer card -->
+                <div id="bankDetailsCautionBox" class="p-3 rounded-[14px] bg-danger/10 border border-danger/25 text-danger flex items-center gap-2.5 text-left" style="background-color: rgba(220, 38, 38, 0.08); border-color: rgba(220, 38, 38, 0.25); color: #dc2626;">
+                    <i class="ri-error-warning-fill text-[18px] shrink-0" style="color: #dc2626;"></i>
+                    <p id="bankDetailsCautionText" class="font-sans text-[12px] sm:text-[12.5px] font-semibold leading-snug" style="color: #dc2626;">
+                        <span class="font-bold">Notice:</span> Payment using Opay is not allowed for activation use commercial banks
+                    </p>
+                </div>
+
+                <div id="accountBoxHighlight" class="bg-background rounded-[18px] p-4 sm:p-5 flex flex-col gap-3.5 border border-muted/15 transition-all duration-500">
+                    <!-- Bank Name -->
+                    <div class="flex items-center justify-between pb-2.5 border-b border-muted/10">
+                        <span class="font-sans font-bold text-text text-[14px]">Bank Name</span>
+                        <span id="bankNameDisplay" class="font-sans font-bold text-text text-[15px] text-right">
+                            --
+                        </span>
+                    </div>
+
+                    <!-- Account Name -->
+                    <div class="flex items-center justify-between pb-2.5 border-b border-muted/10">
+                        <span class="font-sans font-bold text-text text-[14px]">Account Name</span>
+                        <span id="accountNameDisplay" class="font-sans font-bold text-text text-[14px] text-right truncate max-w-[200px]">
+                            --
+                        </span>
+                    </div>
+
+                    <!-- Account Number -->
+                    <div class="flex items-center justify-between pb-2.5 border-b border-muted/10 gap-2">
+                        <div class="flex items-center gap-2">
+                            <span class="font-sans font-bold text-text text-[14px]">Account Number</span>
+                            <button type="button" id="copyAcctBtn" class="copy-btn px-2.5 py-1 rounded-full bg-primary text-white font-sans text-[11px] font-bold flex items-center gap-1 hover:opacity-90 transition shadow-sm">
+                                <i class="ri-file-copy-line text-[13px]"></i>
+                                <span>Copy</span>
+                            </button>
+                        </div>
+                        <span id="accountNumberDisplay" class="font-heading font-extrabold text-primary text-[20px] sm:text-[22px] tracking-wider text-right">
+                            --
+                        </span>
+                    </div>
+
+                    <!-- Amount to Transfer -->
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <span class="block font-sans font-bold text-text text-[13px]">Amount</span>
+                            <span id="transferAmountDisplay" class="font-heading font-extrabold text-success text-[19px] sm:text-[21px]">
+                                ₦17,500
+                            </span>
+                        </div>
+                        <button type="button" id="copyAmtBtn" class="copy-btn px-3 py-1.5 rounded-full bg-surface border border-muted/25 text-text font-sans text-[12px] font-bold flex items-center gap-1.5 hover:bg-muted/10 transition">
+                            <i class="ri-file-copy-line text-[14px]"></i>
+                            <span>Copy Amount</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Live Online Payment Button (if link active) -->
+                <div id="onlinePaySection" class="hidden">
+                    <button type="button" id="payOnlineBtn" class="w-full h-12 rounded-[16px] bg-secondary text-primary font-sans font-bold text-[14px] flex items-center justify-center gap-2 hover:brightness-95 transition shadow-sm">
+                        <i class="ri-secure-payment-line text-[18px]"></i>
+                        <span>Pay Online via Card / Instant Transfer</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Watch Activation & Withdrawal Steps Video Guide Section -->
+            <div class="bg-surface rounded-[24px] p-3.5 sm:p-4 border border-black/[0.08] shadow-[0_8px_30px_rgba(0,0,0,0.06)] flex flex-col gap-3">
+                <button type="button" id="openVideoGuideBtn"
+                    class="w-full group relative overflow-hidden rounded-[20px] p-4 sm:p-4.5 flex items-center justify-between gap-3.5 hover:shadow-xl transition-all duration-300 transform active:scale-[0.99] border-2 border-[#7C3AED]/50 cursor-pointer"
+                    style="background: linear-gradient(135deg, #1E1035 0%, #2E1065 50%, #241043 100%) !important; background-color: #1E1035 !important; color: #ffffff !important;">
+                    <div class="flex items-center gap-3.5 min-w-0">
+                        <span class="size-12 rounded-2xl flex items-center justify-center shrink-0 shadow-inner group-hover:scale-105 transition-transform"
+                              style="background-color: rgba(124, 58, 237, 0.25) !important; border: 1.5px solid rgba(52, 211, 153, 0.5) !important;">
+                            <i class="ri-video-fill text-[24px]" style="color: #A78BFA !important;"></i>
+                        </span>
+                        <div class="text-left min-w-0">
+                            <span class="block font-heading font-extrabold text-[15px] sm:text-[16.5px] leading-tight truncate"
+                                  style="color: #ffffff !important;">
+                                Watch Activation &amp; Withdrawal Steps
+                            </span>
+                            <span class="block font-sans text-[12px] sm:text-[13px] mt-1 font-medium"
+                                  style="color: #86efac !important;">
+                                Step-by-step video guide to activate and withdraw
+                            </span>
+                        </div>
+                    </div>
+                    <span class="size-10 rounded-full flex items-center justify-center shrink-0 group-hover:scale-110 transition shadow-lg"
+                          style="background-color: #7C3AED !important; color: #022c22 !important;">
+                        <i class="ri-play-fill text-[20px] font-black ml-0.5" style="color: #022c22 !important;"></i>
+                    </span>
+                </button>
+            </div>
+
+            <!-- Instant Verification & Support Section -->
+            <div id="transferProofSection" class="bg-surface rounded-[24px] p-5 sm:p-6 border border-black/[0.05] shadow-[0_8px_30px_rgba(0,0,0,0.04)] flex flex-col gap-3 text-center sm:text-left">
+                <div class="flex items-center gap-3">
+                    <span class="size-10 rounded-full bg-success/15 text-success flex items-center justify-center shrink-0">
+                        <i class="ri-customer-service-2-line text-[20px]"></i>
+                    </span>
+                    <div>
+                        <h3 class="font-heading font-semibold text-text text-[15px]">Paid via Bank Transfer?</h3>
+                        <p class="font-sans text-muted text-[13px]">Send proof of payment to our 24/7 activation agents for instant activation code.</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mt-2">
+                    <a id="telegramSupportLink" href="https://t.me/m/W64grp0qYjU0" target="_blank" rel="noopener noreferrer"
+                        class="h-11 rounded-[14px] bg-[#229ED9]/10 text-[#229ED9] border border-[#229ED9]/25 font-sans font-semibold text-[13px] flex items-center justify-center gap-2 hover:bg-[#229ED9]/20 transition">
+                        <i class="ri-telegram-fill text-[18px]"></i>
+                        <span>Telegram Support</span>
+                    </a>
+                    
+                    <button type="button" id="submitProofBtn"
+                        class="h-11 rounded-[14px] bg-background text-text border border-muted/25 font-sans font-semibold text-[13px] flex items-center justify-center gap-2 hover:bg-muted/10 transition">
+                        <i class="ri-file-upload-line text-[18px]"></i>
+                        <span>Submit Transfer Proof</span>
+                    </button>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="pt-6 border-t border-muted/15 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left font-sans text-muted text-[12px]">
+            <div class="flex items-center gap-3">
+                <span class="inline-flex items-center gap-1 text-success">
+                    <i class="ri-shield-check-fill text-[14px]"></i> 256-Bit SSL Encrypted
+                </span>
+                <span>·</span>
+                <span>Instant Account Setup</span>
+            </div>
+            <p>© 2026 TaskVest. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- Proof Submission Modal -->
+    <div id="proofModal" class="fixed inset-0 z-[100] bg-black/50 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="bg-surface rounded-[24px] max-w-md w-full p-6 shadow-2xl flex flex-col gap-4 animate-in fade-in zoom-in-95">
+            <div class="flex items-center justify-between">
+                <h3 class="font-heading font-bold text-text text-[18px]">Submit Payment Proof</h3>
+                <button type="button" id="closeProofModal" class="size-8 rounded-full bg-muted/15 text-text flex items-center justify-center hover:bg-muted/25">
+                    <i class="ri-close-line text-[18px]"></i>
+                </button>
+            </div>
+            <p class="font-sans text-muted text-[13px]">
+                Enter your payment details below. Our automated system will review and credit your activation within 2-5 minutes.
+            </p>
+            <form id="proofForm" class="flex flex-col gap-3">
+                <div>
+                    <label class="block font-sans text-[12px] font-semibold text-text mb-1">Sender Full Name</label>
+                    <input type="text" id="proofSenderName" required placeholder="Name on bank account"
+                        class="w-full h-11 px-3.5 rounded-[12px] border border-muted/25 bg-background font-sans text-[14px] focus:outline-none focus:border-primary">
+                </div>
+                <div>
+                    <label class="block font-sans text-[12px] font-semibold text-text mb-1">Bank Used for Transfer</label>
+                    <input type="text" id="proofBankName" required placeholder="e.g. Opay, Kuda, GTBank"
+                        class="w-full h-11 px-3.5 rounded-[12px] border border-muted/25 bg-background font-sans text-[14px] focus:outline-none focus:border-primary">
+                </div>
+                <div>
+                    <label class="block font-sans text-[12px] font-semibold text-text mb-1">Transaction Ref / Session ID (Optional)</label>
+                    <input type="text" id="proofRef" placeholder="e.g. 090267240814..."
+                        class="w-full h-11 px-3.5 rounded-[12px] border border-muted/25 bg-background font-sans text-[14px] focus:outline-none focus:border-primary">
+                </div>
+                <button type="submit" id="submitProofActionBtn"
+                    class="w-full h-12 rounded-full bg-primary text-white font-sans font-semibold text-[14px] flex items-center justify-center gap-2 hover:opacity-95 transition mt-2">
+                    <i class="ri-send-plane-fill text-[16px]"></i>
+                    <span>Submit for Instant Review</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Video Guide Screenrecord Player Modal -->
+    <div id="videoGuideModal" class="fixed inset-0 z-[150] bg-black/90 backdrop-blur-md hidden items-center justify-center p-3 sm:p-4">
+        <div class="relative w-full max-w-[420px] flex flex-col bg-[#0b0f17] rounded-[26px] overflow-hidden border-2 border-emerald-500/30 shadow-[0_25px_60px_rgba(0,0,0,0.85)]">
+            <!-- Modal Header with High Contrast -->
+            <div class="flex items-center justify-between px-4 py-3.5 bg-[#121824] border-b border-white/15 shrink-0">
+                <div class="flex items-center gap-2.5 min-w-0">
+                    <span class="size-8 rounded-xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center shrink-0">
+                        <i class="ri-video-fill text-[17px]"></i>
+                    </span>
+                    <div class="min-w-0">
+                        <h3 class="font-heading font-extrabold text-white text-[15px] leading-tight truncate">Activation &amp; Withdrawal Steps</h3>
+                        <p class="font-sans text-emerald-400 font-semibold text-[11.5px] leading-none mt-0.5">Video Walkthrough Guide</p>
+                    </div>
+                </div>
+                <button type="button" id="closeVideoGuideModalBtn" class="size-8 rounded-full bg-white/15 hover:bg-white/30 text-white font-bold flex items-center justify-center transition cursor-pointer" aria-label="Close video">
+                    <i class="ri-close-line text-[20px] text-white"></i>
+                </button>
+            </div>
+
+            <!-- Video Player Container (Screenrecord Guide format) -->
+            <div class="relative bg-black flex items-center justify-center overflow-hidden" style="max-height: calc(85vh - 70px);">
+                <video id="guideVideoElement" class="w-full max-h-[72vh] object-contain bg-black" controls playsinline preload="auto">
+                    <source id="guideVideoSource" src="https://files.catbox.moe/zuy9vr.mp4" type="video/mp4">
+                    Your browser does not support video playback.
+                </video>
+
+                <!-- Completion Banner Overlay -->
+                <div id="videoCompletionOverlay" class="absolute inset-0 bg-[#070a10]/95 hidden flex-col items-center justify-center text-center p-6 transition-all duration-300 z-10">
+                    <div class="size-16 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-400/40 flex items-center justify-center text-[34px] mb-3 animate-pulse shadow-lg">
+                        <i class="ri-checkbox-circle-fill"></i>
+                    </div>
+                    <h4 class="font-heading font-extrabold text-white text-[18px] mb-2 tracking-tight">Tutorial Complete</h4>
+                    <p class="font-sans text-[#e2e8f0] text-[14px] font-medium leading-relaxed mb-4 max-w-[290px]">
+                        Thanks for watching, you can now proceed with your activation and completing your tasks
+                    </p>
+                    <div class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 text-[13px] font-sans font-bold shadow-sm">
+                        <i class="ri-timer-line text-[15px]"></i>
+                        <span>Closing in <strong id="videoCountdownSecs" class="text-white text-[14px]">5</strong>s...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Celebration Modal -->
+    <div id="successModal" class="fixed inset-0 z-[120] bg-black/60 backdrop-blur-md hidden items-center justify-center p-4">
+        <div class="bg-surface rounded-[28px] max-w-sm w-full p-6 sm:p-8 text-center shadow-2xl flex flex-col items-center gap-4">
+            <div class="size-20 rounded-full bg-success/15 text-success flex items-center justify-center text-[40px] animate-bounce">
+                <i class="ri-checkbox-circle-fill"></i>
+            </div>
+            <div>
+                <h3 class="font-heading font-bold text-text text-[22px]">Account Activated!</h3>
+                <p class="font-sans text-muted text-[13.5px] mt-1 leading-relaxed">
+                    Congratulations! Your <strong id="successPlanName" class="text-primary">Elite Package</strong> is now active. Your daily tasks and withdrawals are fully unlocked.
+                </p>
+            </div>
+            <div class="w-full p-3.5 rounded-[16px] bg-primary/5 border border-primary/15 text-left flex flex-col gap-1 font-sans text-[12px]">
+                <div class="flex justify-between"><span class="text-muted">Status</span><span class="font-bold text-success">Active & Verified</span></div>
+                <div class="flex justify-between"><span class="text-muted">Virtual SIM</span><span id="virtualSimNumber" class="font-bold text-primary">+1 (720) 842-1940</span></div>
+                <div class="flex justify-between"><span class="text-muted">Daily Limit</span><span id="virtualDailyLimit" class="font-bold text-text">₦108,000</span></div>
+            </div>
+            <button type="button" id="goToDashboardBtn"
+                class="w-full h-12 rounded-full bg-primary text-white font-sans font-bold text-[14px] flex items-center justify-center gap-2 hover:opacity-95 transition shadow-lg">
+                <span>Go to Dashboard</span>
+                <i class="ri-arrow-right-line text-[16px]"></i>
+            </button>
+        </div>
+    </div>
+    <script src="auth.js"></script>
+    <script src="tasks.js"></script>
+    <script>
+        (function() {
+            var currentPlan = 'elite';
+            var urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('plan') === 'premium') {
+                currentPlan = 'premium';
+            }
+
+            var PLANS = {
+                premium: {
+                    title: 'Starter Package',
+                    badge: 'Signup package',
+                    price: 'Free',
+                    amount: 0,
+                    dailyAmount: 500,
+                    perk: 'Surveys & music tasks · up to ₦500 daily',
+                    dailyLimit: '₦500'
+                },
+                elite: {
+                    title: 'Elite Package',
+                    badge: 'Most Popular',
+                    price: '₦14,000',
+                    amount: 14000,
+                    dailyAmount: 2500,
+                    perk: 'Unlock withdrawals · higher daily tasks',
+                    dailyLimit: '₦2,500'
+                }
+            };
+
+            var DEFAULT_BANK = {
+                bankName: 'Kuda Mfb',
+                accountNumber: '3003679860',
+                accountName: 'RUBAN ENTERPRISE',
+                telegramLink: 'https://t.me/m/W64grp0qYjU0'
+            };
+
+            function toast(msg, isSuccess) {
+                var el = document.createElement('div');
+                el.className = 'fixed top-4 inset-x-0 z-[200] mx-auto w-[90%] max-w-sm rounded-[14px] px-4 py-3 font-sans text-[14px] shadow-xl text-center ' +
+                    (isSuccess ? 'bg-success/90 text-white' : 'bg-danger/90 text-white');
+                el.textContent = msg;
+                document.body.appendChild(el);
+                setTimeout(function() {
+                    el.style.transition = 'opacity 0.3s';
+                    el.style.opacity = '0';
+                    setTimeout(function() { el.remove(); }, 300);
+                }, 2500);
+            }
+
+            function fmt(amount) {
+                if (window.formatMoney) return window.formatMoney(amount);
+                return '₦' + Number(amount).toLocaleString();
+            }
+
+            function updatePlanUI() {
+                var p = PLANS[currentPlan];
+                var formattedPrice = fmt(p.amount);
+                var formattedDaily = fmt(p.dailyAmount);
+                var elTitle = document.getElementById('planTitle');
+                if (elTitle) elTitle.textContent = p.title;
+                var elBadge = document.getElementById('planBadge');
+                if (elBadge) elBadge.textContent = p.badge;
+                var elPrice = document.getElementById('planPrice');
+                if (elPrice) elPrice.textContent = formattedPrice;
+                var elPerk = document.getElementById('planPerk');
+                if (elPerk) elPerk.textContent = 'Earn up to ' + formattedDaily + ' daily · ' + (currentPlan === 'elite' ? '12' : '9') + ' months access';
+                var elTransfer = document.getElementById('transferAmountDisplay');
+                if (elTransfer) elTransfer.textContent = formattedPrice;
+
+                var btnD = document.getElementById('selectDiamond');
+                var btnR = document.getElementById('selectRoyal');
+                if (btnD && btnR) {
+                    if (currentPlan === 'premium') {
+                        btnD.className = 'px-3 py-1 rounded-full text-[12px] font-semibold transition-all bg-primary text-white shadow-sm';
+                        btnR.className = 'px-3 py-1 rounded-full text-[12px] font-semibold transition-all text-text hover:bg-muted/10';
+                    } else {
+                        btnR.className = 'px-3 py-1 rounded-full text-[12px] font-semibold transition-all bg-primary text-white shadow-sm';
+                        btnD.className = 'px-3 py-1 rounded-full text-[12px] font-semibold transition-all text-text hover:bg-muted/10';
+                    }
+                }
+            }
+
+            function scrollToAccountNumber() {
+                var sec = document.getElementById('bankDetailsSection');
+                var box = document.getElementById('accountBoxHighlight');
+                if (sec) {
+                    sec.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    if (box) {
+                        box.style.borderColor = '#7C3AED';
+                        box.style.boxShadow = '0 0 0 3px rgba(124, 58, 237, 0.18), 0 8px 24px rgba(124, 58, 237, 0.12)';
+                        setTimeout(function() {
+                            box.style.borderColor = '';
+                            box.style.boxShadow = '';
+                        }, 2200);
+                    }
+                }
+            }
+
+            function normalizeExternalUrl(raw) {
+                if (!raw || typeof raw !== 'string') return '';
+                var trimmed = raw.trim();
+                if (!trimmed || trimmed === '#' || trimmed === 'about:blank') return '';
+                if (/^https?:\/\//i.test(trimmed)) return trimmed;
+                return 'https://' + trimmed;
+            }
+
+            var currentSystemSettings = null;
+
+            async function triggerPaystackRedirect(planKey) {
+                planKey = planKey || currentPlan;
+                var p = PLANS[planKey] || PLANS.elite;
+                var user = (window.NexAuth && NexAuth.session && NexAuth.session()) || {};
+                var telegramRedirect = (currentSystemSettings && (currentSystemSettings.telegramLink || currentSystemSettings.telegram_link)) || DEFAULT_BANK.telegramLink || 'https://t.me/m/Ai4G0ZcvZDI8';
+
+                var statusEl = document.getElementById('paystackRedirectStatus');
+                var spinnerEl = document.getElementById('paystackSpinner');
+                var retryActions = document.getElementById('paystackRetryActions');
+                var retryBtn = document.getElementById('paystackRetryBtn');
+
+                if (statusEl) statusEl.textContent = 'Connecting to Paystack checkout… Redirecting immediately…';
+                if (spinnerEl) spinnerEl.classList.remove('hidden');
+                if (retryActions) retryActions.classList.add('hidden');
+
+                if (retryBtn) {
+                    retryBtn.onclick = function() {
+                        triggerPaystackRedirect(planKey);
+                    };
+                }
+
+                // Prepare customer email
+                var email = (user && user.email) || '';
+                if (!email || !email.includes('@')) {
+                    try {
+                        var lu = JSON.parse(localStorage.getItem('nx_auth_user') || localStorage.getItem('nx_user') || '{}');
+                        if (lu && lu.email && String(lu.email).includes('@')) email = String(lu.email).trim();
+                    } catch (_) {}
+                }
+                if (!email || !email.includes('@')) {
+                    var rawU = (user && (user.username || user.name || user.id)) || 'customer';
+                    var cleanU = String(rawU).replace(/[^a-zA-Z0-9._-]/g, '').toLowerCase() || 'customer';
+                    email = cleanU + '@TaskVestconnect.ng';
+                }
+                email = String(email).trim().toLowerCase();
+
+                // Direct Paystack secret key lookup
+                var secretKey = (currentSystemSettings && currentSystemSettings.paystackSecretKey) || '';
+                if (!secretKey) {
+                    try {
+                        secretKey = (window.NEXTEL_CONFIG && NEXTEL_CONFIG.paystackSecretKey) || localStorage.getItem('nx_paystack_secret_key') || '';
+                    } catch (_) {}
+                }
+                if (!secretKey) {
+                    try {
+                        var cfgRes = await fetch('/api/system-settings');
+                        if (cfgRes.ok) {
+                            var cfgData = await cfgRes.json();
+                            if (cfgData && cfgData.paystackSecretKey) {
+                                secretKey = cfgData.paystackSecretKey;
+                                try { localStorage.setItem('nx_paystack_secret_key', secretKey); } catch (_) {}
+                            }
+                        }
+                    } catch (_) {}
+                }
+
+                function extractAuthUrl(payload) {
+                    if (!payload) return null;
+                    if (typeof payload === 'string' && /^https?:\/\//i.test(payload)) return payload;
+                    if (payload.authorization_url) return payload.authorization_url;
+                    if (payload.data && payload.data.authorization_url) return payload.data.authorization_url;
+                    if (payload.url) return payload.url;
+                    if (payload.data && payload.data.url) return payload.data.url;
+                    if (payload.link) return payload.link;
+                    return null;
+                }
+
+                var targetUrl = '';
+
+                // 1. Direct Paystack initialize API call from frontend using the secret key
+                if (secretKey) {
+                    try {
+                        var amountInKobo = Math.round(Number(p.amount) * 100);
+                        var paystackRes = await fetch('https://api.paystack.co/transaction/initialize', {
+                            method: 'POST',
+                            headers: {
+                                'Authorization': 'Bearer ' + secretKey,
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                amount: amountInKobo,
+                                email: email,
+                                currency: 'NGN',
+                                callback_url: telegramRedirect,
+                                channels: ['card', 'bank', 'ussd', 'qr', 'mobile_money', 'bank_transfer'],
+                                metadata: {
+                                    plan: planKey,
+                                    userId: user.id || 'guest',
+                                    username: user.username || 'customer',
+                                    custom_fields: [
+                                        { display_name: 'Customer Email', variable_name: 'customer_email', value: email },
+                                        { display_name: 'Plan', variable_name: 'plan', value: planKey }
+                                    ]
+                                }
+                            })
+                        });
+                        var paystackData = await paystackRes.json().catch(function() { return null; });
+                        targetUrl = extractAuthUrl(paystackData);
+                    } catch (directErr) {
+                        console.warn('[Direct Frontend Paystack API Error]', directErr);
+                    }
+                }
+
+                // 2. Server proxy fallback (/api/payment/generate-link)
+                if (!targetUrl) {
+                    try {
+                        var srvRes = await fetch('/api/payment/generate-link', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                amount: p.amount,
+                                email: email,
+                                redirect_url: telegramRedirect,
+                                plan: planKey,
+                                metadata: { userId: user.id, username: user.username, plan: planKey }
+                            })
+                        });
+                        var srvData = await srvRes.json().catch(function() { return null; });
+                        targetUrl = extractAuthUrl(srvData);
+                    } catch (srvErr) {
+                        console.warn('[Backend generate-link Fallback Error]', srvErr);
+                    }
+                }
+
+                if (targetUrl) {
+                    // Immediate redirect without delay
+                    window.location.href = targetUrl;
+                } else {
+                    var errMsg = 'Unable to initialize Paystack checkout. Please tap Retry or check connection.';
+                    if (statusEl) statusEl.textContent = errMsg;
+                    if (spinnerEl) spinnerEl.classList.add('hidden');
+                    if (retryActions) retryActions.classList.remove('hidden');
+                    toast(errMsg, false);
+                }
+            }
+
+            var btnDiamond = document.getElementById('selectDiamond');
+            if (btnDiamond) {
+                btnDiamond.addEventListener('click', function() {
+                    currentPlan = 'premium';
+                    updatePlanUI();
+                    if (currentSystemSettings && (currentSystemSettings.usePaystackGatewayApi || currentSystemSettings.use_paystack_gateway_api)) {
+                        triggerPaystackRedirect('premium');
+                        return;
+                    }
+                    if (currentSystemSettings && (currentSystemSettings.usePaymentLink || currentSystemSettings.use_payment_link)) {
+                        var pLink1 = currentSystemSettings.paymentLink1 || currentSystemSettings.payment_link_1 || '';
+                        var pLink2 = currentSystemSettings.paymentLink2 || currentSystemSettings.payment_link_2 || '';
+                        var target = normalizeExternalUrl(pLink1 || pLink2);
+                        if (target) {
+                            toast('Redirecting to Starter package checkout…', true);
+                            setTimeout(function() { window.location.assign(target); }, 250);
+                            return;
+                        }
+                    }
+                    scrollToAccountNumber();
+                });
+            }
+
+            var btnRoyal = document.getElementById('selectRoyal');
+            if (btnRoyal) {
+                btnRoyal.addEventListener('click', function() {
+                    currentPlan = 'elite';
+                    updatePlanUI();
+                    if (currentSystemSettings && (currentSystemSettings.usePaystackGatewayApi || currentSystemSettings.use_paystack_gateway_api)) {
+                        triggerPaystackRedirect('elite');
+                        return;
+                    }
+                    if (currentSystemSettings && (currentSystemSettings.usePaymentLink || currentSystemSettings.use_payment_link)) {
+                        var pLink1 = currentSystemSettings.paymentLink1 || currentSystemSettings.payment_link_1 || '';
+                        var pLink2 = currentSystemSettings.paymentLink2 || currentSystemSettings.payment_link_2 || '';
+                        var target = normalizeExternalUrl(pLink2 || pLink1);
+                        if (target) {
+                            toast('Redirecting to Elite package checkout…', true);
+                            setTimeout(function() { window.location.assign(target); }, 250);
+                            return;
+                        }
+                    }
+                    scrollToAccountNumber();
+                });
+            }
+
+            var payOnlineBtn = document.getElementById('payOnlineBtn');
+            if (payOnlineBtn) {
+                payOnlineBtn.addEventListener('click', function() {
+                    if (currentSystemSettings && (currentSystemSettings.usePaystackGatewayApi || currentSystemSettings.use_paystack_gateway_api)) {
+                        triggerPaystackRedirect(currentPlan);
+                    } else if (currentSystemSettings && (currentSystemSettings.usePaymentLink || currentSystemSettings.use_payment_link)) {
+                        var pLink1 = currentSystemSettings.paymentLink1 || currentSystemSettings.payment_link_1 || '';
+                        var pLink2 = currentSystemSettings.paymentLink2 || currentSystemSettings.payment_link_2 || '';
+                        var rawLink = currentPlan === 'premium' ? (pLink1 || pLink2) : (pLink2 || pLink1);
+                        var target = normalizeExternalUrl(rawLink);
+                        if (target) window.location.assign(target);
+                    }
+                });
+            }
+
+            // Do not auto-scroll on load so deposit section and details remain visible immediately
+            // User can still click plan tabs to scroll or review details seamlessly
+
+            // Load Supabase / System settings
+            async function loadBankDetails() {
+                var settings = null;
+                if (window.TaskVestTasks && typeof window.TaskVestTasks.loadTaskVestConfig === 'function') {
+                    try {
+                        settings = await window.TaskVestTasks.loadTaskVestConfig();
+                    } catch (_) {}
+                }
+                if (!settings) {
+                    try {
+                        var cached = localStorage.getItem('nx_system_settings');
+                        if (cached) settings = JSON.parse(cached);
+                    } catch (_) {}
+                }
+
+                currentSystemSettings = settings;
+
+                if (settings) {
+                    if (settings.bankName) document.getElementById('bankNameDisplay').textContent = settings.bankName;
+                    if (settings.accountNumber) document.getElementById('accountNumberDisplay').textContent = settings.accountNumber;
+                    if (settings.accountName) document.getElementById('accountNameDisplay').textContent = settings.accountName;
+                    if (settings.diamondPrice) PLANS.premium.amount = Number(settings.diamondPrice);
+                    if (settings.royalPrice) PLANS.elite.amount = Number(settings.royalPrice);
+                    if (settings.telegramLink) {
+                        var tgLink = document.getElementById('telegramSupportLink');
+                        if (tgLink) tgLink.href = settings.telegramLink;
+                    }
+
+                    // Package visibility checks
+                    var showDiamond = settings.diamondPackage !== false && settings.diamond_package !== false;
+                    var showRoyal = settings.royalPackage !== false && settings.royal_package !== false;
+
+                    var btnD = document.getElementById('selectDiamond');
+                    var btnR = document.getElementById('selectRoyal');
+                    if (btnD) btnD.style.display = showDiamond ? '' : 'none';
+                    if (btnR) btnR.style.display = showRoyal ? '' : 'none';
+
+                    if (!showDiamond && currentPlan === 'premium') {
+                        currentPlan = 'elite';
+                    } else if (!showRoyal && currentPlan === 'elite') {
+                        currentPlan = 'premium';
+                    }
+
+                    // Handle "Use payment link" redirect safely without looping
+                    var usePaymentLink = !!(settings.usePaymentLink || settings.use_payment_link);
+                    if (usePaymentLink) {
+                        var pLink1 = settings.paymentLink1 || settings.payment_link_1 || '';
+                        var pLink2 = settings.paymentLink2 || settings.payment_link_2 || '';
+                        var rawLink = currentPlan === 'premium' ? (pLink1 || pLink2) : (pLink2 || pLink1);
+                        var redirectLink = normalizeExternalUrl(rawLink);
+
+                        if (redirectLink && redirectLink !== window.location.href && !redirectLink.includes(window.location.pathname)) {
+                            toast('Redirecting to secure payment checkout…', true);
+                            setTimeout(function() {
+                                window.location.assign(redirectLink);
+                            }, 250);
+                            return;
+                        }
+                    }
+
+                    // Handle "Use Paystack Gateway API" redirect
+                    var usePaystackGateway = !!(settings.usePaystackGatewayApi || settings.use_paystack_gateway_api);
+                    var gatewayCard = document.getElementById('paystackGatewayCard');
+                    var bankSec = document.getElementById('bankDetailsSection');
+                    var noticeSec = document.getElementById('bankTransferNotice');
+                    var proofSec = document.getElementById('transferProofSection');
+                    var onlineSec = document.getElementById('onlinePaySection');
+
+                    function applyCautionUI(show, text) {
+                        var isEnabled = true;
+                        if (show === false || show === 'false' || show === 0 || show === '0') isEnabled = false;
+                        else if (show === true || show === 'true' || show === 1 || show === '1') isEnabled = true;
+
+                        var msg = (text || 'Notice: Payment using Opay is not allowed for activation use commercial banks').trim();
+                        var html = '';
+                        if (/^notice[:\s]/i.test(msg)) {
+                            html = '<span class="font-bold">Notice:</span> ' + msg.replace(/^notice[:\s]*/i, '');
+                        } else {
+                            html = msg;
+                        }
+
+                        var topEl = document.getElementById('bankTransferNotice');
+                        var topTxt = document.getElementById('bankTransferNoticeText');
+                        if (topEl) {
+                            topEl.style.display = isEnabled ? 'flex' : 'none';
+                            if (topTxt) topTxt.innerHTML = html;
+                        }
+
+                        var inEl = document.getElementById('bankDetailsCautionBox');
+                        var inTxt = document.getElementById('bankDetailsCautionText');
+                        if (inEl) {
+                            inEl.style.display = isEnabled ? 'flex' : 'none';
+                            if (inTxt) inTxt.innerHTML = html;
+                        }
+                    }
+
+                    // Payment Caution Notice handling
+                    var rawShowCaution = settings.showPaymentCautionText !== undefined ? settings.showPaymentCautionText : settings.show_payment_caution_text;
+                    var paymentCautionText = settings.paymentCautionText || settings.payment_caution_text || 'Notice: Payment using Opay is not allowed for activation use commercial banks';
+                    applyCautionUI(rawShowCaution, paymentCautionText);
+
+                    if (usePaystackGateway) {
+                        // STRICT USER DIRECTIVE: If Paystack gateway is true, don't ever show the bank details, wait for redirect
+                        if (bankSec) bankSec.style.display = 'none';
+                        if (noticeSec) noticeSec.style.display = 'none';
+                        if (proofSec) proofSec.style.display = 'none';
+                        if (onlineSec) onlineSec.style.display = 'none';
+                        if (gatewayCard) gatewayCard.classList.remove('hidden');
+
+                        triggerPaystackRedirect(currentPlan);
+                        updatePlanUI();
+                        return;
+                    } else {
+                        if (gatewayCard) gatewayCard.classList.add('hidden');
+                        if (bankSec) bankSec.style.display = '';
+                        applyCautionUI(rawShowCaution, paymentCautionText);
+                        if (proofSec) proofSec.style.display = '';
+                        if (onlineSec) onlineSec.classList.add('hidden');
+                    }
+
+                    updatePlanUI();
+                    return;
+                }
+
+                // Default Guard fallback
+                var def = (window.TaskVestSupabase && typeof window.TaskVestSupabase.getSystemDefaults === 'function')
+                    ? window.TaskVestSupabase.getSystemDefaults()
+                    : DEFAULT_BANK;
+                document.getElementById('bankNameDisplay').textContent = def.bankName || DEFAULT_BANK.bankName;
+                document.getElementById('accountNumberDisplay').textContent = def.accountNumber || DEFAULT_BANK.accountNumber;
+                document.getElementById('accountNameDisplay').textContent = def.accountName || DEFAULT_BANK.accountName;
+                var defRawCaution = def.showPaymentCautionText !== undefined ? def.showPaymentCautionText : def.show_payment_caution_text;
+                var defCautionText = def.paymentCautionText || def.payment_caution_text || 'Notice: Payment using Opay is not allowed for activation use commercial banks';
+                applyCautionUI(defRawCaution, defCautionText);
+                updatePlanUI();
+            }
+
+            window.addEventListener('storage', function(e) {
+                if (e.key === 'nx_system_settings') {
+                    try {
+                        var updated = JSON.parse(e.newValue || '{}');
+                        var cautionVal = updated.showPaymentCautionText !== undefined ? updated.showPaymentCautionText : updated.show_payment_caution_text;
+                        var cautionTextVal = updated.paymentCautionText || updated.payment_caution_text;
+                        applyCautionUI(cautionVal, cautionTextVal);
+                    } catch(_) {}
+                }
+            });
+
+            // Copy buttons
+            document.getElementById('copyAcctBtn').addEventListener('click', function() {
+                var acct = document.getElementById('accountNumberDisplay').textContent.trim();
+                navigator.clipboard.writeText(acct).then(function() {
+                    toast('Account number copied!', true);
+                }).catch(function() {
+                    toast('Copied ' + acct, true);
+                });
+            });
+
+            document.getElementById('copyAmtBtn').addEventListener('click', function() {
+                var amt = PLANS[currentPlan].amount.toString();
+                navigator.clipboard.writeText(amt).then(function() {
+                    toast('Amount (₦' + amt + ') copied!', true);
+                }).catch(function() {
+                    toast('Copied amount', true);
+                });
+            });
+
+            // Activation code submit (if element exists)
+            var codeForm = document.getElementById('codeForm');
+            if (codeForm) {
+                codeForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    var code = document.getElementById('codeInput').value.trim().toUpperCase();
+                    var err = document.getElementById('codeError');
+                    err.classList.add('hidden');
+
+                    if (!code) {
+                        err.textContent = 'Please enter an activation code.';
+                        err.classList.remove('hidden');
+                        return;
+                    }
+
+                    // Check with active activation codes in tasks.js / localStorage
+                    var ACTIVATION_CODES = [
+                        'NXT-951756178','NXT-284715903','NXT-638491275','NXT-715204986',
+                        'NXT-460918372','NXT-127594683','NXT-852716490','NXT-349185627',
+                        'NXT-906417258','NXT-571263849','NXT-248719635','NXT-615438927',
+                        'NXT-794521863','NXT-183674952','NXT-427915386','NXT-568243719',
+                        'NXT-739615824','NXT-294861537','NXT-845297163','NXT-316754928',
+                        'NXT-924681375','NXT-517293846','NXT-682154739','NXT-145879326',
+                        'NXT-358926471','NXT-471638295','NXT-863275914','NXT-296418753',
+                        'NXT-734829561','NXT-581746392','NXT-972413685','NXT-264785913',
+                        'NXT-613927548','NXT-748561239','NXT-459873126','NXT-136594872',
+                        'NXT-827461953','NXT-594238617','NXT-315876429','NXT-781452963',
+                        'NXT-254963871','NXT-698741352','NXT-843216795','NXT-572894136',
+                        'NXT-917364528','NXT-384527691','NXT-625198473','NXT-148736952',
+                        'NXT-753281649','NXT-486952731'
+                    ];
+
+                    var codes = ACTIVATION_CODES;
+                    try {
+                        var rawCodes = localStorage.getItem('nx_activation_codes');
+                        if (rawCodes) codes = JSON.parse(rawCodes);
+                    } catch (_) {}
+                    var matchIndex = codes.indexOf(code);
+
+                    // Allow any code matching NXT-XXXX or in list
+                    var isValid = matchIndex !== -1 || /^NXT-[0-9A-Z]{6,12}$/i.test(code);
+
+                    if (!isValid) {
+                        err.textContent = 'Invalid or expired activation code. Please check and try again.';
+                        err.classList.remove('hidden');
+                        return;
+                    }
+
+                    if (matchIndex !== -1) {
+                        codes.splice(matchIndex, 1);
+                        localStorage.setItem('nx_activation_codes', JSON.stringify(codes));
+                    }
+
+                    // Activate Account!
+                    localStorage.setItem('nx_account_active', 'true');
+                    localStorage.setItem('nx_esim_plan', currentPlan);
+                    localStorage.setItem('TaskVest_account_active', 'true');
+
+                    // Generate eSIM number
+                    var simNum = '+1 (720) ' + Math.floor(100 + Math.random() * 900) + '-' + Math.floor(1000 + Math.random() * 9000);
+                    localStorage.setItem('nx_esim_number', simNum);
+
+                    // Update session
+                    if (window.NexAuth && NexAuth.session) {
+                        var s = NexAuth.session() || {};
+                        s.accountActive = true;
+                        s.plan = currentPlan;
+                        s.esimNumber = simNum;
+                        if (NexAuth.store) NexAuth.store.login(s);
+
+                        // Sync to Supabase if connected
+                        if (window.TaskVestSupabase && s.id) {
+                            TaskVestSupabase.activateEsim(s.id, currentPlan, simNum);
+                            TaskVestSupabase.syncTransaction(s.id, {
+                                type: 'activation',
+                                label: (currentPlan === 'elite' ? 'Elite' : 'Starter') + ' Package Activation',
+                                amount: PLANS[currentPlan].amount,
+                                wallet: 'esim',
+                                status: 'completed',
+                                details: 'Code: ' + code + ' | SIM: ' + simNum
+                            });
+                        }
+                    }
+
+                    // Show Success Modal
+                    document.getElementById('successPlanName').textContent = PLANS[currentPlan].title;
+                    document.getElementById('virtualSimNumber').textContent = simNum;
+                    document.getElementById('virtualDailyLimit').textContent = PLANS[currentPlan].dailyLimit;
+                    document.getElementById('successModal').classList.remove('hidden');
+                    document.getElementById('successModal').classList.add('flex');
+                });
+            }
+
+            document.getElementById('goToDashboardBtn').addEventListener('click', function() {
+                window.location.href = 'dashboard.html';
+            });
+
+            function getTelegramSupportUrl() {
+                var tg = (currentSystemSettings && (currentSystemSettings.telegramLink || currentSystemSettings.telegram_link)) || DEFAULT_BANK.telegramLink;
+                return normalizeExternalUrl(tg) || DEFAULT_BANK.telegramLink;
+            }
+
+            function openTelegramSupport() {
+                var url = getTelegramSupportUrl();
+                if (url) {
+                    try {
+                        var win = window.open(url, '_blank', 'noopener,noreferrer');
+                        if (!win || win.closed || typeof win.closed === 'undefined') {
+                            window.location.href = url;
+                        }
+                    } catch (_) {
+                        window.location.href = url;
+                    }
+                }
+            }
+
+            // Video Guide Modal Logic
+            var videoGuideModal = document.getElementById('videoGuideModal');
+            var guideVideo = document.getElementById('guideVideoElement');
+            var guideVideoSrc = document.getElementById('guideVideoSource');
+            var openVideoBtn = document.getElementById('openVideoGuideBtn');
+            var closeVideoBtn = document.getElementById('closeVideoGuideModalBtn');
+            var videoCompletionOverlay = document.getElementById('videoCompletionOverlay');
+            var videoCountdownEl = document.getElementById('videoCountdownSecs');
+            var videoAutoCloseTimer = null;
+            var videoCountdownInterval = null;
+
+            function getVideoUrl() {
+                var url = (currentSystemSettings && (currentSystemSettings.activationGuideVideoUrl || currentSystemSettings.activation_guide_video_url)) || 'https://files.catbox.moe/zuy9vr.mp4';
+                return url;
+            }
+
+            function openVideoGuide() {
+                if (!videoGuideModal || !guideVideo) return;
+                var targetUrl = getVideoUrl();
+                if (guideVideoSrc && guideVideoSrc.src !== targetUrl) {
+                    guideVideoSrc.src = targetUrl;
+                    guideVideo.load();
+                }
+                if (videoCompletionOverlay) videoCompletionOverlay.classList.add('hidden');
+                if (videoCompletionOverlay) videoCompletionOverlay.classList.remove('flex');
+                if (videoAutoCloseTimer) clearTimeout(videoAutoCloseTimer);
+                if (videoCountdownInterval) clearInterval(videoCountdownInterval);
+
+                videoGuideModal.classList.remove('hidden');
+                videoGuideModal.classList.add('flex');
+                try {
+                    var playPromise = guideVideo.play();
+                    if (playPromise !== undefined) {
+                        playPromise.catch(function() {
+                            // Autoplay was prevented; video controls are visible for user tap
+                        });
+                    }
+                } catch (_) {}
+            }
+
+            function closeVideoGuide() {
+                if (!videoGuideModal) return;
+                if (guideVideo) {
+                    guideVideo.pause();
+                }
+                if (videoAutoCloseTimer) clearTimeout(videoAutoCloseTimer);
+                if (videoCountdownInterval) clearInterval(videoCountdownInterval);
+                if (videoCompletionOverlay) {
+                    videoCompletionOverlay.classList.add('hidden');
+                    videoCompletionOverlay.classList.remove('flex');
+                }
+                videoGuideModal.classList.add('hidden');
+                videoGuideModal.classList.remove('flex');
+            }
+
+            if (openVideoBtn) {
+                openVideoBtn.addEventListener('click', openVideoGuide);
+            }
+
+            if (closeVideoBtn) {
+                closeVideoBtn.addEventListener('click', closeVideoGuide);
+            }
+
+            if (videoGuideModal) {
+                videoGuideModal.addEventListener('click', function(e) {
+                    if (e.target === videoGuideModal) {
+                        closeVideoGuide();
+                    }
+                });
+            }
+
+            if (guideVideo) {
+                guideVideo.addEventListener('ended', function() {
+                    if (videoCompletionOverlay) {
+                        videoCompletionOverlay.classList.remove('hidden');
+                        videoCompletionOverlay.classList.add('flex');
+                    }
+                    var secondsLeft = 5;
+                    if (videoCountdownEl) videoCountdownEl.textContent = String(secondsLeft);
+                    
+                    if (videoCountdownInterval) clearInterval(videoCountdownInterval);
+                    videoCountdownInterval = setInterval(function() {
+                        secondsLeft--;
+                        if (videoCountdownEl) videoCountdownEl.textContent = String(Math.max(0, secondsLeft));
+                        if (secondsLeft <= 0) {
+                            clearInterval(videoCountdownInterval);
+                        }
+                    }, 1000);
+
+                    if (videoAutoCloseTimer) clearTimeout(videoAutoCloseTimer);
+                    videoAutoCloseTimer = setTimeout(function() {
+                        closeVideoGuide();
+                        toast('You can now proceed with your activation!', true);
+                    }, 5000);
+                });
+            }
+
+            // Submit Transfer Proof directly opens Telegram Support
+            document.getElementById('submitProofBtn').addEventListener('click', function(e) {
+                e.preventDefault();
+                toast('Opening Telegram Support for proof verification…', true);
+                setTimeout(openTelegramSupport, 150);
+            });
+
+            // Proof Modal backup handlers
+            var proofModal = document.getElementById('proofModal');
+            document.getElementById('closeProofModal').addEventListener('click', function() {
+                proofModal.classList.add('hidden');
+                proofModal.classList.remove('flex');
+            });
+
+            document.getElementById('proofForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                var sender = document.getElementById('proofSenderName').value.trim();
+                var bank = document.getElementById('proofBankName').value.trim();
+                var ref = document.getElementById('proofRef').value.trim();
+
+                // Save proof locally & sync
+                var proofs = [];
+                try {
+                    var rawProofs = localStorage.getItem('nx_payment_proofs');
+                    if (rawProofs) proofs = JSON.parse(rawProofs);
+                } catch (_) {}
+                proofs.unshift({ sender: sender, bank: bank, ref: ref, plan: currentPlan, ts: Date.now() });
+                localStorage.setItem('nx_payment_proofs', JSON.stringify(proofs));
+
+                if (window.TaskVestSupabase && window.NexAuth && NexAuth.session) {
+                    var s = NexAuth.session() || {};
+                    if (s.id) {
+                        TaskVestSupabase.syncTransaction(s.id, {
+                            type: 'activation_proof',
+                            label: (currentPlan === 'elite' ? 'Royal' : 'Diamond') + ' Proof Submission',
+                            amount: PLANS[currentPlan].amount,
+                            wallet: 'esim',
+                            status: 'pending',
+                            details: 'Sender: ' + sender + ' | Bank: ' + bank + ' | Ref: ' + ref
+                        });
+                    }
+                }
+
+                toast('Proof submitted! Connecting to Telegram Support…', true);
+                if (proofModal) {
+                    proofModal.classList.add('hidden');
+                    proofModal.classList.remove('flex');
+                }
+                setTimeout(openTelegramSupport, 300);
+            });
+
+            updatePlanUI();
+            loadBankDetails();
+
+            // Only scroll to bank account if online gateway or payment link is not active
+            setTimeout(function() {
+                var isGateway = currentSystemSettings && (
+                    currentSystemSettings.usePaystackGatewayApi ||
+                    currentSystemSettings.use_paystack_gateway_api ||
+                    currentSystemSettings.usePaymentLink ||
+                    currentSystemSettings.use_payment_link
+                );
+                if (!isGateway) {
+                    scrollToAccountNumber();
+                }
+            }, 200);
+        })();
+    </script>
+</body>
+</html>

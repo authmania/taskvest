@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="chk00nP8ZIcTYA5SaHiW0Sp4u5fAQKlWYiZD3yge">
+    <link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<meta name="theme-color" content="#7C3AED">
+
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="TaskVest">
+    <meta name="vapid-public-key" content="BNuVpJbogRobi1uJAD4BzB6CFWBrOsprOZbCYSw6UOo18KlOup11nnHBb_pu9yfZdvv2IAms6_PszFJxZcKi2CQ">
+    <title>Dashboard — TaskVest</title>
+    <meta name="description" content="Manage your TaskVest account, complete surveys and music tasks, and withdraw directly to your bank account.">
+    <meta property="og:title" content="Dashboard — TaskVest">
+    <meta property="og:description" content="TaskVest decentralized telecom & sponsored daily earnings dashboard.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="/images/public/logo-dark.png">
+    <meta property="og:site_name" content="TaskVest">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Dashboard — TaskVest">
+    <meta name="twitter:description" content="TaskVest decentralized telecom & sponsored daily earnings dashboard.">
+    <meta name="twitter:image" content="/images/public/logo-dark.png">
+    <link rel="preload" as="style" href="build/assets/app-BNec2NMu.css" /><link rel="modulepreload" as="script" href="build/assets/app-Dpy8HP2u.js" /><link rel="stylesheet" href="build/assets/app-BNec2NMu.css" data-navigate-track="reload" /><script type="module" src="build/assets/app-Dpy8HP2u.js" data-navigate-track="reload"></script>    
+    
+</head>
+<body class="antialiased bg-[#F7F5FF] text-text" data-auth="protected">
+
+    
+    <div class="bg-background lg:max-w-[1280px] lg:mx-auto lg:flex lg:min-h-screen lg:shadow-[0_0_60px_rgba(0,0,0,0.08)]">
+        <aside class="hidden lg:flex lg:flex-col lg:w-[264px] lg:shrink-0 lg:sticky lg:top-0 lg:h-screen text-white" style="background: radial-gradient(125% 110% at 78% 78%, #8B5CF699 0%, #7C3AED 52%, #5B21B6 100%); background-color: #7C3AED;">
+        <div class="flex items-center h-[72px] px-6 shrink-0">
+            <a href="index.html" aria-label="TaskVest home">
+                <img src="images/public/logo-coloured.png" alt="TaskVest" class="h-[30px] w-auto object-contain">
+            </a>
+        </div>
+
+                <a href="dashboard/profile.html"
+           class="mx-4 mb-3 flex items-center gap-3 rounded-[14px] bg-white/10 hover:bg-white/15 transition-colors px-3 py-3 shrink-0">
+            <span class="size-11 rounded-full bg-white/15 overflow-hidden flex items-center justify-center shrink-0">
+                                    <img src="https://TaskVestconnect.de-fra-1.linodeobjects.com/avatars/019fcf2f-4a39-71cb-8ed1-4fc6a43b1465.jpeg" alt="" class="size-full object-cover">
+                            </span>
+            <span class="flex-1 min-w-0">
+                <span class="block font-heading font-medium text-white text-[14px] leading-tight truncate">Bobby Emmanuel</span>
+                <span class="block font-sans text-white/55 text-[12px] truncate">Account Inactive</span>
+            </span>
+            <i class="ri-arrow-right-s-line text-white/55 shrink-0"></i>
+        </a>
+        
+        <div class="flex-1 overflow-y-auto px-4 pb-4 [scrollbar-width:thin]">
+            <nav class="flex flex-col gap-5">
+            <div class="flex flex-col gap-1">
+            <p class="px-3 pb-1 font-sans text-[11px] uppercase tracking-[0.12em] text-white/40">Main</p>
+                                            <a href="dashboard.html"  @click="$dispatch('close-app-menu')"
+                   class="group flex items-center gap-3 rounded-[12px] px-3 py-2.5 transition-colors bg-white/15 text-secondary">
+                    <i class="ri-home-5-line text-[19px] shrink-0 text-secondary"></i>
+                    <span class="flex-1 min-w-0 font-sans text-[14px] truncate">Dashboard</span>
+                                    </a>
+                                            <a href="dashboard/transactions.html"  @click="$dispatch('close-app-menu')"
+                   class="group flex items-center gap-3 rounded-[12px] px-3 py-2.5 transition-colors text-white/80 hover:bg-white/10 hover:text-white">
+                    <i class="ri-exchange-dollar-line text-[19px] shrink-0 text-white/70 group-hover:text-white"></i>
+                    <span class="flex-1 min-w-0 font-sans text-[14px] truncate">Transactions</span>
+                                    </a>
+                    </div>
+            <div class="flex flex-col gap-1">
+            <p class="px-3 pb-1 font-sans text-[11px] uppercase tracking-[0.12em] text-white/40">Earnings</p>
+                    </div>
+            <div class="flex flex-col gap-1">
+            <p class="px-3 pb-1 font-sans text-[11px] uppercase tracking-[0.12em] text-white/40">Services</p>
+                    </div>
+            <div class="flex flex-col gap-1">
+            <p class="px-3 pb-1 font-sans text-[11px] uppercase tracking-[0.12em] text-white/40">Account</p>
+                                            <a href="dashboard/profile.html"  @click="$dispatch('close-app-menu')"
+                   class="group flex items-center gap-3 rounded-[12px] px-3 py-2.5 transition-colors text-white/80 hover:bg-white/10 hover:text-white">
+                    <i class="ri-user-3-line text-[19px] shrink-0 text-white/70 group-hover:text-white"></i>
+                    <span class="flex-1 min-w-0 font-sans text-[14px] truncate">Profile & Settings</span>
+                                    </a>
+                    </div>
+            <div class="flex flex-col gap-1">
+            <p class="px-3 pb-1 font-sans text-[11px] uppercase tracking-[0.12em] text-white/40">Vendor</p>
+                    </div>
+    </nav>
+        </div>
+
+        <div class="px-4 py-4 border-t border-white/10 shrink-0">
+            <form method="POST" action="dashboard.html#logout">
+                <input type="hidden" name="_token" value="chk00nP8ZIcTYA5SaHiW0Sp4u5fAQKlWYiZD3yge" autocomplete="off">                <button type="submit" class="w-full flex items-center gap-3 rounded-[12px] px-3 py-2.5 text-white/80 hover:text-white hover:bg-white/10 transition-colors">
+                    <i class="ri-logout-box-r-line text-[19px]"></i>
+                    <span class="font-sans text-[14px]">Logout</span>
+                </button>
+            </form>
+        </div>
+    </aside>
+
+    
+    <div x-data="{ open: false }"
+         @open-app-menu.window="open = true"
+         @close-app-menu.window="open = false"
+         @keydown.escape.window="open = false"
+         :data-lock-scroll="open ? '' : null"
+         x-cloak class="lg:hidden">
+
+        <div x-show="open" x-transition.opacity.duration.250ms
+             @click="open = false"
+             class="fixed inset-0 z-[60] bg-black/50 backdrop-blur-sm"></div>
+
+        <aside x-show="open"
+               x-transition:enter="transition ease-out duration-300"
+               x-transition:enter-start="-translate-x-full"
+               x-transition:enter-end="translate-x-0"
+               x-transition:leave="transition ease-in duration-200"
+               x-transition:leave-start="translate-x-0"
+               x-transition:leave-end="-translate-x-full"
+               class="fixed inset-y-0 left-0 z-[70] w-[86%] max-w-[300px] flex flex-col text-white shadow-[8px_0_40px_rgba(0,0,0,0.3)]"
+               style="background: radial-gradient(125% 110% at 78% 78%, #8B5CF699 0%, #7C3AED 52%, #5B21B6 100%); background-color: #7C3AED;">
+
+            <div class="flex items-center justify-between h-[72px] px-5 shrink-0">
+                <a href="index.html" @click="open = false" aria-label="TaskVest home">
+                    <img src="images/public/logo-coloured.png" alt="TaskVest" class="h-[28px] w-auto object-contain">
+                </a>
+                <button type="button" @click="open = false"
+                        class="size-9 rounded-full bg-white flex items-center justify-center text-text" aria-label="Close menu">
+                    <i class="ri-close-line text-[20px]"></i>
+                </button>
+            </div>
+
+                        <a href="dashboard/profile.html" @click="open = false"
+               class="mx-4 mb-3 flex items-center gap-3 rounded-[14px] bg-white/10 px-3 py-3 shrink-0">
+                <span class="size-11 rounded-full bg-white/15 overflow-hidden flex items-center justify-center shrink-0">
+                                            <img src="https://TaskVestconnect.de-fra-1.linodeobjects.com/avatars/019fcf2f-4a39-71cb-8ed1-4fc6a43b1465.jpeg" alt="" class="size-full object-cover">
+                                    </span>
+                <span class="flex-1 min-w-0">
+                    <span class="block font-heading font-medium text-white text-[14px] leading-tight truncate">Bobby Emmanuel</span>
+                    <span class="block font-sans text-white/55 text-[12px] truncate">Account Inactive</span>
+                </span>
+                <i class="ri-arrow-right-s-line text-white/55 shrink-0"></i>
+            </a>
+            
+            <div class="flex-1 overflow-y-auto px-4 pb-4">
+                <nav class="flex flex-col gap-5">
+            <div class="flex flex-col gap-1">
+            <p class="px-3 pb-1 font-sans text-[11px] uppercase tracking-[0.12em] text-white/40">Main</p>
+                                            <a href="dashboard.html"  @click="$dispatch('close-app-menu')"
+                   class="group flex items-center gap-3 rounded-[12px] px-3 py-2.5 transition-colors bg-white/15 text-secondary">
+                    <i class="ri-home-5-line text-[19px] shrink-0 text-secondary"></i>
+                    <span class="flex-1 min-w-0 font-sans text-[14px] truncate">Dashboard</span>
+                                    </a>
+                                            <a href="dashboard/transactions.html"  @click="$dispatch('close-app-menu')"
+                   class="group flex items-center gap-3 rounded-[12px] px-3 py-2.5 transition-colors text-white/80 hover:bg-white/10 hover:text-white">
+                    <i class="ri-exchange-dollar-line text-[19px] shrink-0 text-white/70 group-hover:text-white"></i>
+                    <span class="flex-1 min-w-0 font-sans text-[14px] truncate">Transactions</span>
+                                    </a>
+                    </div>
+            <div class="flex flex-col gap-1">
+            <p class="px-3 pb-1 font-sans text-[11px] uppercase tracking-[0.12em] text-white/40">Earnings</p>
+                    </div>
+            <div class="flex flex-col gap-1">
+            <p class="px-3 pb-1 font-sans text-[11px] uppercase tracking-[0.12em] text-white/40">Services</p>
+                    </div>
+            <div class="flex flex-col gap-1">
+            <p class="px-3 pb-1 font-sans text-[11px] uppercase tracking-[0.12em] text-white/40">Account</p>
+                                            <a href="dashboard/profile.html"  @click="$dispatch('close-app-menu')"
+                   class="group flex items-center gap-3 rounded-[12px] px-3 py-2.5 transition-colors text-white/80 hover:bg-white/10 hover:text-white">
+                    <i class="ri-user-3-line text-[19px] shrink-0 text-white/70 group-hover:text-white"></i>
+                    <span class="flex-1 min-w-0 font-sans text-[14px] truncate">Profile & Settings</span>
+                                    </a>
+                    </div>
+            <div class="flex flex-col gap-1">
+            <p class="px-3 pb-1 font-sans text-[11px] uppercase tracking-[0.12em] text-white/40">Vendor</p>
+                    </div>
+    </nav>
+            </div>
+
+            <div class="px-4 py-4 border-t border-white/10 shrink-0">
+                <form method="POST" action="dashboard.html#logout">
+                    <input type="hidden" name="_token" value="chk00nP8ZIcTYA5SaHiW0Sp4u5fAQKlWYiZD3yge" autocomplete="off">                    <button type="submit" class="w-full flex items-center gap-3 rounded-[12px] px-3 py-2.5 text-white/80 hover:text-white hover:bg-white/10 transition-colors">
+                        <i class="ri-logout-box-r-line text-[19px]"></i>
+                        <span class="font-sans text-[14px]">Logout</span>
+                    </button>
+                </form>
+            </div>
+        </aside>
+    </div>
+
+        <div class="flex-1 min-w-0 min-h-screen">
+            <div class="min-h-screen bg-background">
+    <div class="mx-auto w-full max-w-[440px] md:max-w-[600px] lg:max-w-none px-4 md:px-8 lg:px-10 pb-[120px] lg:pb-12 flex flex-col gap-6">
+
+        <div class="sticky top-0 z-30 -mx-4 md:-mx-8 lg:-mx-10 px-4 md:px-8 lg:px-10 bg-background/90 backdrop-blur-md border-b border-muted/10">
+        <div class="h-[58px] flex items-center justify-between gap-3">
+            <div class="flex items-center gap-2.5 min-w-0 lg:flex-1">
+                <a href="index.html" class="lg:hidden flex items-center min-w-0" aria-label="TaskVest home">
+                    <img src="images/public/logo-dark.png" alt="TaskVest" class="h-[26px] w-auto object-contain">
+                </a>
+
+            </div>
+
+                            <div class="flex items-center gap-2.5 shrink-0">
+                     
+                                    </div>
+                    </div>
+    </div>
+
+
+    <div class="flex items-center gap-2.5">
+                        <div class="min-w-0 flex flex-col gap-1.5">
+                <p class="font-heading font-medium text-text text-[22px] leading-tight truncate">Hi, Bobby</p>
+                                    <span data-nx-plan-badge class="self-start inline-flex items-center gap-1.5 font-sans text-[12px] rounded-full px-2.5 py-1" style="background:rgba(255,77,109,0.1);color:#ff4d6d;">
+                        <span class="size-1.5 rounded-full" style="background:#ff4d6d;"></span>Account Inactive
+                    </span>
+                            </div>
+        </div>
+    
+        <!-- Banner Slider (Activation Countdown & Telegram Channel) -->
+        <div id="bannerCarouselContainer" class="w-full relative overflow-hidden rounded-[20px] select-none touch-pan-y cursor-grab active:cursor-grabbing">
+            <!-- Dynamic Carousel Track -->
+            <div class="relative w-full overflow-hidden rounded-[20px]">
+                <div id="bannerSliderTrack" class="flex transition-transform duration-500 ease-in-out w-full" style="transform: translateX(0%);">
+                    
+                    <!-- Slide 0: Activation Time Remaining Banner (First View, High Contrast) -->
+                    <div id="slideCountdownBanner" class="w-full shrink-0 basis-full" style="min-width: 100%; width: 100%;">
+                        <a href="#" data-nx-open-esim class="block relative overflow-hidden rounded-[20px] bg-[#07090e] border-2 border-emerald-500/40 shadow-[0_10px_30px_rgba(0,0,0,0.5)] hover:border-emerald-400 transition-all group" style="background-color: #07090e !important;">
+                            <!-- Multi-Color Glowing Top Accent Line -->
+                            <div class="absolute top-0 left-0 right-0 h-[3.5px] bg-gradient-to-r from-emerald-400 via-cyan-400 to-amber-400"></div>
+                            
+                            <div class="p-3.5 sm:p-4.5 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-4 min-h-[82px]" style="background: linear-gradient(90deg, #0d121c 0%, #080b12 100%) !important;">
+                                <!-- Top row on mobile / Left column on desktop -->
+                                <div class="flex items-center justify-between gap-2.5 w-full sm:w-auto">
+                                    <div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
+                                        <div class="size-10 sm:size-11 rounded-[14px] bg-[#161d2b] border border-emerald-400/30 flex items-center justify-center text-[20px] sm:text-[22px] shrink-0 shadow-[0_0_12px_rgba(124, 58, 237, 0.2)] group-hover:scale-105 transition-transform select-none">
+                                            <span class="filter drop-shadow-[0_0_8px_rgba(251,191,36,0.6)]">⏳</span>
+                                        </div>
+                                        <div class="min-w-0">
+                                            <h3 class="font-heading font-extrabold text-[#ffffff] text-[14.5px] sm:text-[16px] tracking-tight leading-tight" style="color: #ffffff !important;">
+                                                Activation Time Remaining
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Digital Countdown Clock on Mobile (top-right) -->
+                                    <div class="sm:hidden shrink-0">
+                                        <span class="font-mono font-black text-[#22d3ee] text-[14px] tracking-tight whitespace-nowrap px-2 py-1 rounded-lg bg-[#0b1624] border border-[#22d3ee]/40 shadow-sm"
+                                              style="color: #22d3ee !important; background-color: #0b1624 !important;"
+                                              data-nx-activation-countdown>
+                                            2d 23:59:18
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <!-- Description: Fully Contained & Unrestricted on Mobile -->
+                                <div class="w-full sm:flex-1 min-w-0">
+                                    <p class="font-sans text-[#cbd5e1] text-[12px] sm:text-[13px] leading-snug sm:leading-tight font-medium break-words" style="color: #cbd5e1 !important;">
+                                        Your Account Will be Deleted after 3 Days if you did not Activate.
+                                    </p>
+                                </div>
+                                
+                                <!-- Digital Countdown Clock on Desktop (right-aligned) -->
+                                <div class="hidden sm:flex shrink-0 text-right flex-col items-end justify-center">
+                                    <span class="font-mono sm:font-heading font-black text-[#22d3ee] text-[16px] sm:text-[20px] tracking-tight whitespace-nowrap drop-shadow-[0_0_14px_rgba(34,211,238,0.7)] px-2.5 py-1 rounded-lg bg-[#0b1624] border border-[#22d3ee]/40"
+                                          style="color: #22d3ee !important; background-color: #0b1624 !important;"
+                                          data-nx-activation-countdown>
+                                        2d 23:59:18
+                                    </span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Slide 1: Official Telegram Channel Banner (Original Notification Design) -->
+                    <div id="slideTelegramBanner" class="w-full shrink-0 basis-full" style="min-width: 100%; width: 100%;">
+                        <div class="flex items-center gap-3 rounded-[20px] px-4 py-3.5 sm:py-4 bg-primary/10 text-primary min-h-[82px]">
+                            <i class="ri-checkbox-circle-fill text-[20px] sm:text-[22px] shrink-0"></i>
+                            <div class="flex-1 min-w-0">
+                                <p class="font-heading font-medium text-text text-[14px] sm:text-[15px] leading-tight">Join our Official Telegram channel! </p>
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mt-1">
+                                    <p class="font-sans text-muted text-[12px] sm:text-[13px] leading-snug">Get real time updates, video tutorials, and insider strategies to boost your earnings!</p>
+                                    <a id="tgChannelJoinBtn" href="https://t.me/TaskVestconnect" target="_blank" rel="noopener noreferrer"
+                                       class="shrink-0 inline-flex items-center gap-1 rounded-full bg-primary px-3 py-1.5 font-sans text-white text-[11px] sm:text-[12px] font-semibold hover:opacity-90 transition shadow-sm w-fit">
+                                        Join<i class="ri-arrow-right-line text-[11px]"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Carousel Pagination Dots -->
+            <div id="bannerPaginationDots" class="flex items-center justify-center gap-1.5 mt-2">
+                <button type="button" id="bannerDot0" class="h-1.5 w-6 bg-primary rounded-full transition-all duration-300 cursor-pointer" aria-label="Go to slide 1"></button>
+                <button type="button" id="bannerDot1" class="h-1.5 w-2 bg-muted/40 rounded-full transition-all duration-300 cursor-pointer" aria-label="Go to slide 2"></button>
+            </div>
+        </div>
+
+        <script>
+        (function() {
+            var currentSlide = 0;
+            var totalSlides = 2;
+            var cycleTimer = null;
+            var touchStartX = 0;
+            var touchStartY = 0;
+            var isAccountActive = false;
+
+            var track = document.getElementById('bannerSliderTrack');
+            var dot0 = document.getElementById('bannerDot0');
+            var dot1 = document.getElementById('bannerDot1');
+            var container = document.getElementById('bannerCarouselContainer');
+            var slideCountdown = document.getElementById('slideCountdownBanner');
+            var slideTelegram = document.getElementById('slideTelegramBanner');
+            var pagination = document.getElementById('bannerPaginationDots');
+
+            function getTelegramConfig() {
+                var display = true;
+                var rawDisplay = (window.NEXTEL_CONFIG && (window.NEXTEL_CONFIG.displayJoinTgChannel !== undefined ? window.NEXTEL_CONFIG.displayJoinTgChannel : window.NEXTEL_CONFIG.display_join_tg_channel))
+                    || (window.DEFAULT_GUARD && (window.DEFAULT_GUARD.displayJoinTgChannel !== undefined ? window.DEFAULT_GUARD.displayJoinTgChannel : window.DEFAULT_GUARD.display_join_tg_channel))
+                    || (typeof localStorage !== 'undefined' && localStorage.getItem('nx_display_join_tg_channel'));
+                if (rawDisplay !== undefined && rawDisplay !== null && rawDisplay !== '') {
+                    display = typeof rawDisplay === 'string' ? (rawDisplay.trim().toLowerCase() !== 'false' && rawDisplay.trim() !== '0') : !!rawDisplay;
+                }
+
+                var hardcodedTgUrl = 'https://t.me/TaskVestconnect';
+                var cfgTg = (window.NEXTEL_CONFIG && (window.NEXTEL_CONFIG.telegramLink || window.NEXTEL_CONFIG.telegram_link)) || '';
+                if (!cfgTg && typeof localStorage !== 'undefined') {
+                    try {
+                        var _cs = JSON.parse(localStorage.getItem('nx_system_settings') || '{}');
+                        cfgTg = _cs.telegramLink || _cs.telegram_link || '';
+                    } catch (_) {}
+                }
+                var rawUrl = cfgTg
+                    || (window.NEXTEL_CONFIG && (window.NEXTEL_CONFIG.tgChannelUrl !== undefined ? window.NEXTEL_CONFIG.tgChannelUrl : window.NEXTEL_CONFIG.tg_channel_url))
+                    || (window.DEFAULT_GUARD && (window.DEFAULT_GUARD.tgChannelUrl !== undefined ? window.DEFAULT_GUARD.tgChannelUrl : window.DEFAULT_GUARD.tg_channel_url))
+                    || (typeof localStorage !== 'undefined' && localStorage.getItem('nx_tg_channel_url'));
+
+                var url = hardcodedTgUrl;
+                if (rawUrl !== undefined && rawUrl !== null && typeof rawUrl === 'string' && rawUrl.trim() !== '') {
+                    url = rawUrl.trim();
+                }
+
+                return { display: display, url: url };
+            }
+
+            function updateTelegramBannerUI() {
+                var tgCfg = getTelegramConfig();
+                var btn = document.getElementById('tgChannelJoinBtn') || (slideTelegram ? slideTelegram.querySelector('a') : null);
+                if (btn) {
+                    btn.setAttribute('href', tgCfg.url);
+                }
+            }
+
+            // Account & Created_At Lifecycle State Check
+            function getCreatedTimestamp() {
+                var s = (window.NexAuth && typeof NexAuth.session === 'function' && NexAuth.session()) || {};
+                var createdStr = s.created_at || s.createdAt || localStorage.getItem('nx_created_at');
+                if (createdStr) {
+                    var parsed = new Date(createdStr).getTime();
+                    if (!isNaN(parsed) && parsed > 0) {
+                        return parsed;
+                    }
+                }
+                var now = Date.now();
+                var iso = new Date(now).toISOString();
+                localStorage.setItem('nx_created_at', iso);
+                return now;
+            }
+
+            function getCountdownConfig() {
+                var show = true;
+                var rawShow = (window.NEXTEL_CONFIG && (window.NEXTEL_CONFIG.showActivationCountdown !== undefined ? window.NEXTEL_CONFIG.showActivationCountdown : window.NEXTEL_CONFIG.show_activation_countdown))
+                    || (window.DEFAULT_GUARD && (window.DEFAULT_GUARD.showActivationCountdown !== undefined ? window.DEFAULT_GUARD.showActivationCountdown : window.DEFAULT_GUARD.show_activation_countdown))
+                    || (typeof localStorage !== 'undefined' && localStorage.getItem('nx_show_activation_countdown'));
+                if (rawShow !== undefined && rawShow !== null && rawShow !== '') {
+                    show = typeof rawShow === 'string' ? (rawShow.trim().toLowerCase() !== 'false' && rawShow.trim() !== '0') : !!rawShow;
+                }
+
+                var days = 3;
+                var rawDays = (window.NEXTEL_CONFIG && (window.NEXTEL_CONFIG.activationCountdownDays || window.NEXTEL_CONFIG.activation_countdown_days))
+                    || (window.DEFAULT_GUARD && (window.DEFAULT_GUARD.activationCountdownDays || window.DEFAULT_GUARD.activation_countdown_days))
+                    || (typeof localStorage !== 'undefined' && localStorage.getItem('nx_activation_countdown_days'));
+                var parsedDays = Number(rawDays);
+                if (!isNaN(parsedDays) && parsedDays > 0) {
+                    days = parsedDays;
+                }
+                return { show: show, days: days };
+            }
+
+            function getBannerState() {
+                var s = (window.NexAuth && typeof NexAuth.session === 'function' && NexAuth.session()) || {};
+                var isAct = !!(s.accountActive || s.account_active || localStorage.getItem('nx_account_active') === 'true' || localStorage.getItem('nx_active') === 'true');
+                var cfg = getCountdownConfig();
+
+                var createdTime = getCreatedTimestamp();
+                var expireTime = createdTime + (cfg.days * 24 * 60 * 60 * 1000);
+                var now = Date.now();
+                var diff = expireTime - now;
+                var isExpired = (diff <= 0);
+
+                return {
+                    isActive: isAct,
+                    isExpired: isExpired,
+                    showCountdown: (cfg.show && !isAct && !isExpired),
+                    diff: Math.max(0, diff),
+                    expireTime: expireTime,
+                    createdTime: createdTime,
+                    days: cfg.days
+                };
+            }
+
+            function checkActivation() {
+                var state = getBannerState();
+                var tgCfg = getTelegramConfig();
+                updateTelegramBannerUI();
+
+                if (!tgCfg.display) {
+                    // Telegram banner is disabled: ONLY show the countdown banner on that section
+                    if (slideTelegram) slideTelegram.style.display = 'none';
+                    if (slideCountdown) slideCountdown.style.display = '';
+                    if (pagination) pagination.style.display = 'none';
+                    if (track) track.style.transform = 'translateX(0%)';
+                    currentSlide = 0;
+                    if (cycleTimer) {
+                        clearInterval(cycleTimer);
+                        cycleTimer = null;
+                    }
+                    return false;
+                }
+
+                // Telegram banner is enabled
+                if (slideTelegram) slideTelegram.style.display = '';
+
+                if (!state.showCountdown) {
+                    if (slideCountdown) slideCountdown.style.display = 'none';
+                    if (pagination) pagination.style.display = 'none';
+                    if (track) track.style.transform = 'translateX(0%)';
+                    currentSlide = 0;
+                    if (cycleTimer) {
+                        clearInterval(cycleTimer);
+                        cycleTimer = null;
+                    }
+                    return false;
+                } else {
+                    if (slideCountdown) slideCountdown.style.display = '';
+                    if (pagination) pagination.style.display = 'flex';
+                    return true;
+                }
+            }
+
+            function updateDots() {
+                if (!dot0 || !dot1) return;
+                if (currentSlide === 0) {
+                    dot0.className = 'h-1.5 w-6 bg-primary rounded-full transition-all duration-300 cursor-pointer';
+                    dot1.className = 'h-1.5 w-2 bg-muted/40 rounded-full transition-all duration-300 cursor-pointer';
+                } else {
+                    dot0.className = 'h-1.5 w-2 bg-muted/40 rounded-full transition-all duration-300 cursor-pointer';
+                    dot1.className = 'h-1.5 w-6 bg-primary rounded-full transition-all duration-300 cursor-pointer';
+                }
+            }
+
+            function goToSlide(idx) {
+                if (!checkActivation()) return;
+                currentSlide = idx % totalSlides;
+                if (currentSlide < 0) currentSlide = totalSlides - 1;
+                if (track) {
+                    track.style.transform = 'translateX(-' + (currentSlide * 100) + '%)';
+                }
+                updateDots();
+            }
+
+            function nextSlide() {
+                if (!checkActivation()) return;
+                goToSlide(currentSlide === 0 ? 1 : 0);
+            }
+
+            function prevSlide() {
+                if (!checkActivation()) return;
+                goToSlide(currentSlide === 0 ? 1 : 0);
+            }
+
+            function startAutoCycle() {
+                if (cycleTimer) clearInterval(cycleTimer);
+                if (!checkActivation()) return;
+                cycleTimer = setInterval(function() {
+                    nextSlide();
+                }, 7000);
+            }
+
+            function resetTimer() {
+                startAutoCycle();
+            }
+
+            // Touch / Swipe handling
+            if (container) {
+                container.addEventListener('touchstart', function(e) {
+                    var t = e.touches ? e.touches[0] : e;
+                    touchStartX = t.clientX || t.pageX || 0;
+                    touchStartY = t.clientY || t.pageY || 0;
+                }, { passive: true });
+
+                container.addEventListener('touchend', function(e) {
+                    var t = e.changedTouches ? e.changedTouches[0] : e;
+                    var endX = t.clientX || t.pageX || 0;
+                    var endY = t.clientY || t.pageY || 0;
+                    var diffX = endX - touchStartX;
+                    var diffY = endY - touchStartY;
+                    if (Math.abs(diffX) > 35 && Math.abs(diffX) > Math.abs(diffY)) {
+                        if (diffX < 0) {
+                            goToSlide(1); // swipe left to telegram
+                        } else {
+                            goToSlide(0); // swipe right to countdown
+                        }
+                        resetTimer();
+                    }
+                }, { passive: true });
+
+                // Mouse Drag handling for desktop
+                var isMouseDown = false;
+                container.addEventListener('mousedown', function(e) {
+                    isMouseDown = true;
+                    touchStartX = e.clientX || e.pageX || 0;
+                    touchStartY = e.clientY || e.pageY || 0;
+                });
+
+                window.addEventListener('mouseup', function(e) {
+                    if (!isMouseDown) return;
+                    isMouseDown = false;
+                    var endX = e.clientX || e.pageX || 0;
+                    var endY = e.clientY || e.pageY || 0;
+                    var diffX = endX - touchStartX;
+                    var diffY = endY - touchStartY;
+                    if (Math.abs(diffX) > 35 && Math.abs(diffX) > Math.abs(diffY)) {
+                        if (diffX < 0) {
+                            goToSlide(1);
+                        } else {
+                            goToSlide(0);
+                        }
+                        resetTimer();
+                    }
+                });
+            }
+
+            if (dot0) dot0.addEventListener('click', function() { goToSlide(0); resetTimer(); });
+            if (dot1) dot1.addEventListener('click', function() { goToSlide(1); resetTimer(); });
+
+            // True Live Countdown Engine utilising account created_at
+            function tickCountdown() {
+                var countdownEls = document.querySelectorAll('[data-nx-activation-countdown]');
+                var state = getBannerState();
+                var tgCfg = getTelegramConfig();
+
+                if (!tgCfg.display) {
+                    if (slideTelegram) slideTelegram.style.display = 'none';
+                    if (slideCountdown) slideCountdown.style.display = '';
+                    if (pagination) pagination.style.display = 'none';
+                    if (track) track.style.transform = 'translateX(0%)';
+                    if (cycleTimer) {
+                        clearInterval(cycleTimer);
+                        cycleTimer = null;
+                    }
+                } else if (!state.showCountdown) {
+                    if (slideCountdown) slideCountdown.style.display = 'none';
+                    if (pagination) pagination.style.display = 'none';
+                    if (track) track.style.transform = 'translateX(0%)';
+                    if (cycleTimer) {
+                        clearInterval(cycleTimer);
+                        cycleTimer = null;
+                    }
+                    return;
+                }
+
+                if (!countdownEls.length) return;
+
+                var diff = state.diff;
+                var days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                var pad = function(n) { return n < 10 ? '0' + n : n; };
+                var formatted = days + 'd ' + pad(hours) + ':' + pad(minutes) + ':' + pad(seconds);
+
+                for (var i = 0; i < countdownEls.length; i++) {
+                    countdownEls[i].textContent = formatted;
+                }
+            }
+
+            // Sync dynamic config on boot
+            try {
+                fetch('/api/config')
+                    .then(function(res) { return res.json(); })
+                    .then(function(data) {
+                        if (data) {
+                            if (data.displayJoinTgChannel !== undefined) {
+                                try { localStorage.setItem('nx_display_join_tg_channel', String(data.displayJoinTgChannel)); } catch (_) {}
+                            }
+                            if (data.tgChannelUrl !== undefined) {
+                                try { localStorage.setItem('nx_tg_channel_url', String(data.tgChannelUrl || '').trim()); } catch (_) {}
+                            }
+                            if (data.showActivationCountdown !== undefined) {
+                                try { localStorage.setItem('nx_show_activation_countdown', String(data.showActivationCountdown)); } catch (_) {}
+                            }
+                            if (data.activationCountdownDays !== undefined) {
+                                try { localStorage.setItem('nx_activation_countdown_days', String(data.activationCountdownDays)); } catch (_) {}
+                            }
+                            updateTelegramBannerUI();
+                            checkActivation();
+                            tickCountdown();
+                        }
+                    })
+                    .catch(function() {});
+            } catch (_) {}
+
+            // React to config (Firestore) updates immediately
+            window.updateTelegramBannerUI = updateTelegramBannerUI;
+            window.addEventListener('nx-config-updated', updateTelegramBannerUI);
+
+            // Start immediately
+            tickCountdown();
+            setInterval(tickCountdown, 1000);
+            setInterval(updateTelegramBannerUI, 1500);
+            startAutoCycle();
+        })();
+        </script>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+
+            <div class="lg:col-span-12 xl:col-span-12 flex flex-col gap-6">
+
+                <div x-data="{
+        hidden: JSON.parse(localStorage.getItem('nx_hide_balance') || 'false'),
+        i: 0,
+        balances: (window.NexAuth && typeof window.NexAuth.balances === 'function' && window.NexAuth.balances()) || JSON.parse('[{\u0022label\u0022:\u0022Total Balance\u0022,\u0022amount\u0022:\u0022$34.21\u0022,\u0022exact\u0022:\u0022$34.21\u0022,\u0022today\u0022:null,\u0022wallet\u0022:\u0022lifetime\u0022},{\u0022label\u0022:\u0022Current Balance\u0022,\u0022amount\u0022:\u0022$34.21\u0022,\u0022exact\u0022:\u0022$34.21\u0022,\u0022today\u0022:\u0022$0.00\u0022,\u0022wallet\u0022:\u0022total\u0022},{\u0022label\u0022:\u0022Surveys\u0022,\u0022amount\u0022:\u0022$0.00\u0022,\u0022exact\u0022:\u0022$0.00\u0022,\u0022today\u0022:\u0022$0.00\u0022,\u0022wallet\u0022:\u0022survey\u0022},{\u0022label\u0022:\u0022Music Tasks\u0022,\u0022amount\u0022:\u0022$0.00\u0022,\u0022exact\u0022:\u0022$0.00\u0022,\u0022today\u0022:\u0022$0.00\u0022,\u0022wallet\u0022:\u0022music\u0022},{\u0022label\u0022:\u0022Referral Bonus\u0022,\u0022amount\u0022:\u0022$33.80\u0022,\u0022exact\u0022:\u0022$33.80\u0022,\u0022today\u0022:\u0022$0.00\u0022,\u0022wallet\u0022:\u0022referral_bonus\u0022},{\u0022label\u0022:\u0022Welcome Bonus\u0022,\u0022amount\u0022:\u0022$0.00\u0022,\u0022exact\u0022:\u0022$0.00\u0022,\u0022today\u0022:\u0022$0.00\u0022,\u0022wallet\u0022:\u0022reward\u0022},{\u0022label\u0022:\u0022Task Rewards\u0022,\u0022amount\u0022:\u0022$0.41\u0022,\u0022exact\u0022:\u0022$0.41\u0022,\u0022today\u0022:\u0022$0.00\u0022,\u0022wallet\u0022:\u0022bonus\u0022},{\u0022label\u0022:\u0022Extra Earnings\u0022,\u0022amount\u0022:\u0022$0.00\u0022,\u0022exact\u0022:\u0022$0.00\u0022,\u0022today\u0022:\u0022$0.00\u0022,\u0022wallet\u0022:\u0022extra\u0022}]'),
+        next() { if (this.balances && this.balances.length) { this.i = (this.i + 1) % this.balances.length; } },
+        toggle() {
+            this.hidden = ! this.hidden;
+            localStorage.setItem('nx_hide_balance', JSON.stringify(this.hidden));
+            window.dispatchEvent(new CustomEvent('nx-balance-visibility', { detail: this.hidden }));
+        },
+     }"
+     x-init="window.addEventListener('nx-balance-visibility', e => hidden = e.detail); window.addEventListener('nx-balances-changed', e => { if (e && e.detail) balances = e.detail; })"
+     class="flex flex-col gap-4">
+    <div class="flex items-start justify-between">
+        <div @click="next()" role="button" tabindex="0" @keydown.enter="next()" @keydown.space.prevent="next()"
+             class="flex flex-col gap-2 cursor-pointer select-none" aria-label="Switch wallet balance" title="Tap to switch wallet">
+            <div class="flex items-center gap-2.5">
+                <p class="font-sans text-text text-[16px]" x-text="balances[i] ? balances[i].label : 'Total Balance'"></p>
+            </div>
+            <div class="flex flex-col">
+                <p class="font-heading font-semibold text-text leading-none" style="font-size: 38px">
+                    <span x-show="!hidden" class="inline-flex items-center gap-1.5">
+                        <span x-text="balances[i] ? balances[i].amount : '$0.00'"></span>
+                        
+                        <template x-if="balances[i] && balances[i].amount !== balances[i].exact">
+                            <span class="relative inline-flex items-center leading-none" x-data="{ hover: false, pinned: false }"
+                                  @mouseenter="hover = true" @mouseleave="hover = false"
+                                  @click.outside="pinned = false" @keydown.escape.window="pinned = false">
+                                <span role="button" tabindex="0" aria-label="Show full value"
+                                      @click.prevent.stop="pinned = ! pinned" @keydown.enter.prevent.stop="pinned = ! pinned"
+                                      class="shrink-0 cursor-pointer p-2 -m-1.5 text-muted hover:text-primary transition-colors">
+                                    <i class="ri-information-line text-[14px] align-middle"></i>
+                                </span>
+                                <span x-show="hover || pinned" x-cloak @click.prevent.stop="pinned = false"
+                                      class="absolute bottom-full left-1/2 z-30 mb-2 -translate-x-1/2 whitespace-nowrap rounded-[10px] bg-text px-2.5 py-1.5 font-sans text-[12px] font-normal leading-none text-surface shadow-lg"
+                                      x-text="balances[i] ? balances[i].exact : ''"></span>
+                            </span>
+                        </template>
+                    </span>
+                    <span x-show="hidden" x-cloak>₦••••••</span>
+                </p>
+                <p x-show="balances[i] && balances[i].today" x-cloak class="font-sans text-[15px] text-muted mt-2">
+                        <span class="text-success">+<span x-text="balances[i] ? balances[i].today : ''"></span></span> today
+                    </p>
+            </div>
+        </div>
+        <div class="flex items-center gap-2 mt-1 shrink-0">
+                                        <button @click="toggle()" class="text-text" aria-label="Toggle balance">
+                    <i class="ri-eye-line text-[22px]" x-show="!hidden"></i>
+                    <i class="ri-eye-off-line text-[22px]" x-show="hidden" x-cloak></i>
+                </button>
+                    </div>
+    </div>
+
+    </div>
+
+                                  <div class="flex flex-col gap-4">
+                                             <div  class="flex items-start justify-between max-w-[380px] lg:max-w-none lg:justify-start lg:gap-10">
+                                                            <a href="dashboard.html#" onclick="var t=document.querySelector('[data-nx-tasks]'); if(t) t.scrollIntoView({behavior:'smooth'}); return false;"
+                                    class="flex flex-col items-center gap-2.5 w-[70px]">
+                                    <span class="size-[50px] rounded-full border border-muted/25 bg-surface flex items-center justify-center text-primary"><i class="ri-clipboard-line text-[20px]"></i></span>
+                                    <span class="font-sans text-text text-[12px] text-center leading-tight">Daily Tasks</span>
+                                </a>
+                                                            <a href="dashboard/profile.html"
+                                    class="flex flex-col items-center gap-2.5 w-[70px]">
+                                    <span class="size-[50px] rounded-full border border-muted/25 bg-surface flex items-center justify-center text-primary"><i class="ri-user-add-line text-[20px]"></i></span>
+                                    <span class="font-sans text-text text-[12px] text-center leading-tight">Invite Friends</span>
+                                </a>
+                                                            <a href="dashboard/transactions.html"                                    class="flex flex-col items-center gap-2.5 w-[70px]">
+                                    <span class="size-[50px] rounded-full border border-muted/25 bg-surface flex items-center justify-center text-primary"><i class="ri-arrow-left-down-line text-[20px]"></i></span>
+                                    <span class="font-sans text-text text-[12px] text-center leading-tight">Withdraw</span>
+                                </a>
+                                                            <a href="dashboard.html#" onclick="var t=document.querySelector('[data-nx-tasks]'); if(t) t.scrollIntoView({behavior:'smooth'}); return false;"
+                                    class="flex flex-col items-center gap-2.5 w-[70px]">
+                                    <span class="size-[50px] rounded-full border border-muted/25 bg-surface flex items-center justify-center text-primary"><i class="ri-music-2-line text-[20px]"></i></span>
+                                    <span class="font-sans text-text text-[12px] text-center leading-tight">Music Tasks</span>
+                                </a>
+                                                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+    <nav x-data="{
+        keyboardUp: false,
+        init() {
+            const vv = window.visualViewport;
+            if (! vv) { return; }
+            const check = () => { this.keyboardUp = (window.innerHeight - vv.height) > 150; };
+            vv.addEventListener('resize', check);
+        },
+     }"
+     :class="keyboardUp ? 'translate-y-full' : 'translate-y-0'"
+     class="lg:hidden fixed bottom-0 inset-x-0 z-40 mx-auto max-w-[440px] md:max-w-[600px] bg-surface shadow-[0_-3px_10px_rgba(101,101,101,0.1)] flex items-center justify-between px-[30px] pt-2.5 pb-5 transition-transform duration-200 [padding-bottom:max(1.25rem,env(safe-area-inset-bottom))]">
+            <a href="dashboard.html"
+           class="flex flex-col items-center gap-1.5 transition-colors text-primary">
+            <i class="ri-home-5-line text-[20px]"></i>
+            <span class="font-sans text-[11px]">Home</span>
+        </a>
+            <a href="dashboard/transactions.html"
+           class="flex flex-col items-center gap-1.5 transition-colors text-muted hover:text-primary">
+            <i class="ri-arrow-left-down-line text-[20px]"></i>
+            <span class="font-sans text-[11px]">Withdraw</span>
+        </a>
+            <a href="dashboard/profile.html"
+           class="flex flex-col items-center gap-1.5 transition-colors text-muted hover:text-primary">
+            <i class="ri-user-3-line text-[20px]"></i>
+            <span class="font-sans text-[11px]">Profile</span>
+        </a>
+    </nav>
+
+    </div>
+        </div>
+    </div>
+
+            <div x-data="{ open: false }"
+     @open-search.window="open = true; $nextTick(() => $refs.q?.focus())"
+     @keydown.escape.window="open = false"
+     @keydown.window.meta.k.prevent="open = true; $nextTick(() => $refs.q?.focus())"
+     @keydown.window.ctrl.k.prevent="open = true; $nextTick(() => $refs.q?.focus())"
+     x-cloak>
+
+    <div x-show="open" x-transition.opacity.duration.200ms @click="open = false"
+         class="fixed inset-0 z-[75] bg-black/40 backdrop-blur-sm"></div>
+
+    <div x-show="open" class="fixed inset-x-0 top-0 z-[80] flex justify-center px-4 pt-[11vh] pointer-events-none">
+        <div x-show="open"
+             x-transition:enter="transition ease-out duration-200"
+             x-transition:enter-start="opacity-0 -translate-y-2 scale-95"
+             x-transition:enter-end="opacity-100 translate-y-0 scale-100"
+             @click.outside="open = false"
+             class="pointer-events-auto w-full max-w-[520px] bg-surface rounded-[20px] shadow-[0_24px_70px_rgba(0,0,0,0.28)] overflow-hidden flex flex-col max-h-[72vh]">
+
+            <div class="flex items-center gap-3 px-4 h-[56px] border-b border-muted/10 shrink-0">
+                <i class="ri-search-line text-muted text-[20px]"></i>
+                <input x-ref="q" type="text"
+                       placeholder="Search pages, numbers, transactions…"
+                       class="flex-1 bg-transparent outline-none font-sans text-[15px] text-text placeholder:text-muted">
+                <button type="button" @click="open = false" class="font-sans text-muted text-[10px] border border-muted/25 rounded px-1.5 py-0.5">ESC</button>
+            </div>
+
+            <div class="overflow-y-auto p-2 flex flex-col gap-0.5">
+                                    <p class="px-3 py-8 text-center font-sans text-muted text-[13px]">Search across the whole app — pages, your numbers, and transactions.</p>
+                
+                
+                
+                            </div>
+        </div>
+    </div>
+</div>
+        <div>
+    </div>
+
+        
+                    <div class="hidden" aria-hidden="true"></div>
+        
+        
+                    
+        
+        
+                    <div class="hidden" aria-hidden="true"></div>
+            
+    <div x-data="{
+        toasts: [],
+        push(t) {
+            if (!t || (!t.message && !t.preview)) return;
+            // Chat toasts: collapse any existing toast for the same chat (no stacking) + sound/vibrate.
+            if (t.variant === 'chat') {
+                if (t.key) this.toasts = this.toasts.filter((x) => x.key !== t.key);
+                if (window.TaskVestChatPing) window.TaskVestChatPing();
+            }
+            const id = (window.__toastId = (window.__toastId || 0) + 1);
+            this.toasts.push({
+                id,
+                key: t.key || null,
+                variant: t.variant || 'basic',
+                type: t.type || 'info',
+                message: t.message || '',
+                url: t.url || null,
+                name: t.name || '',
+                username: t.username || '',
+                avatar: t.avatar || null,
+                initials: t.initials || '',
+                preview: t.preview || '',
+            });
+            setTimeout(() => this.dismiss(id), t.duration || 4500);
+        },
+        dismiss(id) { this.toasts = this.toasts.filter((x) => x.id !== id); },
+        open(t) { if (t.url) window.Livewire.navigate(t.url); this.dismiss(t.id); },
+        styles: {
+            success: { ring: 'ring-success/30', icon: 'ri-checkbox-circle-fill text-success' },
+            error:   { ring: 'ring-danger/30',  icon: 'ri-error-warning-fill text-danger' },
+            warning: { ring: 'ring-[#FF9500]/30', icon: 'ri-alert-fill text-[#FF9500]' },
+            info:    { ring: 'ring-primary/20',  icon: 'ri-information-fill text-primary' },
+            chat:    { ring: 'ring-primary/25',  icon: 'ri-chat-smile-2-fill text-primary' },
+        },
+     }"
+     @toast.window="push($event.detail)"
+     @chat-toast.window="push({ ...$event.detail, variant: 'chat', type: 'chat' })"
+     x-init=""
+     aria-live="polite" aria-atomic="false"
+     class="fixed top-3 inset-x-0 z-[100] flex flex-col items-center gap-2 px-3 pointer-events-none [padding-top:env(safe-area-inset-top)] sm:top-4 sm:inset-x-auto sm:right-5 sm:items-end sm:px-0 sm:pt-0">
+    <template x-for="t in toasts" :key="t.id">
+        <div x-transition:enter="transition ease-out duration-300"
+             x-transition:enter-start="opacity-0 -translate-y-2 sm:translate-y-0 sm:translate-x-4"
+             x-transition:enter-end="opacity-100 translate-y-0 sm:translate-x-0"
+             x-transition:leave="transition ease-in duration-200"
+             x-transition:leave-start="opacity-100"
+             x-transition:leave-end="opacity-0 translate-x-4"
+             class="pointer-events-auto w-full sm:w-[360px] max-w-[94vw] flex gap-2.5 rounded-[16px] bg-surface px-4 py-3 shadow-[0_8px_30px_rgba(0,0,0,0.12)] ring-1"
+             
+             :class="[styles[t.type].ring, t.variant === 'chat' ? 'items-start' : 'items-center']">
+
+            
+            <template x-if="t.variant === 'chat'">
+                <span class="size-9 rounded-full overflow-hidden bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
+                    <template x-if="t.avatar"><img :src="t.avatar" class="size-full object-cover" alt=""></template>
+                    <template x-if="!t.avatar"><span class="font-heading font-semibold text-primary text-[12px]" x-text="t.initials"></span></template>
+                </span>
+            </template>
+            <template x-if="t.variant !== 'chat'">
+                <i class="text-[20px] shrink-0 leading-none" :class="styles[t.type].icon"></i>
+            </template>
+
+            <div class="flex-1 min-w-0">
+                
+                <template x-if="t.variant === 'chat'">
+                    <div>
+                        <div class="flex items-baseline gap-1.5">
+                            <span class="font-heading font-semibold text-text text-[13px] truncate" x-text="t.name"></span>
+                            <span class="font-sans text-muted text-[11px] truncate" x-show="t.username" x-text="'@' + t.username"></span>
+                        </div>
+                        <p class="font-sans text-text/80 text-[12.5px] leading-snug line-clamp-2" x-text="t.preview"></p>
+                        <div class="flex items-center gap-2 mt-2.5">
+                            <button type="button" @click="open(t)" class="h-8 px-4 rounded-full bg-primary text-surface font-sans font-semibold text-[12px] inline-flex items-center gap-1.5"><i class="ri-reply-line text-[14px]"></i> Open chat</button>
+                            <button type="button" @click="dismiss(t.id)" class="h-8 px-4 rounded-full bg-background text-muted font-sans font-semibold text-[12px]">Dismiss</button>
+                        </div>
+                    </div>
+                </template>
+                
+                <template x-if="t.variant !== 'chat'">
+                    <p class="font-sans text-text text-[13px] leading-snug" :class="t.url ? 'cursor-pointer hover:underline' : ''" @click="if (t.url) open(t)" x-text="t.message"></p>
+                </template>
+            </div>
+
+            <button type="button" @click="dismiss(t.id)" class="shrink-0 size-6 rounded-full hover:bg-background flex items-center justify-center text-muted" aria-label="Dismiss">
+                <i class="ri-close-line text-[16px]"></i>
+            </button>
+        </div>
+    </template>
+</div>
+    <div x-data="{
+        open: false,
+        busy: false,
+        p: { title: '', message: '', confirmText: 'Confirm', tone: 'danger', id: null, method: null, params: [] },
+        show(detail) {
+            this.busy = false;
+            this.p = Object.assign({ title: 'Are you sure?', message: '', confirmText: 'Confirm', tone: 'danger', params: [] }, detail);
+            this.open = true;
+        },
+        proceed() {
+            if (this.busy) { return; }
+            const p = this.p;
+            if (! (p.id && p.method && window.Livewire)) { this.open = false; return; }
+            const c = window.Livewire.find(p.id);
+            if (! c) { this.open = false; return; }
+            this.busy = true;
+            Promise.resolve(c.call(p.method, ...(p.params || []))).catch(() => {}).finally(() => {
+                this.busy = false;
+                this.open = false;
+            });
+        },
+        tones: {
+            danger:  { btn: 'bg-danger text-white',  ring: 'bg-danger/12 text-danger',  icon: 'ri-error-warning-line' },
+            primary: { btn: 'bg-primary text-white', ring: 'bg-primary/10 text-primary', icon: 'ri-question-line' },
+            warning: { btn: 'bg-[#d79937] text-white', ring: 'bg-[#d79937]/15 text-[#d79937]', icon: 'ri-alert-line' },
+        },
+     }"
+     @confirm-action.window="show($event.detail)"
+     @keydown.escape.window="busy || (open = false)"
+     :data-lock-scroll="open ? '' : null"
+     x-cloak>
+    <div x-show="open" x-transition.opacity class="fixed inset-0 z-[95] bg-black/45 backdrop-blur-sm" @click="busy || (open = false)"></div>
+    <div x-show="open"
+         x-transition:enter="transition ease-out duration-200"
+         x-transition:enter-start="opacity-0 scale-95"
+         x-transition:enter-end="opacity-100 scale-100"
+         class="fixed inset-x-4 top-1/2 -translate-y-1/2 sm:inset-x-auto sm:left-1/2 sm:-translate-x-1/2 sm:w-[400px] z-[96] bg-surface rounded-[22px] p-6 shadow-[0_20px_60px_rgba(0,0,0,0.3)]">
+        <div class="flex flex-col items-center text-center gap-3">
+            <span class="size-12 rounded-full flex items-center justify-center" :class="(tones[p.tone] || tones.danger).ring">
+                <i class="text-[24px]" :class="(tones[p.tone] || tones.danger).icon"></i>
+            </span>
+            <p class="font-heading font-medium text-text text-[17px]" x-text="p.title"></p>
+            <p class="font-sans text-muted text-[13px] leading-snug" x-text="p.message"></p>
+        </div>
+        <div class="flex items-center gap-2.5 mt-6">
+            <button type="button" @click="open = false" :disabled="busy" class="flex-1 h-[46px] rounded-[14px] bg-background text-text font-sans text-[14px] disabled:opacity-60">Cancel</button>
+            <button type="button" @click="proceed()" :disabled="busy" class="flex-1 h-[46px] rounded-[14px] font-sans text-[14px] flex items-center justify-center gap-2 disabled:opacity-80" :class="(tones[p.tone] || tones.danger).btn">
+                <span x-show="! busy" x-text="p.confirmText"></span>
+                <span x-show="busy" class="flex items-center gap-2"><i class="ri-loader-4-line animate-spin"></i></span>
+            </button>
+        </div>
+    </div>
+</div>
+    <div x-data="{ url: null }"
+     @open-image.window="url = $event.detail.url"
+     @keydown.escape.window="url = null"
+     x-show="url" x-cloak x-transition.opacity
+     @click="url = null"
+     class="fixed inset-0 z-[120] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
+    <img :src="url" @click.stop alt="Preview"
+         class="max-w-full max-h-[88vh] rounded-[14px] object-contain shadow-2xl">
+    <button type="button" @click="url = null" aria-label="Close"
+            class="absolute top-4 right-4 size-10 rounded-full bg-white/15 hover:bg-white/25 text-white flex items-center justify-center transition">
+        <i class="ri-close-line text-[22px]"></i>
+    </button>
+</div>
+ 
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"></script>
+<script src="auth.js" defer></script>
+<script src="tasks.js" defer></script>
+</body>
+</html>
