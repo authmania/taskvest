@@ -1,0 +1,2 @@
+# Local dev server only — must not be treated as the app entrypoint on Vercel.
+server.js
