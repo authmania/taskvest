@@ -8,8 +8,8 @@
     "display": "standalone",
     "display_override": ["standalone", "minimal-ui", "window-controls-overlay"],
     "orientation": "portrait-primary",
-    "background_color": "#7C3AED",
-    "theme_color": "#7C3AED",
+    "background_color": "#6D28D9",
+    "theme_color": "#6D28D9",
     "categories": ["business", "utilities", "productivity", "finance"],
     "icons": [
         {

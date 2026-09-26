@@ -8,7 +8,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
-<meta name="theme-color" content="#7C3AED">
+<meta name="theme-color" content="#6D28D9">
 
 <link rel="manifest" href="../manifest.webmanifest">
 <meta name="mobile-web-app-capable" content="yes">
@@ -30,7 +30,7 @@
 
     
     <div class="bg-background lg:max-w-[1280px] lg:mx-auto lg:flex lg:min-h-screen lg:shadow-[0_0_60px_rgba(0,0,0,0.08)]">
-        <aside class="hidden lg:flex lg:flex-col lg:w-[264px] lg:shrink-0 lg:sticky lg:top-0 lg:h-screen text-white" style="background: radial-gradient(125% 110% at 78% 78%, #8B5CF699 0%, #7C3AED 52%, #5B21B6 100%); background-color: #7C3AED;">
+        <aside class="hidden lg:flex lg:flex-col lg:w-[264px] lg:shrink-0 lg:sticky lg:top-0 lg:h-screen text-white" style="background: radial-gradient(125% 110% at 78% 78%, #8B5CF699 0%, #6D28D9 52%, #5B21B6 100%); background-color: #6D28D9;">
         <div class="flex items-center h-[72px] px-6 shrink-0">
             <a href="../index.html" aria-label="TaskVest home">
                 <img src="../images/public/logo-coloured.png" alt="TaskVest" class="h-[30px] w-auto object-contain">
@@ -114,7 +114,7 @@
                x-transition:leave-start="translate-x-0"
                x-transition:leave-end="-translate-x-full"
                class="fixed inset-y-0 left-0 z-[70] w-[86%] max-w-[300px] flex flex-col text-white shadow-[8px_0_40px_rgba(0,0,0,0.3)]"
-               style="background: radial-gradient(125% 110% at 78% 78%, #8B5CF699 0%, #7C3AED 52%, #5B21B6 100%); background-color: #7C3AED;">
+               style="background: radial-gradient(125% 110% at 78% 78%, #8B5CF699 0%, #6D28D9 52%, #5B21B6 100%); background-color: #6D28D9;">
 
             <div class="flex items-center justify-between h-[72px] px-5 shrink-0">
                 <a href="../index.html" @click="open = false" aria-label="TaskVest home">
@@ -287,12 +287,12 @@
                         <div style="position:relative;display:flex;align-items:center;">
                             <input type="text" id="bankSearch" placeholder="Select or search your bank…" autocomplete="off"
                                 class="h-[45px] w-full pl-[15px] pr-[38px] rounded-[30px] border-[0.5px] border-primary bg-transparent font-sans text-[13px] text-text outline-none focus:ring-1 focus:ring-primary cursor-pointer" />
-                            <span style="position:absolute;right:14px;pointer-events:none;color:#7C3AED;display:flex;align-items:center;">
+                            <span style="position:absolute;right:14px;pointer-events:none;color:#6D28D9;display:flex;align-items:center;">
                                 <i class="ri-arrow-down-s-line text-[20px]"></i>
                             </span>
                         </div>
                         <input type="hidden" id="bankCode" />
-                        <div id="bankDropdown" style="display:none;position:absolute;top:calc(100% + 4px);left:0;right:0;max-height:260px;overflow-y:auto;background:#ffffff;border-radius:16px;border:1.5px solid #7C3AED;box-shadow:0 16px 40px rgba(0,0,0,0.22);z-index:9999999;-webkit-overflow-scrolling:touch;"></div>
+                        <div id="bankDropdown" style="display:none;position:absolute;top:calc(100% + 4px);left:0;right:0;max-height:260px;overflow-y:auto;background:#ffffff;border-radius:16px;border:1.5px solid #6D28D9;box-shadow:0 16px 40px rgba(0,0,0,0.22);z-index:9999999;-webkit-overflow-scrolling:touch;"></div>
                     </div>
                 </div>
                 <div class="flex flex-col gap-1.5 w-full">
@@ -417,7 +417,7 @@
         
         <div class="fixed inset-0 z-[95] bg-background lg:flex lg:items-center lg:justify-center lg:p-10 overflow-y-auto" data-lock-scroll
              x-data="{ rate: 1, symbol: '$' }">
-            <div class="mx-auto w-full max-w-[440px] lg:max-w-[470px] min-h-full lg:min-h-0 px-4 lg:px-9 pt-6 lg:pt-9 pb-12 lg:pb-9 flex flex-col gap-6 lg:bg-surface lg:rounded-[32px] lg:shadow-[0_30px_80px_-20px_rgba(124, 58, 237, 0.25)] lg:border lg:border-black/[0.04]">
+            <div class="mx-auto w-full max-w-[440px] lg:max-w-[470px] min-h-full lg:min-h-0 px-4 lg:px-9 pt-6 lg:pt-9 pb-12 lg:pb-9 flex flex-col gap-6 lg:bg-surface lg:rounded-[32px] lg:shadow-[0_30px_80px_-20px_rgba(109, 40, 217, 0.25)] lg:border lg:border-black/[0.04]">
 
                 <div class="flex items-center gap-3">
                     <p class="font-heading font-medium text-muted text-[13px] tracking-[0.14em] uppercase" x-text="(active.direction === 'incoming' ? 'Incoming' : 'Sponsored') + ' Call'">Task Reward</p>
@@ -431,7 +431,7 @@
                     <div class="relative flex items-center justify-center">
                         <span class="absolute size-[120px] rounded-full" :class="phase === 'connecting' ? 'bg-[#D79937]/20 animate-ping' : (phase === 'complete' ? 'bg-success/10' : 'bg-success/15 animate-ping')"></span>
                         <span class="absolute size-[108px] rounded-full" :class="phase === 'connecting' ? 'bg-[#D79937]/10' : 'bg-success/10'"></span>
-                        <span class="relative size-[88px] rounded-full bg-primary text-white flex items-center justify-center ring-4 ring-surface shadow-[0_8px_24px_rgba(124, 58, 237, 0.18)] overflow-hidden">
+                        <span class="relative size-[88px] rounded-full bg-primary text-white flex items-center justify-center ring-4 ring-surface shadow-[0_8px_24px_rgba(109, 40, 217, 0.18)] overflow-hidden">
                             <template x-if="active.avatar"><img :src="active.avatar" alt="" class="size-full object-cover"></template>
                             <span x-show="!active.avatar" class="font-heading font-semibold text-[32px]" x-text="(active.caller || active.name || '?').charAt(0)"></span>
                         </span>
@@ -450,7 +450,7 @@
                         <p class="font-sans text-muted text-[12px]">On the line</p>
                         <p class="font-heading font-semibold text-text text-[26px] sm:text-[30px] leading-none tabular-nums" x-text="fmt(elapsed)">0:00</p>
                     </div>
-                    <div class="flex-1 min-w-0 bg-primary rounded-[20px] px-3 sm:px-4 py-5 flex flex-col items-center gap-1.5 text-center shadow-[0_8px_20px_rgba(124, 58, 237, 0.2)]">
+                    <div class="flex-1 min-w-0 bg-primary rounded-[20px] px-3 sm:px-4 py-5 flex flex-col items-center gap-1.5 text-center shadow-[0_8px_20px_rgba(109, 40, 217, 0.2)]">
                         <p class="font-sans text-white/70 text-[12px]" x-text="done ? 'Earned' : 'You\'ll earn'">You'll earn</p>
                         <p class="font-heading font-semibold text-secondary text-[26px] sm:text-[30px] leading-none tabular-nums" x-text="symbol + (Number(active.earning || 0) * rate).toFixed(2)">$0.00</p>
                     </div>

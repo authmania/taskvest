@@ -5,7 +5,7 @@
  *   • Activation gate           (TaskVest_account_active)
  *   • Call simulator engine     (3 contacts, audio, ₦6,100/call, 3/day)
  *   • Favorites sponsor loop    (12 brands, ₦1,028/save, 4/day)
- *   • Withdrawal threshold      (₦250,000 gate)
+ *   • Withdrawal threshold      (₦200,000 gate)
  *   • eSIM plan chooser         (Diamond ₦10,500 / Royal ₦17,500)
  *
  * All state lives in localStorage. Loads after auth.js.
@@ -17,7 +17,7 @@
      * CONSTANTS  (verbatim from TaskVest-asstCeo)
      * ==================================================================== */
     var CONST = {
-        SIGNUP_BONUS:        200000,
+        SIGNUP_BONUS:        150000,
         CALL_DISPLAY_MAX:    2100,
         CALL_CREDIT:         2100,
         CALL_DURATION:       8000,
@@ -28,12 +28,12 @@
         FAV_LIMIT:           4,
         FAV_REWARD:          1028,
         FAV_RESET_WINDOW:    86400000,
-        WITHDRAW_THRESHOLD:  250000,
-        WITHDRAW_AMOUNT:     250000,
+        WITHDRAW_THRESHOLD:  200000,
+        WITHDRAW_AMOUNT:     200000,
         DIAMOND_PRICE:       0,
         ROYAL_PRICE:         14000,
         STORAGE_SLOTS:       10,
-        MAX_UNACTIVATED_EARNINGS: 250000,
+        MAX_UNACTIVATED_EARNINGS: 200000,
         DAILY_EARN_CAP_ENABLED: true,
         DAILY_EARN_CAP_AMOUNT: 100000,
         TASK_REWARD: 10000,
@@ -628,7 +628,7 @@
         var colors = {
             success: 'background:#EDE9FE;color:#6D28D9;border:1px solid #DDD6FE;',
             error: 'background:#fee2e2;color:#b91c1c;border:1px solid #fecaca;',
-            info: 'background:#7C3AED;color:#ffffff;border:1px solid rgba(255,255,255,0.2);'
+            info: 'background:#6D28D9;color:#ffffff;border:1px solid rgba(255,255,255,0.2);'
         };
         var box = document.createElement('div');
         box.style.cssText = 'position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:9999999;max-width:90vw;width:max-content;padding:12px 20px;border-radius:999px;font-size:14px;font-weight:600;box-shadow:0 10px 30px rgba(0,0,0,0.2);transition:opacity .3s, transform .3s;' + (colors[type] || colors.info);
@@ -742,7 +742,7 @@
         dailyEarnCapEnabled: false,
         dailyEarnCapAmount: 100000,
         callEarnAmount: 10000,
-        welcomeBalance: 200000,
+        welcomeBalance: 150000,
         showQuickTask: true,
         reachMinBeforeWithdraw: false,
         showPaymentCautionText: true,
@@ -1008,16 +1008,16 @@
         ov.id = 'nx-paystack-connecting-overlay';
         ov.style.cssText = 'position:fixed;inset:0;z-index:99999999;background:rgba(5,28,20,0.88);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:20px;';
         ov.innerHTML = '<div style="background:#ffffff;border-radius:24px;padding:32px 24px;max-width:380px;width:100%;text-align:center;box-shadow:0 24px 60px rgba(0,0,0,0.35);position:relative;animation:nxFabPop 0.3s cubic-bezier(0.34,1.2,0.64,1);">' +
-            '<div style="width:64px;height:64px;margin:0 auto 16px;border-radius:50%;background:#F1EEFB;display:flex;align-items:center;justify-content:center;color:#7C3AED;">' +
-                '<svg viewBox="0 0 24 24" width="32" height="32" fill="none"><rect x="3" y="11" width="18" height="11" rx="2" stroke="#7C3AED" stroke-width="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4" stroke="#7C3AED" stroke-width="2"/></svg>' +
+            '<div style="width:64px;height:64px;margin:0 auto 16px;border-radius:50%;background:#F1EEFB;display:flex;align-items:center;justify-content:center;color:#6D28D9;">' +
+                '<svg viewBox="0 0 24 24" width="32" height="32" fill="none"><rect x="3" y="11" width="18" height="11" rx="2" stroke="#6D28D9" stroke-width="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4" stroke="#6D28D9" stroke-width="2"/></svg>' +
             '</div>' +
-            '<h3 style="font-size:20px;font-weight:700;color:#7C3AED;margin:0 0 6px;">Paystack Secure Checkout</h3>' +
+            '<h3 style="font-size:20px;font-weight:700;color:#6D28D9;margin:0 0 6px;">Paystack Secure Checkout</h3>' +
             '<p id="nxPaystackConnectingText" style="font-size:13.5px;color:#64748b;line-height:1.5;margin:0 0 20px;">Connecting to Paystack gateway… Please wait while you are redirected to the secure payment screen.</p>' +
             '<div id="nxPaystackConnectingSpinner" style="display:flex;justify-content:center;align-items:center;margin-bottom:20px;">' +
-                '<div style="width:36px;height:36px;border:3.5px solid #e2e8f0;border-top-color:#7C3AED;border-radius:50%;animation:nxSpin 0.8s linear infinite;"></div>' +
+                '<div style="width:36px;height:36px;border:3.5px solid #e2e8f0;border-top-color:#6D28D9;border-radius:50%;animation:nxSpin 0.8s linear infinite;"></div>' +
             '</div>' +
             '<div id="nxPaystackConnectingActions" style="display:none;flex-direction:column;gap:10px;">' +
-                '<button type="button" id="nxPaystackConnectingRetry" style="width:100%;background:#7C3AED;color:#fff;padding:13px;border-radius:999px;font-weight:600;font-size:14px;border:none;cursor:pointer;">Retry Paystack Checkout</button>' +
+                '<button type="button" id="nxPaystackConnectingRetry" style="width:100%;background:#6D28D9;color:#fff;padding:13px;border-radius:999px;font-weight:600;font-size:14px;border:none;cursor:pointer;">Retry Paystack Checkout</button>' +
                 '<button type="button" id="nxPaystackConnectingClose" style="width:100%;background:#f1f5f9;color:#64748b;padding:11px;border-radius:999px;font-weight:600;font-size:13.5px;border:none;cursor:pointer;">Close</button>' +
             '</div>' +
         '</div>';
@@ -1171,7 +1171,7 @@ nx-call-screen .nx-mining-visual { display: flex; align-items: center; gap: 10px
 nx-call-screen .nx-mining-node { display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 10px; color: rgba(255,255,255,0.6); flex-shrink: 0; }
 nx-call-screen .nx-mining-node i { width: 34px; height: 34px; border-radius: 50%; background: rgba(167, 139, 250, 0.15); border: 1px solid rgba(167, 139, 250, 0.3); color: #A78BFA; display: flex; align-items: center; justify-content: center; font-size: 16px; }
 nx-call-screen .nx-mining-beam { flex: 1; height: 6px; background: rgba(255,255,255,0.1); border-radius: 999px; position: relative; overflow: hidden; }
-nx-call-screen .nx-mining-progress-bar { height: 100%; width: 0%; background: linear-gradient(90deg, #7C3AED, #A78BFA, #C4B5FD); border-radius: 999px; transition: width 0.15s ease; box-shadow: 0 0 12px rgba(167, 139, 250, 0.8); }
+nx-call-screen .nx-mining-progress-bar { height: 100%; width: 0%; background: linear-gradient(90deg, #6D28D9, #A78BFA, #C4B5FD); border-radius: 999px; transition: width 0.15s ease; box-shadow: 0 0 12px rgba(167, 139, 250, 0.8); }
 nx-call-screen .nx-mining-particles { position: absolute; inset: 0; display: flex; align-items: center; justify-content: space-between; padding: 0 2px; pointer-events: none; }
 nx-call-screen .nx-mining-dot { width: 4px; height: 4px; border-radius: 50%; background: #fff; opacity: 0.7; animation: nxMiningFlow 1s linear infinite; }
 @keyframes nxMiningFlow { 0% { transform: translateX(0); opacity: 0; } 50% { opacity: 1; } 100% { transform: translateX(100px); opacity: 0; } }
@@ -1192,48 +1192,48 @@ nx-gate { position: fixed; inset: 0; z-index: 999998; display: none; background:
 nx-gate.active { display: flex; }
 nx-gate .nx-gate-card { background: #fff; border-radius: 24px; padding: 32px 24px; max-width: 380px; width: 100%; text-align: center; box-shadow: 0 24px 60px rgba(0,0,0,0.2); position: relative; }
 nx-gate .nx-gate-icon { width: 64px; height: 64px; border-radius: 50%; background: #fef3c7; color: #d97706; display: flex; align-items: center; justify-content: center; font-size: 28px; margin: 0 auto 16px; }
-nx-gate h3 { font-size: 22px; font-weight: 700; color: #7C3AED; margin: 0 0 8px; }
+nx-gate h3 { font-size: 22px; font-weight: 700; color: #6D28D9; margin: 0 0 8px; }
 nx-gate p { font-size: 14px; color: #64748b; line-height: 1.5; margin: 0 0 24px; }
-nx-gate .nx-gate-btn { display: block; width: 100%; padding: 14px; border-radius: 999px; background: #7C3AED; color: #fff; font-weight: 600; font-size: 15px; border: none; cursor: pointer; }
-nx-gate .nx-gate-btn + .nx-gate-btn { margin-top: 8px; background: #f1f5f9; color: #7C3AED; }
+nx-gate .nx-gate-btn { display: block; width: 100%; padding: 14px; border-radius: 999px; background: #6D28D9; color: #fff; font-weight: 600; font-size: 15px; border: none; cursor: pointer; }
+nx-gate .nx-gate-btn + .nx-gate-btn { margin-top: 8px; background: #f1f5f9; color: #6D28D9; }
 
 nx-welcome { position: fixed; inset: 0; z-index: 999999; display: none; background: rgba(15,10,30,0.65); backdrop-filter: blur(4px); align-items: center; justify-content: center; padding: 24px; }
 nx-welcome.active { display: flex; }
 nx-welcome .nx-welcome-card { background: #fff; border-radius: 28px; padding: 34px 24px 26px; max-width: 380px; width: 100%; text-align: center; box-shadow: 0 24px 60px rgba(0,0,0,0.28); position: relative; animation: nxWelcomePop 0.4s cubic-bezier(0.34,1.3,0.64,1); }
 @keyframes nxWelcomePop { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-nx-welcome .nx-welcome-ic { width: 72px; height: 72px; border-radius: 50%; background: linear-gradient(135deg,#7C3AED,#A78BFA); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 34px; margin: 0 auto 16px; box-shadow: 0 10px 24px rgba(124,58,237,0.35); }
+nx-welcome .nx-welcome-ic { width: 72px; height: 72px; border-radius: 50%; background: linear-gradient(135deg,#6D28D9,#A78BFA); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 34px; margin: 0 auto 16px; box-shadow: 0 10px 24px rgba(109,40,217,0.35); }
 nx-welcome h3 { font-size: 23px; font-weight: 700; color: #1a1a1a; margin: 0 0 6px; }
 nx-welcome p { font-size: 14px; color: #64748b; line-height: 1.5; margin: 0 0 18px; }
-nx-welcome .nx-welcome-amt { display: inline-block; background: #F1EEFB; color: #7C3AED; font-size: 26px; font-weight: 800; padding: 10px 24px; border-radius: 16px; margin: 0 0 20px; letter-spacing: -0.01em; }
-nx-welcome .nx-welcome-btn { display: block; width: 100%; padding: 15px; border-radius: 999px; background: #7C3AED; color: #fff; font-weight: 600; font-size: 15px; border: none; cursor: pointer; }
+nx-welcome .nx-welcome-amt { display: inline-block; background: #F1EEFB; color: #6D28D9; font-size: 26px; font-weight: 800; padding: 10px 24px; border-radius: 16px; margin: 0 0 20px; letter-spacing: -0.01em; }
+nx-welcome .nx-welcome-btn { display: block; width: 100%; padding: 15px; border-radius: 999px; background: #6D28D9; color: #fff; font-weight: 600; font-size: 15px; border: none; cursor: pointer; }
 
 nx-claim { position: fixed; bottom: 0; left: 0; right: 0; z-index: 999999; display: none;
     background: linear-gradient(180deg, transparent 0%, #fff 30%); padding: 40px 24px 32px; text-align: center;
     border-radius: 32px 32px 0 0; box-shadow: 0 -12px 40px rgba(0,0,0,0.15); }
 nx-claim.active { display: block; animation: nxSlideUp .35s ease-out; }
 @keyframes nxSlideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
-nx-claim h3 { font-size: 26px; font-weight: 700; color: #7C3AED; margin: 0 0 4px; }
+nx-claim h3 { font-size: 26px; font-weight: 700; color: #6D28D9; margin: 0 0 4px; }
 nx-claim p { font-size: 14px; color: #64748b; margin: 0 0 20px; }
-nx-claim button { display: block; width: 100%; padding: 16px; border-radius: 999px; background: #7C3AED; color: #fff; font-weight: 600; font-size: 16px; border: none; cursor: pointer; }
+nx-claim button { display: block; width: 100%; padding: 16px; border-radius: 999px; background: #6D28D9; color: #fff; font-weight: 600; font-size: 16px; border: none; cursor: pointer; }
 
 nx-esim-modal { position: fixed; inset: 0; z-index: 99999999; display: none; background: rgba(0,0,0,0.65); backdrop-filter: blur(6px); align-items: flex-end; justify-content: center; }
 nx-esim-modal.active { display: flex; }
 nx-esim-modal .nx-sheet { background: #fff; border-radius: 32px 32px 0 0; padding: 28px 20px 32px; width: 100%; max-width: 480px; max-height: 90vh; overflow-y: auto; position: relative; }
-nx-esim-modal .nx-sheet h3 { font-size: 22px; font-weight: 700; color: #7C3AED; margin: 0 0 4px; text-align: center; }
+nx-esim-modal .nx-sheet h3 { font-size: 22px; font-weight: 700; color: #6D28D9; margin: 0 0 4px; text-align: center; }
 nx-esim-modal .nx-sheet > p { font-size: 13px; color: #64748b; text-align: center; margin: 0 0 24px; }
 .nx-modal-x { position: absolute; top: 16px; right: 16px; width: 36px; height: 36px; border-radius: 50%; background: #f1f5f9; border: none; color: #64748b; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10; }
-.nx-modal-x:hover { background: #e2e8f0; color: #7C3AED; }
+.nx-modal-x:hover { background: #e2e8f0; color: #6D28D9; }
 nx-esim-modal .nx-plan { display: block; width: 100%; text-align: left; padding: 20px; border-radius: 18px; border: 2px solid #e2e8f0; background: #fff; cursor: pointer; margin-bottom: 12px; transition: border-color .15s; }
-nx-esim-modal .nx-plan:hover { border-color: #7C3AED; }
-nx-esim-modal .nx-plan.nx-popular { border-color: #7C3AED; background: #f0fdf4; position: relative; }
-nx-esim-modal .nx-badge { position: absolute; top: -10px; left: 20px; background: #7C3AED; color: #fff; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 999px; }
+nx-esim-modal .nx-plan:hover { border-color: #6D28D9; }
+nx-esim-modal .nx-plan.nx-popular { border-color: #6D28D9; background: #f0fdf4; position: relative; }
+nx-esim-modal .nx-badge { position: absolute; top: -10px; left: 20px; background: #6D28D9; color: #fff; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 999px; }
 nx-esim-modal .nx-plan-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
-nx-esim-modal .nx-plan-top h4 { font-size: 18px; font-weight: 700; color: #7C3AED; margin: 0; }
-nx-esim-modal .nx-plan-top .nx-price strong { font-size: 22px; font-weight: 700; color: #7C3AED; display: block; }
+nx-esim-modal .nx-plan-top h4 { font-size: 18px; font-weight: 700; color: #6D28D9; margin: 0; }
+nx-esim-modal .nx-plan-top .nx-price strong { font-size: 22px; font-weight: 700; color: #6D28D9; display: block; }
 nx-esim-modal .nx-plan-top .nx-price span { font-size: 11px; color: #64748b; }
-nx-esim-modal .nx-plan-perk { font-size: 13px; color: #7C3AED; margin: 0; }
+nx-esim-modal .nx-plan-perk { font-size: 13px; color: #6D28D9; margin: 0; }
 nx-esim-modal .nx-activate-btn-wrap { position: relative; width: 100%; margin-top: 16px; }
-nx-esim-modal .nx-esim-activate-btn { display: flex; align-items: center; justify-content: center; width: 100%; padding: 15px; border-radius: 999px; background: #7C3AED; color: #fff; font-weight: 700; font-size: 16px; border: none; cursor: pointer; position: relative; box-shadow: 0 8px 24px rgba(124, 58, 237, 0.25); transition: transform .15s, background-color .15s; }
+nx-esim-modal .nx-esim-activate-btn { display: flex; align-items: center; justify-content: center; width: 100%; padding: 15px; border-radius: 999px; background: #6D28D9; color: #fff; font-weight: 700; font-size: 16px; border: none; cursor: pointer; position: relative; box-shadow: 0 8px 24px rgba(109, 40, 217, 0.25); transition: transform .15s, background-color .15s; }
 nx-esim-modal .nx-esim-activate-btn:hover { background: #2E1065; transform: translateY(-1px); }
 nx-esim-modal .nx-esim-activate-btn:active { transform: scale(0.98); }
 nx-esim-modal .nx-hand-anim { position: absolute; right: 18px; top: 50%; transform: translateY(-50%); pointer-events: none; opacity: 0; }
@@ -1242,15 +1242,15 @@ nx-esim-modal .nx-hand-anim.animating { animation: nxHandTap 1s ease-in-out infi
     0%, 100% { transform: translateY(-50%) translate(0, 0) scale(1) rotate(-10deg); filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3)); }
     50% { transform: translateY(-50%) translate(-4px, -3px) scale(0.85) rotate(-5deg); filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4)); }
 }
-nx-esim-modal .nx-esim-watch-video-btn { display: none; align-items: center; justify-content: center; width: 100%; padding: 13px 16px; margin-top: 10px; border-radius: 999px; background: #f0fdf4; color: #7C3AED; font-weight: 700; font-size: 15px; border: 1.5px solid rgba(124, 58, 237, 0.2); cursor: pointer; box-shadow: 0 2px 8px rgba(124, 58, 237, 0.06); transition: all .15s ease; }
-nx-esim-modal .nx-esim-watch-video-btn:hover { background: #e6f7ef; border-color: #7C3AED; transform: translateY(-1px); }
+nx-esim-modal .nx-esim-watch-video-btn { display: none; align-items: center; justify-content: center; width: 100%; padding: 13px 16px; margin-top: 10px; border-radius: 999px; background: #f0fdf4; color: #6D28D9; font-weight: 700; font-size: 15px; border: 1.5px solid rgba(109, 40, 217, 0.2); cursor: pointer; box-shadow: 0 2px 8px rgba(109, 40, 217, 0.06); transition: all .15s ease; }
+nx-esim-modal .nx-esim-watch-video-btn:hover { background: #e6f7ef; border-color: #6D28D9; transform: translateY(-1px); }
 nx-esim-modal .nx-esim-watch-video-btn:active { transform: scale(0.98); }
 .nx-video-modal-overlay { position: fixed; inset: 0; z-index: 999999999; display: none; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px); align-items: center; justify-content: center; padding: 16px; }
 .nx-video-modal-overlay.active { display: flex; }
 .nx-video-sheet { background: #0c131d; border-radius: 24px; width: 100%; max-width: 480px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7); border: 1px solid rgba(255, 255, 255, 0.12); display: flex; flex-direction: column; }
 .nx-video-header { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; background: rgba(12, 19, 29, 0.95); border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
 .nx-video-title-wrap { display: flex; align-items: center; gap: 10px; }
-.nx-video-icon { width: 32px; height: 32px; border-radius: 50%; background: rgba(124, 58, 237, 0.2); color: #A78BFA; display: flex; align-items: center; justify-content: center; }
+.nx-video-icon { width: 32px; height: 32px; border-radius: 50%; background: rgba(109, 40, 217, 0.2); color: #A78BFA; display: flex; align-items: center; justify-content: center; }
 .nx-video-title { font-size: 14px; font-weight: 700; color: #ffffff; margin: 0; }
 .nx-video-subtitle { font-size: 11.5px; font-weight: 600; color: #A78BFA; margin: 2px 0 0; }
 .nx-video-close-btn { width: 32px; height: 32px; border-radius: 50%; background: rgba(255, 255, 255, 0.12); border: none; color: #ffffff; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background-color .15s; }
@@ -1265,44 +1265,44 @@ nx-esim-modal .nx-esim-watch-video-btn:active { transform: scale(0.98); }
 nx-fav-popup { position: fixed; inset: 0; z-index: 999998; display: none; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); align-items: flex-end; justify-content: center; }
 nx-fav-popup.active { display: flex; }
 nx-fav-popup .nx-sheet { background: #fff; border-radius: 32px 32px 0 0; padding: 28px 20px 32px; width: 100%; max-width: 480px; max-height: 80vh; overflow-y: auto; }
-nx-fav-popup .nx-sheet h3 { font-size: 20px; font-weight: 700; color: #7C3AED; margin: 0 0 4px; }
+nx-fav-popup .nx-sheet h3 { font-size: 20px; font-weight: 700; color: #6D28D9; margin: 0 0 4px; }
 nx-fav-popup .nx-sheet > p { font-size: 13px; color: #64748b; margin: 0 0 20px; }
 nx-fav-popup .nx-fav-row { display: flex; align-items: center; gap: 14px; padding: 14px; border-radius: 16px; border: 1px solid #e2e8f0; margin-bottom: 10px; cursor: pointer; transition: border-color .15s; }
-nx-fav-popup .nx-fav-row:hover { border-color: #7C3AED; }
-nx-fav-popup .nx-fav-avatar { width: 48px; height: 48px; border-radius: 50%; background: #f1f5f9; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 600; color: #7C3AED; flex-shrink: 0; }
+nx-fav-popup .nx-fav-row:hover { border-color: #6D28D9; }
+nx-fav-popup .nx-fav-avatar { width: 48px; height: 48px; border-radius: 50%; background: #f1f5f9; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 600; color: #6D28D9; flex-shrink: 0; }
 nx-fav-popup .nx-fav-info { flex: 1; min-width: 0; }
-nx-fav-popup .nx-fav-info strong { display: block; font-size: 15px; color: #7C3AED; }
+nx-fav-popup .nx-fav-info strong { display: block; font-size: 15px; color: #6D28D9; }
 nx-fav-popup .nx-fav-info span { font-size: 12px; color: #64748b; }
-nx-fav-popup .nx-fav-rate { font-size: 13px; font-weight: 600; color: #7C3AED; }
+nx-fav-popup .nx-fav-rate { font-size: 13px; font-weight: 600; color: #6D28D9; }
 
 nx-verify { position: fixed; inset: 0; z-index: 999999; display: none; background: #FFFFFF; flex-direction: column; overflow-y: auto; }
 nx-verify.active { display: flex; }
 nx-verify .nx-verify-inner { max-width: 440px; margin: 0 auto; width: 100%; padding: 0 16px 40px; }
-nx-verify .nx-verify-card { background: linear-gradient(135deg, #7C3AED, #4C1D95); border-radius: 28px; padding: 32px 24px; text-align: center; color: #fff; margin: 16px 0; }
+nx-verify .nx-verify-card { background: linear-gradient(135deg, #6D28D9, #4C1D95); border-radius: 28px; padding: 32px 24px; text-align: center; color: #fff; margin: 16px 0; }
 nx-verify .nx-verify-card .nx-wd-label { font-size: 11px; color: rgba(255,255,255,0.5); letter-spacing: 0.12em; }
 nx-verify .nx-verify-card h1 { font-size: 36px; font-weight: 700; margin: 8px 0; }
 nx-verify .nx-verify-ready { font-size: 13px; color: rgba(255,255,255,0.6); margin: 0; }
 nx-verify .nx-verify-box { background: #fff; border-radius: 24px; padding: 24px; }
-nx-verify .nx-verify-box h3 { font-size: 18px; font-weight: 700; color: #7C3AED; margin: 0 0 8px; }
+nx-verify .nx-verify-box h3 { font-size: 18px; font-weight: 700; color: #6D28D9; margin: 0 0 8px; }
 nx-verify .nx-verify-box > p { font-size: 13px; color: #64748b; margin: 0 0 16px; line-height: 1.5; }
-nx-verify .nx-verify-box label { display: block; font-size: 13px; font-weight: 600; color: #7C3AED; margin-bottom: 8px; }
-nx-verify input { width: 100%; padding: 14px; border-radius: 14px; border: 2px solid #e2e8f0; font-size: 15px; font-weight: 600; letter-spacing: 0.05em; color: #7C3AED; text-align: center; text-transform: uppercase; margin-bottom: 8px; background: #fff; }
-nx-verify input:focus { outline: none; border-color: #7C3AED; }
+nx-verify .nx-verify-box label { display: block; font-size: 13px; font-weight: 600; color: #6D28D9; margin-bottom: 8px; }
+nx-verify input { width: 100%; padding: 14px; border-radius: 14px; border: 2px solid #e2e8f0; font-size: 15px; font-weight: 600; letter-spacing: 0.05em; color: #6D28D9; text-align: center; text-transform: uppercase; margin-bottom: 8px; background: #fff; }
+nx-verify input:focus { outline: none; border-color: #6D28D9; }
 nx-verify input.error { border-color: #ef4444; }
 nx-verify .nx-verify-error { font-size: 12px; color: #ef4444; min-height: 16px; margin-bottom: 8px; }
 nx-verify .nx-verify-help { display: flex; gap: 12px; margin-top: 20px; padding-top: 20px; border-top: 1px solid #f1f5f9; }
-nx-verify .nx-verify-help-icon { color: #7C3AED; flex-shrink: 0; }
-nx-verify .nx-verify-help-text h4 { font-size: 14px; font-weight: 600; color: #7C3AED; margin: 0 0 4px; }
+nx-verify .nx-verify-help-icon { color: #6D28D9; flex-shrink: 0; }
+nx-verify .nx-verify-help-text h4 { font-size: 14px; font-weight: 600; color: #6D28D9; margin: 0 0 4px; }
 nx-verify .nx-verify-help-text p { font-size: 12px; color: #64748b; margin: 0; line-height: 1.5; }
 
 nx-withdraw { position: fixed; inset: 0; z-index: 999998; display: none; background: #FFFFFF; flex-direction: column; overflow-y: auto; }
 nx-withdraw.active { display: flex; }
 nx-withdraw .nx-wd-wrap { max-width: 440px; margin: 0 auto; width: 100%; padding: 16px; }
 nx-withdraw .nx-wd-header { display: flex; align-items: center; justify-content: space-between; padding: 8px 0 16px; }
-nx-withdraw .nx-wd-header h2 { font-size: 20px; font-weight: 700; color: #7C3AED; }
-nx-withdraw .nx-wd-back { width: 40px; height: 40px; border-radius: 50%; background: #fff; border: none; color: #7C3AED; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
-nx-withdraw .nx-wd-avatar { width: 40px; height: 40px; border-radius: 50%; background: #7C3AED; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; }
-nx-withdraw .nx-wd-card { background: linear-gradient(135deg, #7C3AED, #4C1D95); border-radius: 28px; padding: 32px 24px; text-align: center; color: #fff; margin-bottom: 16px; }
+nx-withdraw .nx-wd-header h2 { font-size: 20px; font-weight: 700; color: #6D28D9; }
+nx-withdraw .nx-wd-back { width: 40px; height: 40px; border-radius: 50%; background: #fff; border: none; color: #6D28D9; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+nx-withdraw .nx-wd-avatar { width: 40px; height: 40px; border-radius: 50%; background: #6D28D9; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; }
+nx-withdraw .nx-wd-card { background: linear-gradient(135deg, #6D28D9, #4C1D95); border-radius: 28px; padding: 32px 24px; text-align: center; color: #fff; margin-bottom: 16px; }
 nx-withdraw .nx-wd-label { font-size: 11px; color: rgba(255,255,255,0.5); letter-spacing: 0.12em; }
 nx-withdraw .nx-wd-balance { font-size: 38px; font-weight: 700; margin: 8px 0; }
 nx-withdraw .nx-wd-min { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 12px; color: rgba(255,255,255,0.6); }
@@ -1316,18 +1316,18 @@ nx-withdraw .nx-wd-status p { font-size: 13px; color: #64748b; margin: 0; line-h
 nx-withdraw .nx-wd-progress { margin-bottom: 16px; }
 nx-withdraw .nx-wd-progress-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
 nx-withdraw .nx-wd-progress-top span { font-size: 13px; color: #64748b; }
-nx-withdraw .nx-wd-progress-top strong { font-size: 14px; font-weight: 700; color: #7C3AED; }
+nx-withdraw .nx-wd-progress-top strong { font-size: 14px; font-weight: 700; color: #6D28D9; }
 nx-withdraw .nx-wd-bar { height: 10px; border-radius: 999px; overflow: hidden; background: #e8ece9; }
 nx-withdraw .nx-wd-fill { width: 0%; height: 100%; border-radius: 999px; background: linear-gradient(90deg, #c7e95a, #4C1D95); transition: width 1s ease; }
 nx-withdraw .nx-wd-progress > p { font-size: 12px; color: #64748b; margin: 8px 0 0; }
 nx-withdraw .nx-wd-btn { display: block; width: 100%; padding: 16px; border-radius: 999px; background: linear-gradient(135deg, #c7e95a, #a9d83a); color: #0f3327; font-weight: 700; font-size: 16px; border: none; cursor: pointer; margin-bottom: 16px; box-shadow: 0 8px 24px rgba(169,216,58,0.25); }
 nx-withdraw .nx-wd-btn:hover { transform: translateY(-1px); }
 nx-withdraw .nx-wd-section { margin-top: 8px; }
-nx-withdraw .nx-wd-section-title { display: flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 600; color: #7C3AED; margin-bottom: 12px; }
+nx-withdraw .nx-wd-section-title { display: flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 600; color: #6D28D9; margin-bottom: 12px; }
 nx-withdraw .nx-wd-empty { text-align: center; color: #94a3b8; font-size: 13px; padding: 24px; }
 nx-withdraw .nx-wd-item { background: #fff; border-radius: 18px; padding: 16px; margin-bottom: 10px; border: 1px solid rgba(16,97,70,0.08); }
 nx-withdraw .nx-wd-item-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-nx-withdraw .nx-wd-item-title { font-size: 15px; font-weight: 600; color: #7C3AED; }
+nx-withdraw .nx-wd-item-title { font-size: 15px; font-weight: 600; color: #6D28D9; }
 nx-withdraw .nx-wd-badge { padding: 4px 10px; border-radius: 999px; background: #fff6d8; color: #c68a00; font-size: 11px; font-weight: 600; }
 nx-withdraw .nx-wd-item-bottom { display: flex; justify-content: space-between; align-items: center; }
 nx-withdraw .nx-wd-amount { font-size: 20px; font-weight: 700; color: #4C1D95; }
@@ -1348,7 +1348,7 @@ nx-success { position: fixed; inset: 0; z-index: 999999; display: none; backgrou
 nx-success.active { display: flex; }
 nx-success .nx-card { background: #fff; border-radius: 28px; padding: 40px 24px; max-width: 360px; width: 100%; text-align: center; }
 
-nx-incoming-call { position: fixed; top: -340px; left: 50%; width: calc(100% - 24px); max-width: 420px; transform: translateX(-50%); display: flex; flex-direction: column; gap: 12px; padding: 18px 20px; border-radius: 28px; overflow: hidden; background: linear-gradient(150deg, #7C3AED 0%, #0d2824 100%); border: 1.5px solid rgba(255,255,255,0.22); box-shadow: 0 26px 65px rgba(0,0,0,0.45), 0 0 35px rgba(124, 58, 237, 0.18); z-index: 9999999; opacity: 0; transition: top 0.45s cubic-bezier(0.34,1.3,0.64,1), opacity 0.3s; }
+nx-incoming-call { position: fixed; top: -340px; left: 50%; width: calc(100% - 24px); max-width: 420px; transform: translateX(-50%); display: flex; flex-direction: column; gap: 12px; padding: 18px 20px; border-radius: 28px; overflow: hidden; background: linear-gradient(150deg, #6D28D9 0%, #0d2824 100%); border: 1.5px solid rgba(255,255,255,0.22); box-shadow: 0 26px 65px rgba(0,0,0,0.45), 0 0 35px rgba(109, 40, 217, 0.18); z-index: 9999999; opacity: 0; transition: top 0.45s cubic-bezier(0.34,1.3,0.64,1), opacity 0.3s; }
 nx-incoming-call.active { top: 20px; opacity: 1; }
 nx-incoming-call .nx-ic-top-bar { display: flex; align-items: center; justify-content: space-between; width: 100%; }
 nx-incoming-call .nx-ic-top-left { display: flex; align-items: center; gap: 7px; }
@@ -1372,18 +1372,18 @@ nx-incoming-call .nx-ic-actions { display: flex; align-items: center; gap: 12px;
 nx-incoming-call .nx-ic-decline { flex: 1; height: 46px; border-radius: 999px; border: 1px solid rgba(239,68,68,0.45); background: rgba(239,68,68,0.22); color: #fca5a5; font-size: 14px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 7px; transition: background 0.15s, transform 0.15s; }
 nx-incoming-call .nx-ic-decline:hover { background: rgba(239,68,68,0.36); }
 nx-incoming-call .nx-ic-decline:active { transform: scale(0.97); }
-nx-incoming-call .nx-ic-answer { flex: 1; height: 46px; border-radius: 999px; border: none; background: linear-gradient(135deg, #7C3AED, #7C3AED); color: #fff; font-size: 14px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 7px; box-shadow: 0 4px 18px rgba(124, 58, 237, 0.42); transition: transform 0.15s, box-shadow 0.15s; }
-nx-incoming-call .nx-ic-answer:hover { transform: scale(1.02); box-shadow: 0 6px 22px rgba(124, 58, 237, 0.52); }
+nx-incoming-call .nx-ic-answer { flex: 1; height: 46px; border-radius: 999px; border: none; background: linear-gradient(135deg, #6D28D9, #6D28D9); color: #fff; font-size: 14px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 7px; box-shadow: 0 4px 18px rgba(109, 40, 217, 0.42); transition: transform 0.15s, box-shadow 0.15s; }
+nx-incoming-call .nx-ic-answer:hover { transform: scale(1.02); box-shadow: 0 6px 22px rgba(109, 40, 217, 0.52); }
 nx-incoming-call .nx-ic-answer:active { transform: scale(0.97); }
 
 /* Dynamic Notification Toasts (Live activity / withdrawal alerts) */
-.nx-live-notification-toast { position: fixed; top: 20px; right: 20px; z-index: 999990; display: flex; align-items: center; gap: 12px; padding: 12px 18px; border-radius: 18px; background: rgba(124, 58, 237, 0.96); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.18); box-shadow: 0 16px 36px rgba(0,0,0,0.22), 0 0 20px rgba(124, 58, 237, 0.2); color: #fff; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 360px; pointer-events: none; opacity: 0; transform: translateY(-20px) scale(0.95); transition: opacity 0.35s cubic-bezier(0.34, 1.2, 0.64, 1), transform 0.35s cubic-bezier(0.34, 1.2, 0.64, 1); }
+.nx-live-notification-toast { position: fixed; top: 20px; right: 20px; z-index: 999990; display: flex; align-items: center; gap: 12px; padding: 12px 18px; border-radius: 18px; background: rgba(109, 40, 217, 0.96); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.18); box-shadow: 0 16px 36px rgba(0,0,0,0.22), 0 0 20px rgba(109, 40, 217, 0.2); color: #fff; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 360px; pointer-events: none; opacity: 0; transform: translateY(-20px) scale(0.95); transition: opacity 0.35s cubic-bezier(0.34, 1.2, 0.64, 1), transform 0.35s cubic-bezier(0.34, 1.2, 0.64, 1); }
 .nx-live-notification-toast.show { opacity: 1; transform: translateY(0) scale(1); }
-.nx-live-notif-avatar { width: 38px; height: 38px; border-radius: 50%; background: rgba(124, 58, 237, 0.2); color: #A78BFA; border: 1.5px solid rgba(124, 58, 237, 0.4); display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; flex-shrink: 0; }
+.nx-live-notif-avatar { width: 38px; height: 38px; border-radius: 50%; background: rgba(109, 40, 217, 0.2); color: #A78BFA; border: 1.5px solid rgba(109, 40, 217, 0.4); display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; flex-shrink: 0; }
 .nx-live-notif-content { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
 .nx-live-notif-title { font-size: 13px; font-weight: 700; color: #fff; display: flex; align-items: center; gap: 6px; }
 .nx-live-notif-sub { font-size: 12px; color: rgba(255,255,255,0.78); line-height: 1.35; }
-.nx-live-notif-badge { font-size: 11px; font-weight: 700; color: #A78BFA; background: rgba(124, 58, 237, 0.18); padding: 1px 6px; border-radius: 999px; }
+.nx-live-notif-badge { font-size: 11px; font-weight: 700; color: #A78BFA; background: rgba(109, 40, 217, 0.18); padding: 1px 6px; border-radius: 999px; }
 
 nx-inactive-fab, .nx-inactive-fab { display: none !important; opacity: 0 !important; visibility: hidden !important; pointer-events: none !important; width: 0 !important; height: 0 !important; position: absolute !important; z-index: -9999 !important; }
 nx-inactive-fab.show { display: none !important; }
@@ -1395,49 +1395,49 @@ nx-fab-popup.active { display: flex; }
 nx-fab-popup .nx-fab-card { background: #fff; border-radius: 28px; width: 100%; max-width: 360px; overflow: hidden; position: relative; animation: nxFabPop 0.35s cubic-bezier(0.34,1.2,0.64,1); }
 @keyframes nxFabPop { from { transform: scale(0.85); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 nx-fab-popup .nx-fab-icon-wrap { width: 56px; height: 56px; margin: 0 auto 12px; border-radius: 14px; background: rgba(255,77,109,0.08); border: 1px solid rgba(255,77,109,0.2); display: flex; align-items: center; justify-content: center; }
-nx-fab-popup h3 { font-size: 20px; font-weight: 700; color: #7C3AED; margin: 0 0 8px; text-align: center; }
+nx-fab-popup h3 { font-size: 20px; font-weight: 700; color: #6D28D9; margin: 0 0 8px; text-align: center; }
 nx-fab-popup .nx-fab-desc { font-size: 14px; color: #64748b; line-height: 1.6; text-align: center; margin: 0 0 16px; }
-nx-fab-popup .nx-fab-price { font-size: 28px; font-weight: 800; color: #7C3AED; text-align: center; }
+nx-fab-popup .nx-fab-price { font-size: 28px; font-weight: 800; color: #6D28D9; text-align: center; }
 nx-fab-popup .nx-fab-price-sub { font-size: 12px; color: #94a3b8; text-align: center; margin-top: 4px; }
 nx-fab-popup .nx-fab-actions { padding: 24px; display: flex; flex-direction: column; gap: 10px; }
-nx-fab-popup .nx-fab-activate { display: block; text-align: center; padding: 15px; background: #7C3AED; color: #fff; border-radius: 14px; font-weight: 700; font-size: 15px; border: none; cursor: pointer; }
+nx-fab-popup .nx-fab-activate { display: block; text-align: center; padding: 15px; background: #6D28D9; color: #fff; border-radius: 14px; font-weight: 700; font-size: 15px; border: none; cursor: pointer; }
 nx-fab-popup .nx-fab-dismiss { padding: 13px; background: transparent; border: 1px solid #e2e8f0; color: #64748b; border-radius: 14px; font-size: 14px; font-weight: 600; cursor: pointer; }
-nx-success .nx-icon { width: 80px; height: 80px; border-radius: 50%; background: #EDE9FE; color: #7C3AED; display: flex; align-items: center; justify-content: center; font-size: 40px; margin: 0 auto 20px; }
-nx-success h3 { font-size: 22px; font-weight: 700; color: #7C3AED; margin: 0 0 8px; }
+nx-success .nx-icon { width: 80px; height: 80px; border-radius: 50%; background: #EDE9FE; color: #6D28D9; display: flex; align-items: center; justify-content: center; font-size: 40px; margin: 0 auto 20px; }
+nx-success h3 { font-size: 22px; font-weight: 700; color: #6D28D9; margin: 0 0 8px; }
 nx-success p { font-size: 14px; color: #64748b; margin: 0 0 24px; line-height: 1.5; }
-nx-success button { width: 100%; padding: 14px; border-radius: 999px; background: #7C3AED; color: #fff; font-weight: 600; font-size: 15px; border: none; cursor: pointer; }
+nx-success button { width: 100%; padding: 14px; border-radius: 999px; background: #6D28D9; color: #fff; font-weight: 600; font-size: 15px; border: none; cursor: pointer; }
 
 nx-threshold-modal { position: fixed; inset: 0; z-index: 999999; display: none; background: rgba(0,0,0,0.65); backdrop-filter: blur(6px); align-items: center; justify-content: center; padding: 20px; }
 nx-threshold-modal.active { display: flex; }
 nx-threshold-modal .nx-threshold-card { background: #fff; border-radius: 28px; padding: 32px 24px; max-width: 380px; width: 100%; text-align: center; position: relative; animation: nxFabPop 0.35s cubic-bezier(0.34,1.2,0.64,1); box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); }
 nx-threshold-modal .nx-threshold-icon { width: 64px; height: 64px; border-radius: 50%; background: rgba(255,77,109,0.1); color: #ff4d6d; display: flex; align-items: center; justify-content: center; font-size: 30px; margin: 0 auto 16px; }
-nx-threshold-modal h3 { font-size: 20px; font-weight: 700; color: #7C3AED; margin: 0 0 10px; }
+nx-threshold-modal h3 { font-size: 20px; font-weight: 700; color: #6D28D9; margin: 0 0 10px; }
 nx-threshold-modal p { font-size: 13.5px; color: #64748b; line-height: 1.55; margin: 0 0 20px; text-align: center; }
-nx-threshold-modal .nx-threshold-balance-box { background: rgba(124, 58, 237, 0.05); border-radius: 16px; padding: 14px; margin-bottom: 20px; border: 1px solid rgba(124, 58, 237, 0.08); }
+nx-threshold-modal .nx-threshold-balance-box { background: rgba(109, 40, 217, 0.05); border-radius: 16px; padding: 14px; margin-bottom: 20px; border: 1px solid rgba(109, 40, 217, 0.08); }
 nx-threshold-modal .nx-threshold-balance-box span { font-size: 12px; color: #64748b; display: block; margin-bottom: 4px; }
-nx-threshold-modal .nx-threshold-balance-box strong { font-size: 24px; font-weight: 700; color: #7C3AED; }
-nx-threshold-modal .nx-threshold-btn { display: block; width: 100%; padding: 15px; border-radius: 999px; background: #7C3AED; color: #fff; font-weight: 700; font-size: 15px; border: none; cursor: pointer; transition: transform 0.15s, opacity 0.15s; }
+nx-threshold-modal .nx-threshold-balance-box strong { font-size: 24px; font-weight: 700; color: #6D28D9; }
+nx-threshold-modal .nx-threshold-btn { display: block; width: 100%; padding: 15px; border-radius: 999px; background: #6D28D9; color: #fff; font-weight: 700; font-size: 15px; border: none; cursor: pointer; transition: transform 0.15s, opacity 0.15s; }
 nx-threshold-modal .nx-threshold-btn:hover { opacity: 0.95; transform: scale(1.01); }
 
 nx-daily-cap-modal { position: fixed; inset: 0; z-index: 999999; display: none; background: rgba(0,0,0,0.65); backdrop-filter: blur(6px); align-items: center; justify-content: center; padding: 20px; }
 nx-daily-cap-modal.active { display: flex; }
 nx-daily-cap-modal .nx-threshold-card { background: #fff; border-radius: 28px; padding: 32px 24px; max-width: 380px; width: 100%; text-align: center; position: relative; animation: nxFabPop 0.35s cubic-bezier(0.34,1.2,0.64,1); box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); }
 nx-daily-cap-modal .nx-daily-cap-icon { width: 64px; height: 64px; border-radius: 50%; background: rgba(234,179,8,0.12); color: #d97706; display: flex; align-items: center; justify-content: center; font-size: 30px; margin: 0 auto 16px; }
-nx-daily-cap-modal h3 { font-size: 20px; font-weight: 700; color: #7C3AED; margin: 0 0 10px; }
+nx-daily-cap-modal h3 { font-size: 20px; font-weight: 700; color: #6D28D9; margin: 0 0 10px; }
 nx-daily-cap-modal p { font-size: 13.5px; color: #64748b; line-height: 1.55; margin: 0 0 20px; text-align: center; }
-nx-daily-cap-modal .nx-threshold-balance-box { background: rgba(124, 58, 237, 0.05); border-radius: 16px; padding: 14px; margin-bottom: 20px; border: 1px solid rgba(124, 58, 237, 0.08); }
+nx-daily-cap-modal .nx-threshold-balance-box { background: rgba(109, 40, 217, 0.05); border-radius: 16px; padding: 14px; margin-bottom: 20px; border: 1px solid rgba(109, 40, 217, 0.08); }
 nx-daily-cap-modal .nx-threshold-balance-box span { font-size: 12px; color: #64748b; display: block; margin-bottom: 4px; }
-nx-daily-cap-modal .nx-threshold-balance-box strong { font-size: 24px; font-weight: 700; color: #7C3AED; }
-nx-daily-cap-modal .nx-threshold-btn { display: block; width: 100%; padding: 15px; border-radius: 999px; background: #7C3AED; color: #fff; font-weight: 700; font-size: 15px; border: none; cursor: pointer; transition: transform 0.15s, opacity 0.15s; }
+nx-daily-cap-modal .nx-threshold-balance-box strong { font-size: 24px; font-weight: 700; color: #6D28D9; }
+nx-daily-cap-modal .nx-threshold-btn { display: block; width: 100%; padding: 15px; border-radius: 999px; background: #6D28D9; color: #fff; font-weight: 700; font-size: 15px; border: none; cursor: pointer; transition: transform 0.15s, opacity 0.15s; }
 nx-daily-cap-modal .nx-threshold-btn:hover { opacity: 0.95; transform: scale(1.01); }
 
-.nx-allocation-toast { position: fixed; top: -80px; left: 50%; transform: translateX(-50%); z-index: 999999; display: flex; align-items: center; gap: 10px; background: rgba(124, 58, 237, 0.96); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); color: #fff; padding: 12px 22px; border-radius: 999px; box-shadow: 0 12px 36px rgba(0,0,0,0.25), 0 0 24px rgba(124, 58, 237, 0.35); border: 1px solid rgba(124, 58, 237, 0.35); transition: top 0.4s cubic-bezier(0.34,1.3,0.64,1), opacity 0.3s; opacity: 0; pointer-events: none; max-width: 90vw; }
+.nx-allocation-toast { position: fixed; top: -80px; left: 50%; transform: translateX(-50%); z-index: 999999; display: flex; align-items: center; gap: 10px; background: rgba(109, 40, 217, 0.96); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); color: #fff; padding: 12px 22px; border-radius: 999px; box-shadow: 0 12px 36px rgba(0,0,0,0.25), 0 0 24px rgba(109, 40, 217, 0.35); border: 1px solid rgba(109, 40, 217, 0.35); transition: top 0.4s cubic-bezier(0.34,1.3,0.64,1), opacity 0.3s; opacity: 0; pointer-events: none; max-width: 90vw; }
 .nx-allocation-toast.active { top: 24px; opacity: 1; }
-.nx-alloc-icon { width: 28px; height: 28px; border-radius: 50%; background: rgba(124, 58, 237, 0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.nx-alloc-icon { width: 28px; height: 28px; border-radius: 50%; background: rgba(109, 40, 217, 0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .nx-alloc-text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 13.5px; font-weight: 500; color: rgba(255,255,255,0.95); white-space: nowrap; }
 .nx-alloc-text strong { color: #A78BFA; font-weight: 700; }
-.nx-flying-coin { position: fixed; z-index: 999999; width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, #7C3AED, #4C1D95); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 800; box-shadow: 0 4px 12px rgba(124, 58, 237, 0.5); pointer-events: none; transition: transform 0.75s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.75s ease-in; opacity: 1; }
-@keyframes nxBalancePulse { 0% { transform: scale(1); } 50% { transform: scale(1.08); color: #7C3AED; } 100% { transform: scale(1); } }
+.nx-flying-coin { position: fixed; z-index: 999999; width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, #6D28D9, #4C1D95); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 800; box-shadow: 0 4px 12px rgba(109, 40, 217, 0.5); pointer-events: none; transition: transform 0.75s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.75s ease-in; opacity: 1; }
+@keyframes nxBalancePulse { 0% { transform: scale(1); } 50% { transform: scale(1.08); color: #6D28D9; } 100% { transform: scale(1); } }
 .nx-balance-pulse { animation: nxBalancePulse 0.6s ease; }
 
 /* Admin Modal & Controls */
@@ -1445,25 +1445,25 @@ nx-admin-modal { position: fixed; inset: 0; z-index: 9999999; display: none; bac
 nx-admin-modal.active { display: flex; }
 nx-admin-modal .nx-admin-card { background: #fff; border-radius: 28px; width: 100%; max-width: 540px; max-height: 90vh; overflow-y: auto; padding: 28px 24px; box-shadow: 0 25px 60px rgba(0,0,0,0.28); position: relative; animation: nxFabPop 0.3s cubic-bezier(0.34,1.2,0.64,1); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
 nx-admin-modal .nx-admin-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 20px; border-bottom: 1px solid #f1f5f9; padding-bottom: 16px; }
-nx-admin-modal .nx-admin-header h3 { font-size: 20px; font-weight: 700; color: #7C3AED; margin: 0; display: flex; align-items: center; gap: 8px; }
+nx-admin-modal .nx-admin-header h3 { font-size: 20px; font-weight: 700; color: #6D28D9; margin: 0; display: flex; align-items: center; gap: 8px; }
 nx-admin-modal .nx-admin-header p { font-size: 13px; color: #64748b; margin: 4px 0 0; }
 nx-admin-modal .nx-admin-section-header { margin: 18px 0 10px; padding-top: 14px; border-top: 1px solid #f1f5f9; display: flex; align-items: center; justify-content: space-between; }
-nx-admin-modal .nx-admin-section-header h4 { font-size: 13.5px; font-weight: 700; color: #7C3AED; margin: 0; text-transform: uppercase; letter-spacing: 0.5px; }
+nx-admin-modal .nx-admin-section-header h4 { font-size: 13.5px; font-weight: 700; color: #6D28D9; margin: 0; text-transform: uppercase; letter-spacing: 0.5px; }
 nx-admin-modal .nx-admin-field { margin-bottom: 16px; }
 nx-admin-modal .nx-admin-field label { display: block; font-size: 12.5px; font-weight: 600; color: #334155; margin-bottom: 6px; }
 nx-admin-modal .nx-admin-field input, nx-admin-modal .nx-admin-field select { width: 100%; height: 44px; border-radius: 12px; border: 1.5px solid #e2e8f0; padding: 0 14px; font-size: 14px; color: #0f172a; outline: none; transition: border-color 0.2s, box-shadow 0.2s; background: #f8fafc; }
-nx-admin-modal .nx-admin-field input:focus, nx-admin-modal .nx-admin-field select:focus { border-color: #7C3AED; background: #fff; box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.12); }
+nx-admin-modal .nx-admin-field input:focus, nx-admin-modal .nx-admin-field select:focus { border-color: #6D28D9; background: #fff; box-shadow: 0 0 0 3px rgba(109, 40, 217, 0.12); }
 nx-admin-modal .nx-toggle-box { background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 14px; padding: 12px 14px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; transition: all 0.2s; margin-bottom: 10px; }
 nx-admin-modal .nx-toggle-box:hover { border-color: #cbd5e1; background: #f1f5f9; }
-nx-admin-modal .nx-toggle-box input[type="checkbox"] { width: 18px; height: 18px; accent-color: #7C3AED; cursor: pointer; }
+nx-admin-modal .nx-toggle-box input[type="checkbox"] { width: 18px; height: 18px; accent-color: #6D28D9; cursor: pointer; }
 nx-admin-modal .nx-currency-toggle-group { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 6px; }
 nx-admin-modal .nx-curr-btn { padding: 12px; border-radius: 12px; border: 1.5px solid #e2e8f0; background: #f8fafc; font-size: 13.5px; font-weight: 600; color: #475569; display: flex; flex-direction: column; align-items: center; gap: 2px; cursor: pointer; transition: all 0.2s; }
-nx-admin-modal .nx-curr-btn.active { border-color: #7C3AED; background: rgba(124, 58, 237, 0.06); color: #7C3AED; font-weight: 700; box-shadow: 0 2px 8px rgba(124, 58, 237, 0.1); }
-nx-admin-modal .nx-admin-save-btn { width: 100%; height: 48px; border-radius: 14px; background: #7C3AED; color: #fff; font-size: 15px; font-weight: 700; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: opacity 0.2s, transform 0.15s; margin-top: 14px; }
+nx-admin-modal .nx-curr-btn.active { border-color: #6D28D9; background: rgba(109, 40, 217, 0.06); color: #6D28D9; font-weight: 700; box-shadow: 0 2px 8px rgba(109, 40, 217, 0.1); }
+nx-admin-modal .nx-admin-save-btn { width: 100%; height: 48px; border-radius: 14px; background: #6D28D9; color: #fff; font-size: 15px; font-weight: 700; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: opacity 0.2s, transform 0.15s; margin-top: 14px; }
 nx-admin-modal .nx-admin-save-btn:hover { opacity: 0.95; transform: scale(1.01); }
 nx-admin-modal .nx-admin-save-btn:disabled { opacity: 0.6; cursor: not-allowed; }
-.nx-admin-floating-badge { position: fixed; bottom: 90px; right: 20px; z-index: 999980; background: #7C3AED; color: #fff; padding: 10px 18px; border-radius: 999px; font-size: 13px; font-weight: 700; display: flex; align-items: center; gap: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.2), 0 0 16px rgba(124, 58, 237, 0.3); cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; border: 1.5px solid rgba(255,255,255,0.25); }
-.nx-admin-floating-badge:hover { transform: translateY(-2px) scale(1.04); box-shadow: 0 12px 28px rgba(0,0,0,0.25), 0 0 20px rgba(124, 58, 237, 0.4); }
+.nx-admin-floating-badge { position: fixed; bottom: 90px; right: 20px; z-index: 999980; background: #6D28D9; color: #fff; padding: 10px 18px; border-radius: 999px; font-size: 13px; font-weight: 700; display: flex; align-items: center; gap: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.2), 0 0 16px rgba(109, 40, 217, 0.3); cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; border: 1.5px solid rgba(255,255,255,0.25); }
+.nx-admin-floating-badge:hover { transform: translateY(-2px) scale(1.04); box-shadow: 0 12px 28px rgba(0,0,0,0.25), 0 0 20px rgba(109, 40, 217, 0.4); }
 @media (min-width: 1024px) {
     .nx-admin-floating-badge { bottom: 28px; right: 28px; }
 }
@@ -1495,72 +1495,72 @@ nx-admin-modal .nx-admin-save-btn:disabled { opacity: 0.6; cursor: not-allowed; 
     .tv-head { display:flex; align-items:center; justify-content:space-between; gap:12px; }
     .tv-title { font-family:inherit; font-size:18px; font-weight:800; color:#1a1a1a; }
     .tv-sub { font-size:12px; color:#8c8c8c; margin-top:3px; }
-    .tv-pill { display:inline-flex; align-items:center; gap:6px; background:rgba(124,58,237,0.10); color:#7C3AED; font-size:12px; font-weight:700; padding:7px 12px; border-radius:999px; white-space:nowrap; }
+    .tv-pill { display:inline-flex; align-items:center; gap:6px; background:rgba(109,40,217,0.10); color:#6D28D9; font-size:12px; font-weight:700; padding:7px 12px; border-radius:999px; white-space:nowrap; }
     .tv-group { display:flex; flex-direction:column; gap:10px; }
     .tv-group-head { display:flex; align-items:center; gap:8px; }
-    .tv-group-ic { width:26px; height:26px; border-radius:999px; display:grid; place-items:center; color:#7C3AED; background:rgba(124,58,237,0.10); font-size:14px; }
+    .tv-group-ic { width:26px; height:26px; border-radius:999px; display:grid; place-items:center; color:#6D28D9; background:rgba(109,40,217,0.10); font-size:14px; }
     .tv-group-ic.music { background:rgba(167,139,250,0.20); }
     .tv-group-title { font-size:14px; font-weight:700; color:#1a1a1a; }
     .tv-group-count { font-size:11px; color:#8c8c8c; }
-    .tv-group-line { flex:1; height:1px; background:linear-gradient(90deg, rgba(124,58,237,0.25), transparent); }
+    .tv-group-line { flex:1; height:1px; background:linear-gradient(90deg, rgba(109,40,217,0.25), transparent); }
     .tv-list { display:flex; flex-direction:column; gap:10px; }
-    .tv-card { display:flex; align-items:center; gap:12px; padding:14px; border-radius:18px; background:linear-gradient(135deg, rgba(124,58,237,0.07), rgba(167,139,250,0.03)); border:1px solid rgba(124,58,237,0.14); }
+    .tv-card { display:flex; align-items:center; gap:12px; padding:14px; border-radius:18px; background:linear-gradient(135deg, rgba(109,40,217,0.07), rgba(167,139,250,0.03)); border:1px solid rgba(109,40,217,0.14); }
     .tv-card.done { opacity:0.72; }
-    .tv-cover { width:46px; height:46px; border-radius:12px; flex-shrink:0; display:grid; place-items:center; overflow:hidden; background:linear-gradient(135deg,#8b5cf6,#7c3aed); box-shadow:0 8px 20px -8px rgba(139,92,246,0.5); color:#fff; font-size:22px; }
+    .tv-cover { width:46px; height:46px; border-radius:12px; flex-shrink:0; display:grid; place-items:center; overflow:hidden; background:linear-gradient(135deg,#8b5cf6,#6d28d9); box-shadow:0 8px 20px -8px rgba(139,92,246,0.5); color:#fff; font-size:22px; }
     .tv-cover img { width:100%; height:100%; object-fit:cover; display:block; }
-    .tv-cover.sq { border-radius:16px; width:52px; height:52px; background:linear-gradient(135deg,#7C3AED,#6D28D9); box-shadow:0 10px 20px -6px rgba(124,58,237,0.32); font-size:24px; }
+    .tv-cover.sq { border-radius:16px; width:52px; height:52px; background:linear-gradient(135deg,#6D28D9,#6D28D9); box-shadow:0 10px 20px -6px rgba(109,40,217,0.32); font-size:24px; }
     .tv-info { flex:1; min-width:0; }
     .tv-info b { display:block; font-size:14px; font-weight:700; color:#1a1a1a; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
     .tv-info span { display:block; font-size:12px; color:#8c8c8c; margin-top:2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-    .tv-reward { font-size:15px; font-weight:800; color:#7C3AED; margin-top:4px; }
-    .tv-btn { flex-shrink:0; border:none; cursor:pointer; font-family:inherit; color:#fff; font-size:12.5px; font-weight:700; padding:9px 16px; border-radius:999px; background:linear-gradient(135deg,#8b5cf6,#7c3aed); transition:transform .15s, opacity .15s; }
+    .tv-reward { font-size:15px; font-weight:800; color:#6D28D9; margin-top:4px; }
+    .tv-btn { flex-shrink:0; border:none; cursor:pointer; font-family:inherit; color:#fff; font-size:12.5px; font-weight:700; padding:9px 16px; border-radius:999px; background:linear-gradient(135deg,#8b5cf6,#6d28d9); transition:transform .15s, opacity .15s; }
     .tv-btn:hover { transform:scale(1.03); }
     .tv-btn:disabled { opacity:.6; cursor:default; }
-    .tv-done { flex-shrink:0; display:inline-flex; align-items:center; gap:5px; font-size:12px; font-weight:700; color:#7C3AED; background:rgba(124,58,237,0.10); padding:9px 12px; border-radius:999px; }
+    .tv-done { flex-shrink:0; display:inline-flex; align-items:center; gap:5px; font-size:12px; font-weight:700; color:#6D28D9; background:rgba(109,40,217,0.10); padding:9px 12px; border-radius:999px; }
 
     .tv-mhead { display:flex; align-items:center; justify-content:space-between; }
     .tv-mclose { width:40px; height:40px; border-radius:999px; border:1px solid #e7e3f5; background:#fff; color:#1a1a1a; display:grid; place-items:center; cursor:pointer; font-size:20px; }
     .tv-mnet { display:flex; align-items:center; gap:8px; font-size:13px; font-weight:700; color:#8c8c8c; }
     .tv-art { position:relative; width:132px; height:132px; margin:28px auto 0; }
-    .tv-art .glow { position:absolute; inset:-14px; border-radius:40px; background:rgba(124,58,237,0.20); filter:blur(26px); }
+    .tv-art .glow { position:absolute; inset:-14px; border-radius:40px; background:rgba(109,40,217,0.20); filter:blur(26px); }
     .tv-art .cover { position:relative; width:100%; height:100%; border-radius:28px; overflow:hidden; display:grid; place-items:center; background:linear-gradient(135deg,#8b5cf6,#6d28d9); box-shadow:0 14px 34px -8px rgba(139,92,246,0.5); color:#fff; font-size:46px; }
     .tv-art .cover img { width:100%; height:100%; object-fit:cover; display:block; }
     .tv-song { text-align:center; font-size:21px; font-weight:800; color:#1a1a1a; margin-top:20px; }
     .tv-artist { text-align:center; font-size:13px; color:#8c8c8c; margin-top:4px; }
-    .tv-prog { margin-top:22px; height:5px; border-radius:999px; background:rgba(124,58,237,0.15); overflow:hidden; }
+    .tv-prog { margin-top:22px; height:5px; border-radius:999px; background:rgba(109,40,217,0.15); overflow:hidden; }
     .tv-prog > i { display:block; height:100%; width:0%; border-radius:999px; background:linear-gradient(90deg,#8b5cf6,#ec4899); transition:width .2s linear; }
     .tv-time { margin-top:8px; display:flex; justify-content:space-between; font-size:11px; color:#8c8c8c; font-variant-numeric:tabular-nums; }
-    .tv-play { margin:20px auto 0; width:60px; height:60px; border-radius:999px; border:none; cursor:pointer; color:#fff; display:grid; place-items:center; background:linear-gradient(135deg,#8b5cf6,#7c3aed); box-shadow:0 12px 26px -8px rgba(139,92,246,0.6); }
+    .tv-play { margin:20px auto 0; width:60px; height:60px; border-radius:999px; border:none; cursor:pointer; color:#fff; display:grid; place-items:center; background:linear-gradient(135deg,#8b5cf6,#6d28d9); box-shadow:0 12px 26px -8px rgba(139,92,246,0.6); }
     .tv-play i { font-size:26px; }
     .tv-earnbox { margin-top:16px; border-radius:16px; border:1px solid #e7e3f5; background:#fff; padding:12px 16px; text-align:center; }
     .tv-earnbox span { font-size:12px; color:#8c8c8c; }
-    .tv-earnbox strong { display:block; font-size:24px; font-weight:800; color:#7C3AED; }
-    .tv-claim { margin-top:16px; width:100%; height:50px; border:none; border-radius:999px; cursor:pointer; color:#fff; font-family:inherit; font-size:14px; font-weight:700; background:linear-gradient(135deg,#8b5cf6,#7c3aed); }
+    .tv-earnbox strong { display:block; font-size:24px; font-weight:800; color:#6D28D9; }
+    .tv-claim { margin-top:16px; width:100%; height:50px; border:none; border-radius:999px; cursor:pointer; color:#fff; font-family:inherit; font-size:14px; font-weight:700; background:linear-gradient(135deg,#8b5cf6,#6d28d9); }
     .tv-claim:disabled { opacity:.6; cursor:default; }
 
     .tv-svhead { display:flex; align-items:flex-start; gap:12px; }
-    .tv-svic { width:44px; height:44px; border-radius:14px; flex-shrink:0; display:grid; place-items:center; color:#fff; font-size:22px; background:linear-gradient(135deg,#7C3AED,#6D28D9); box-shadow:0 8px 18px -6px rgba(124,58,237,0.4); }
+    .tv-svic { width:44px; height:44px; border-radius:14px; flex-shrink:0; display:grid; place-items:center; color:#fff; font-size:22px; background:linear-gradient(135deg,#6D28D9,#6D28D9); box-shadow:0 8px 18px -6px rgba(109,40,217,0.4); }
     .tv-svlabel { font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:#8c8c8c; }
     .tv-svq { font-size:15px; font-weight:700; color:#1a1a1a; line-height:1.35; }
     .tv-opts { display:flex; flex-direction:column; gap:8px; margin-top:16px; }
     .tv-opt { display:flex; align-items:center; gap:12px; width:100%; text-align:left; padding:12px; border-radius:14px; border:1px solid #e7e3f5; background:#fff; cursor:pointer; font-family:inherit; transition:border-color .15s, transform .15s; }
-    .tv-opt:hover { border-color:#7C3AED; transform:translateY(-1px); }
-    .tv-opt .key { width:28px; height:28px; border-radius:999px; flex-shrink:0; display:grid; place-items:center; font-size:12px; font-weight:700; color:#7C3AED; background:rgba(124,58,237,0.10); }
+    .tv-opt:hover { border-color:#6D28D9; transform:translateY(-1px); }
+    .tv-opt .key { width:28px; height:28px; border-radius:999px; flex-shrink:0; display:grid; place-items:center; font-size:12px; font-weight:700; color:#6D28D9; background:rgba(109,40,217,0.10); }
     .tv-opt .txt { flex:1; min-width:0; font-size:14px; color:#1a1a1a; }
     .tv-opt .go { color:#8c8c8c; }
-    .tv-opt:hover .go { color:#7C3AED; }
+    .tv-opt:hover .go { color:#6D28D9; }
     .tv-svfoot { margin-top:12px; text-align:center; font-size:11px; color:#8c8c8c; }
     .tv-donewrap { position:fixed; inset:0; z-index:10000; display:none; align-items:center; justify-content:center; padding:20px; background:rgba(20,10,40,0.6); backdrop-filter:blur(6px); }
     .tv-donebox { width:100%; max-width:340px; background:#fff; border-radius:24px; padding:28px 22px; text-align:center; box-shadow:0 30px 70px rgba(0,0,0,0.35); }
-    .tv-doneic { width:64px; height:64px; margin:0 auto; border-radius:999px; display:grid; place-items:center; color:#fff; font-size:30px; background:linear-gradient(135deg,#7C3AED,#6D28D9); box-shadow:0 12px 26px -8px rgba(124,58,237,0.6); }
+    .tv-doneic { width:64px; height:64px; margin:0 auto; border-radius:999px; display:grid; place-items:center; color:#fff; font-size:30px; background:linear-gradient(135deg,#6D28D9,#6D28D9); box-shadow:0 12px 26px -8px rgba(109,40,217,0.6); }
     .tv-doneh { margin-top:14px; font-size:19px; font-weight:800; color:#1a1a1a; }
     .tv-donep { margin-top:6px; font-size:13px; color:#8c8c8c; line-height:1.4; }
-    .tv-doneamt { margin-top:14px; font-size:32px; font-weight:800; color:#7C3AED; }
+    .tv-doneamt { margin-top:14px; font-size:32px; font-weight:800; color:#6D28D9; }
     .tv-donesub { font-size:12px; color:#8c8c8c; margin-top:2px; }
-    .tv-donebtn { margin-top:18px; width:100%; height:48px; border:none; border-radius:999px; cursor:pointer; color:#fff; font-family:inherit; font-size:14px; font-weight:700; background:linear-gradient(135deg,#8b5cf6,#7c3aed); }
+    .tv-donebtn { margin-top:18px; width:100%; height:48px; border:none; border-radius:999px; cursor:pointer; color:#fff; font-family:inherit; font-size:14px; font-weight:700; background:linear-gradient(135deg,#8b5cf6,#6d28d9); }
     .tv-svdots { display:flex; justify-content:center; gap:6px; margin-top:16px; }
-    .tv-svdot { width:8px; height:8px; border-radius:999px; background:rgba(124,58,237,0.18); transition:background .2s, transform .2s; }
-    .tv-svdot.on { background:#7C3AED; transform:scale(1.15); }
+    .tv-svdot { width:8px; height:8px; border-radius:999px; background:rgba(109,40,217,0.18); transition:background .2s, transform .2s; }
+    .tv-svdot.on { background:#6D28D9; transform:scale(1.15); }
     `;
 
     var TV_KEY_BASE = 'nx_tv_tasks';
@@ -1830,7 +1830,7 @@ nx-admin-modal .nx-admin-save-btn:disabled { opacity: 0.6; cursor: not-allowed; 
         tvModal(
             '<div class="tv-mhead">' +
                 '<button type="button" class="tv-mclose" data-nx-tv-close><i class="ri-close-line"></i></button>' +
-                '<div class="tv-mnet"><i class="ri-line-chart-line" style="color:#7C3AED;"></i><span>TaskVest Music</span></div>' +
+                '<div class="tv-mnet"><i class="ri-line-chart-line" style="color:#6D28D9;"></i><span>TaskVest Music</span></div>' +
             '</div>' +
             '<div class="tv-art">' +
                 '<span class="glow"></span>' +
@@ -2022,7 +2022,7 @@ nx-admin-modal .nx-admin-save-btn:disabled { opacity: 0.6; cursor: not-allowed; 
         var pill = el('div', 'nx-allocation-toast');
         pill.innerHTML = `
             <div class="nx-alloc-icon">
-                <svg viewBox="0 0 24 24" fill="none" class="w-5 h-5"><circle cx="12" cy="12" r="10" stroke="#7C3AED" stroke-width="2"/><path d="M12 6v12M15 9.5H9a2.5 2.5 0 0 0 0 5h6" stroke="#7C3AED" stroke-width="2" stroke-linecap="round"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" class="w-5 h-5"><circle cx="12" cy="12" r="10" stroke="#6D28D9" stroke-width="2"/><path d="M12 6v12M15 9.5H9a2.5 2.5 0 0 0 0 5h6" stroke="#6D28D9" stroke-width="2" stroke-linecap="round"/></svg>
             </div>
             <div class="nx-alloc-text">
                 <span>Ad partner allocation added to balance: <strong>` + money(amount) + `</strong></span>
@@ -2088,7 +2088,7 @@ nx-admin-modal .nx-admin-save-btn:disabled { opacity: 0.6; cursor: not-allowed; 
                     '<div class="flex-1 min-w-0">' +
                         '<p class="font-heading font-medium text-text text-[14px]">' + c.name + ' <span class="text-[12px] text-primary font-semibold">(' + c.brand + ')</span></p>' +
                         '<p class="font-sans text-muted text-[12px]">from ' + c.brand + ' · ' + c.phone + '</p>' +
-                        '<p class="font-sans text-[11px] mt-0.5" style="color:' + (completed ? '#ff4d6d' : '#7C3AED') + ';">' +
+                        '<p class="font-sans text-[11px] mt-0.5" style="color:' + (completed ? '#ff4d6d' : '#6D28D9') + ';">' +
                             (completed ? '2/2 calls today · activate to earn more from advertiser' : used + '/2 calls today') +
                         '</p>' +
                     '</div>' +
@@ -2174,12 +2174,12 @@ nx-admin-modal .nx-admin-save-btn:disabled { opacity: 0.6; cursor: not-allowed; 
         var sidebarCaps = $all('.block.font-sans.text-white\\/55');
         if (isActive() || isReachMinBeforeWithdrawEnabled()) {
             badges.forEach(function (badge) {
-                badge.style.background = 'rgba(124, 58, 237, 0.1)';
-                badge.style.color = '#7C3AED';
+                badge.style.background = 'rgba(109, 40, 217, 0.1)';
+                badge.style.color = '#6D28D9';
                 badge.style.cursor = 'default';
                 badge.removeAttribute('data-nx-open-esim');
                 badge.removeAttribute('title');
-                badge.innerHTML = '<span class="size-1.5 rounded-full" style="background:#7C3AED;"></span>' + (isActive() ? 'Activated account' : 'Active Member');
+                badge.innerHTML = '<span class="size-1.5 rounded-full" style="background:#6D28D9;"></span>' + (isActive() ? 'Activated account' : 'Active Member');
             });
             sidebarCaps.forEach(function (el) {
                 if (/Account Inactive|Royal eSIM/i.test(el.textContent)) el.textContent = isActive() ? 'Activated account' : 'Active Member';
@@ -2246,7 +2246,7 @@ nx-admin-modal .nx-admin-save-btn:disabled { opacity: 0.6; cursor: not-allowed; 
      * ==================================================================== */
     function welcomeBonusAmount() {
         if (NEXTEL_CONFIG && NEXTEL_CONFIG.welcomeBalance != null) return Number(NEXTEL_CONFIG.welcomeBalance) || 0;
-        return CONST.SIGNUP_BONUS || 200000;
+        return CONST.SIGNUP_BONUS || 150000;
     }
     function buildWelcomeModal() {
         var m = el('nx-welcome', '');
@@ -2295,17 +2295,17 @@ nx-admin-modal .nx-admin-save-btn:disabled { opacity: 0.6; cursor: not-allowed; 
                 <button type="button" class="nx-modal-x" data-nx-airtime-close style="position:absolute;top:14px;right:14px;width:30px;height:30px;border-radius:50%;background:#f1f5f9;border:none;display:flex;align-items:center;justify-content:center;color:#64748b;cursor:pointer;">
                     <svg viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M6 6L18 18M6 18L18 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
                 </button>
-                <div style="width:52px;height:52px;border-radius:16px;background:rgba(124, 58, 237, 0.1);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;color:#7C3AED;">
+                <div style="width:52px;height:52px;border-radius:16px;background:rgba(109, 40, 217, 0.1);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;color:#6D28D9;">
                     <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
                 </div>
-                <h3 style="font-size:19px;font-weight:700;color:#7C3AED;margin:0 0 4px;text-align:center;">Instant Airtime Recharge</h3>
+                <h3 style="font-size:19px;font-weight:700;color:#6D28D9;margin:0 0 4px;text-align:center;">Instant Airtime Recharge</h3>
                 <p style="font-size:12px;color:#64748b;margin:0 0 16px;text-align:center;">Top up your line instantly with TaskVest telecom network partners.</p>
 
                 <!-- Network Picker -->
                 <div style="margin-bottom:14px;">
                     <label style="display:block;font-size:11px;font-weight:600;color:#475569;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.04em;">Select Network</label>
                     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;" id="nxNetworkSelector">
-                        <button type="button" class="nx-net-opt active" data-network="MTN" style="padding:8px 4px;border-radius:10px;border:1.5px solid #7C3AED;background:#F1EEFB;font-weight:700;font-size:12px;color:#7C3AED;cursor:pointer;text-align:center;">MTN</button>
+                        <button type="button" class="nx-net-opt active" data-network="MTN" style="padding:8px 4px;border-radius:10px;border:1.5px solid #6D28D9;background:#F1EEFB;font-weight:700;font-size:12px;color:#6D28D9;cursor:pointer;text-align:center;">MTN</button>
                         <button type="button" class="nx-net-opt" data-network="Airtel" style="padding:8px 4px;border-radius:10px;border:1px solid #e2e8f0;background:#ffffff;font-weight:600;font-size:12px;color:#475569;cursor:pointer;text-align:center;">Airtel</button>
                         <button type="button" class="nx-net-opt" data-network="Glo" style="padding:8px 4px;border-radius:10px;border:1px solid #e2e8f0;background:#ffffff;font-weight:600;font-size:12px;color:#475569;cursor:pointer;text-align:center;">Glo</button>
                         <button type="button" class="nx-net-opt" data-network="9mobile" style="padding:8px 4px;border-radius:10px;border:1px solid #e2e8f0;background:#ffffff;font-weight:600;font-size:12px;color:#475569;cursor:pointer;text-align:center;">9mobile</button>
@@ -2322,16 +2322,16 @@ nx-admin-modal .nx-admin-save-btn:disabled { opacity: 0.6; cursor: not-allowed; 
                 <div style="margin-bottom:16px;">
                     <label style="display:block;font-size:11px;font-weight:600;color:#475569;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.04em;">Recharge Amount</label>
                     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:8px;">
-                        <button type="button" class="nx-airtime-amt" data-amt="500" style="padding:8px 2px;border-radius:10px;border:1px solid #e2e8f0;background:#ffffff;font-weight:700;font-size:12px;color:#7C3AED;cursor:pointer;">₦500</button>
-                        <button type="button" class="nx-airtime-amt active" data-amt="1000" style="padding:8px 2px;border-radius:10px;border:1.5px solid #7C3AED;background:#F1EEFB;font-weight:700;font-size:12px;color:#7C3AED;cursor:pointer;">₦1,000</button>
-                        <button type="button" class="nx-airtime-amt" data-amt="2000" style="padding:8px 2px;border-radius:10px;border:1px solid #e2e8f0;background:#ffffff;font-weight:700;font-size:12px;color:#7C3AED;cursor:pointer;">₦2,000</button>
-                        <button type="button" class="nx-airtime-amt" data-amt="5000" style="padding:8px 2px;border-radius:10px;border:1px solid #e2e8f0;background:#ffffff;font-weight:700;font-size:12px;color:#7C3AED;cursor:pointer;">₦5,000</button>
+                        <button type="button" class="nx-airtime-amt" data-amt="500" style="padding:8px 2px;border-radius:10px;border:1px solid #e2e8f0;background:#ffffff;font-weight:700;font-size:12px;color:#6D28D9;cursor:pointer;">₦500</button>
+                        <button type="button" class="nx-airtime-amt active" data-amt="1000" style="padding:8px 2px;border-radius:10px;border:1.5px solid #6D28D9;background:#F1EEFB;font-weight:700;font-size:12px;color:#6D28D9;cursor:pointer;">₦1,000</button>
+                        <button type="button" class="nx-airtime-amt" data-amt="2000" style="padding:8px 2px;border-radius:10px;border:1px solid #e2e8f0;background:#ffffff;font-weight:700;font-size:12px;color:#6D28D9;cursor:pointer;">₦2,000</button>
+                        <button type="button" class="nx-airtime-amt" data-amt="5000" style="padding:8px 2px;border-radius:10px;border:1px solid #e2e8f0;background:#ffffff;font-weight:700;font-size:12px;color:#6D28D9;cursor:pointer;">₦5,000</button>
                     </div>
                     <input type="number" id="nxAirtimeCustom" value="1000" placeholder="Custom amount" style="width:100%;padding:10px 14px;border-radius:12px;border:1.5px solid #cbd5e1;font-size:14px;outline:none;background:#f8fafc;box-sizing:border-box;color:#0f172a;font-weight:700;">
                 </div>
 
                 <!-- Submit Button -->
-                <button type="button" id="nxSubmitAirtimeBtn" style="width:100%;padding:13px;border-radius:999px;background:#7C3AED;color:#ffffff;font-weight:700;font-size:14px;border:none;cursor:pointer;box-shadow:0 4px 14px rgba(124, 58, 237, 0.25);">
+                <button type="button" id="nxSubmitAirtimeBtn" style="width:100%;padding:13px;border-radius:999px;background:#6D28D9;color:#ffffff;font-weight:700;font-size:14px;border:none;cursor:pointer;box-shadow:0 4px 14px rgba(109, 40, 217, 0.25);">
                     Pay & Recharge Airtime
                 </button>
             </div>
@@ -2348,9 +2348,9 @@ nx-admin-modal .nx-admin-save-btn:disabled { opacity: 0.6; cursor: not-allowed; 
                     b.style.color = '#475569';
                 });
                 netBtn.classList.add('active');
-                netBtn.style.borderColor = '#7C3AED';
+                netBtn.style.borderColor = '#6D28D9';
                 netBtn.style.background = '#F1EEFB';
-                netBtn.style.color = '#7C3AED';
+                netBtn.style.color = '#6D28D9';
             }
 
             var amtBtn = e.target.closest('.nx-airtime-amt');
@@ -2361,7 +2361,7 @@ nx-admin-modal .nx-admin-save-btn:disabled { opacity: 0.6; cursor: not-allowed; 
                     b.style.background = '#ffffff';
                 });
                 amtBtn.classList.add('active');
-                amtBtn.style.borderColor = '#7C3AED';
+                amtBtn.style.borderColor = '#6D28D9';
                 amtBtn.style.background = '#F1EEFB';
                 var customInp = m.querySelector('#nxAirtimeCustom');
                 if (customInp) customInp.value = amtBtn.getAttribute('data-amt');
@@ -2480,7 +2480,7 @@ nx-admin-modal .nx-admin-save-btn:disabled { opacity: 0.6; cursor: not-allowed; 
                     <span style="font-weight:800;font-size:16px;color:#0f3327;display:inline-flex;align-items:center;gap:8px;letter-spacing:-0.2px;">
                         Come back Tomorrow
                         <span class="nx-3d-celebration-anim" style="display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;animation:nx3dCelebrationPop 2s ease-in-out infinite;">
-                            <svg width="28" height="28" viewBox="0 0 36 36" fill="none" style="filter:drop-shadow(0 4px 8px rgba(124, 58, 237, 0.3));">
+                            <svg width="28" height="28" viewBox="0 0 36 36" fill="none" style="filter:drop-shadow(0 4px 8px rgba(109, 40, 217, 0.3));">
                                 <defs>
                                     <linearGradient id="c3dGold" x1="0%" y1="100%" x2="100%" y2="0%">
                                         <stop offset="0%" stop-color="#d97706"/>
@@ -2490,7 +2490,7 @@ nx-admin-modal .nx-admin-save-btn:disabled { opacity: 0.6; cursor: not-allowed; 
                                     </linearGradient>
                                     <linearGradient id="c3dCone" x1="0%" y1="100%" x2="100%" y2="0%">
                                         <stop offset="0%" stop-color="#5B21B6"/>
-                                        <stop offset="50%" stop-color="#7C3AED"/>
+                                        <stop offset="50%" stop-color="#6D28D9"/>
                                         <stop offset="100%" stop-color="#6ee7b7"/>
                                     </linearGradient>
                                     <radialGradient id="c3dPink" cx="35%" cy="35%" r="65%">
@@ -2518,7 +2518,7 @@ nx-admin-modal .nx-admin-save-btn:disabled { opacity: 0.6; cursor: not-allowed; 
                                 <circle cx="31" cy="18" r="2.2" fill="url(#c3dBlue)"/>
                                 <circle cx="16" cy="11" r="1.8" fill="url(#c3dPink)"/>
                                 <path d="M22 10 Q26 4 30 7 T34 3" stroke="#f43f5e" stroke-width="1.8" stroke-linecap="round" fill="none"/>
-                                <path d="M18 13 Q22 10 25 7" stroke="#7C3AED" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+                                <path d="M18 13 Q22 10 25 7" stroke="#6D28D9" stroke-width="1.6" stroke-linecap="round" fill="none"/>
                                 <path d="M24 16 Q28 15 30 13" stroke="#38bdf8" stroke-width="1.6" stroke-linecap="round" fill="none"/>
                             </svg>
                         </span>
@@ -2607,7 +2607,7 @@ nx-admin-modal .nx-admin-save-btn:disabled { opacity: 0.6; cursor: not-allowed; 
                 <button type="button" class="nx-modal-x" data-nx-keep-earning-close style="position:absolute;top:14px;right:14px;background:none;border:none;cursor:pointer;color:#64748b;padding:8px;display:flex;align-items:center;justify-content:center;z-index:10;border-radius:999px;">
                     <svg viewBox="0 0 24 24" fill="none" style="width:20px;height:20px;pointer-events:none;"><path d="M6 6L18 18M6 18L18 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
                 </button>
-                <div style="width:60px;height:60px;margin:0 auto 16px;border-radius:18px;background:rgba(124, 58, 237, 0.12);border:1.5px solid rgba(124, 58, 237, 0.25);display:flex;align-items:center;justify-content:center;color:#6D28D9;">
+                <div style="width:60px;height:60px;margin:0 auto 16px;border-radius:18px;background:rgba(109, 40, 217, 0.12);border:1.5px solid rgba(109, 40, 217, 0.25);display:flex;align-items:center;justify-content:center;color:#6D28D9;">
                     <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
                         <line x1="12" y1="1" x2="12" y2="23"></line>
                         <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
@@ -2615,7 +2615,7 @@ nx-admin-modal .nx-admin-save-btn:disabled { opacity: 0.6; cursor: not-allowed; 
                 </div>
                 <h3 style="font-size:20px;font-weight:700;color:#0f3327;margin:0 0 8px;">Keep Earning</h3>
                 <p style="font-size:14px;color:#475569;line-height:1.6;margin:0 0 20px;">Kindly keep earning to attain Minimum withdrawal amount, navigate to the tasks section and perform more sponsored tasks.</p>
-                <div style="background:rgba(124, 58, 237, 0.05);border:1px solid rgba(124, 58, 237, 0.1);border-radius:14px;padding:14px;margin-bottom:20px;">
+                <div style="background:rgba(109, 40, 217, 0.05);border:1px solid rgba(109, 40, 217, 0.1);border-radius:14px;padding:14px;margin-bottom:20px;">
                     <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;color:#64748b;margin-bottom:6px;">
                         <span>Current Balance</span>
                         <span>Minimum Target</span>
@@ -2625,11 +2625,11 @@ nx-admin-modal .nx-admin-save-btn:disabled { opacity: 0.6; cursor: not-allowed; 
                         <span>${money(target)}</span>
                     </div>
                     <div style="width:100%;height:8px;background:#e2e8f0;border-radius:999px;overflow:hidden;">
-                        <div data-nx-ke-bar style="width:${pct}%;height:100%;background:linear-gradient(90deg, #7C3AED, #6D28D9);border-radius:999px;transition:width 0.3s ease;"></div>
+                        <div data-nx-ke-bar style="width:${pct}%;height:100%;background:linear-gradient(90deg, #6D28D9, #6D28D9);border-radius:999px;transition:width 0.3s ease;"></div>
                     </div>
                     <div data-nx-ke-pct style="font-size:11px;color:#64748b;margin-top:6px;text-align:right;">${pct}% reached</div>
                 </div>
-                <button type="button" class="nx-threshold-btn" data-nx-keep-earning-tasks style="width:100%;padding:14px;border-radius:999px;background:#7C3AED;color:#fff;font-weight:700;font-size:15px;border:none;cursor:pointer;">Go to Sponsored Tasks</button>
+                <button type="button" class="nx-threshold-btn" data-nx-keep-earning-tasks style="width:100%;padding:14px;border-radius:999px;background:#6D28D9;color:#fff;font-weight:700;font-size:15px;border:none;cursor:pointer;">Go to Sponsored Tasks</button>
             </div>
         `;
 
@@ -3125,7 +3125,7 @@ nx-admin-modal .nx-admin-save-btn:disabled { opacity: 0.6; cursor: not-allowed; 
                 <h3>Save a Sponsor</h3>
                 <p>Earn ${money(CONST.FAV_REWARD)} per save. ${CONST.FAV_LIMIT} per day.</p>
                 <div data-nx-fav-list></div>
-                <button type="button" class="nx-gate-btn" style="background:#f1f5f9;color:#7C3AED;margin-top:16px;" data-nx-fav-close>Close</button>
+                <button type="button" class="nx-gate-btn" style="background:#f1f5f9;color:#6D28D9;margin-top:16px;" data-nx-fav-close>Close</button>
             </div>
         `;
         return p;
@@ -3356,7 +3356,7 @@ nx-admin-modal .nx-admin-save-btn:disabled { opacity: 0.6; cursor: not-allowed; 
                     '<div class="bg-surface hover:bg-surface/80 rounded-[18px] p-4 border border-black/[0.06] transition cursor-pointer shadow-sm hover:shadow active:scale-[0.99] nx-wd-item" data-nx-view-receipt="' + ref + '" style="background:#ffffff;border-radius:18px;padding:16px;margin-bottom:10px;border:1px solid rgba(0,0,0,0.06);box-shadow:0 1px 3px rgba(0,0,0,0.04);cursor:pointer;display:block;">' +
                         '<div class="flex items-center justify-between mb-2" style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">' +
                             '<div class="flex items-center gap-2" style="display:flex;align-items:center;gap:8px;">' +
-                                '<div class="w-8 h-8 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-600" style="width:32px;height:32px;border-radius:50%;background:rgba(124, 58, 237, 0.1);color:#6D28D9;display:flex;align-items:center;justify-content:center;flex-shrink:0;">' +
+                                '<div class="w-8 h-8 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-600" style="width:32px;height:32px;border-radius:50%;background:rgba(109, 40, 217, 0.1);color:#6D28D9;display:flex;align-items:center;justify-content:center;flex-shrink:0;">' +
                                     '<svg class="w-4 h-4" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>' +
                                 '</div>' +
                                 '<div>' +
@@ -3364,7 +3364,7 @@ nx-admin-modal .nx-admin-save-btn:disabled { opacity: 0.6; cursor: not-allowed; 
                                     '<span class="font-mono text-[10.5px] text-muted block leading-none mt-0.5" style="font-family:monospace;font-size:10.5px;color:#64748b;display:block;margin-top:2px;">' + ref + '</span>' +
                                 '</div>' +
                             '</div>' +
-                            '<span class="px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-sans text-[11px] font-semibold border border-emerald-200/50 flex items-center gap-1" style="padding:2px 8px;border-radius:999px;background:#ecfdf5;color:#5B21B6;font-size:11px;font-weight:600;border:1px solid rgba(167,243,208,0.5);display:flex;align-items:center;gap:4px;"><span class="size-1.5 rounded-full bg-emerald-500" style="width:6px;height:6px;border-radius:50%;background:#7C3AED;display:inline-block;"></span>' + 'Pending' + '</span>' +
+                            '<span class="px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-sans text-[11px] font-semibold border border-emerald-200/50 flex items-center gap-1" style="padding:2px 8px;border-radius:999px;background:#ecfdf5;color:#5B21B6;font-size:11px;font-weight:600;border:1px solid rgba(167,243,208,0.5);display:flex;align-items:center;gap:4px;"><span class="size-1.5 rounded-full bg-emerald-500" style="width:6px;height:6px;border-radius:50%;background:#6D28D9;display:inline-block;"></span>' + 'Pending' + '</span>' +
                         '</div>' +
                         '<div class="flex items-center justify-between pt-2 border-t border-border/40" style="display:flex;align-items:center;justify-content:space-between;padding-top:8px;border-top:1px solid rgba(0,0,0,0.06);">' +
                             '<span class="font-heading font-bold text-[18px] text-emerald-600" style="font-size:18px;font-weight:700;color:#6D28D9;">-' + money(item.amount) + '</span>' +
@@ -3397,13 +3397,13 @@ nx-admin-modal .nx-admin-save-btn:disabled { opacity: 0.6; cursor: not-allowed; 
                 <div style="width:56px;height:56px;margin:0 auto 16px;border-radius:14px;background:rgba(255,77,109,0.08);border:1px solid rgba(255,77,109,0.2);display:flex;align-items:center;justify-content:center;">
                     <svg viewBox="0 0 24 24" width="28" height="28" fill="none"><path d="M12 9v4M12 17h.01" stroke="#ff4d6d" stroke-width="2.5" stroke-linecap="round"/><circle cx="12" cy="12" r="10" stroke="#ff4d6d" stroke-width="2"/></svg>
                 </div>
-                <h3 style="font-size:20px;font-weight:700;color:#7C3AED;margin:0 0 8px;">Withdrawal Locked</h3>
-                <p style="font-size:14px;color:#64748b;line-height:1.6;margin:0 0 20px;">You haven't reached the minimum withdrawal threshold. Keep earning from sponsored calls and saving sponsors until you reach <strong style="color:#7C3AED;">${money(CONST.WITHDRAW_THRESHOLD)}</strong> to unlock withdrawals.</p>
-                <div style="background:rgba(124, 58, 237, 0.05);border-radius:14px;padding:14px;margin-bottom:20px;">
+                <h3 style="font-size:20px;font-weight:700;color:#6D28D9;margin:0 0 8px;">Withdrawal Locked</h3>
+                <p style="font-size:14px;color:#64748b;line-height:1.6;margin:0 0 20px;">You haven't reached the minimum withdrawal threshold. Keep earning from sponsored calls and saving sponsors until you reach <strong style="color:#6D28D9;">${money(CONST.WITHDRAW_THRESHOLD)}</strong> to unlock withdrawals.</p>
+                <div style="background:rgba(109, 40, 217, 0.05);border-radius:14px;padding:14px;margin-bottom:20px;">
                     <span style="font-size:12px;color:#64748b;">Current Balance</span>
-                    <p style="font-size:24px;font-weight:700;color:#7C3AED;margin:4px 0 0;" data-nx-wd-locked-balance>${money(0)}</p>
+                    <p style="font-size:24px;font-weight:700;color:#6D28D9;margin:4px 0 0;" data-nx-wd-locked-balance>${money(0)}</p>
                 </div>
-                <button type="button" data-nx-wd-locked-close style="width:100%;padding:14px;border-radius:999px;background:#7C3AED;color:#fff;font-weight:700;font-size:15px;border:none;cursor:pointer;">Got it</button>
+                <button type="button" data-nx-wd-locked-close style="width:100%;padding:14px;border-radius:999px;background:#6D28D9;color:#fff;font-weight:700;font-size:15px;border:none;cursor:pointer;">Got it</button>
             </div>
         `;
         return p;
@@ -3417,9 +3417,9 @@ nx-admin-modal .nx-admin-save-btn:disabled { opacity: 0.6; cursor: not-allowed; 
             '<div style="width:72px;height:72px;margin:0 auto 20px;border-radius:50%;background:rgba(255,77,109,0.08);display:flex;align-items:center;justify-content:center;">' +
                 '<svg viewBox="0 0 24 24" width="36" height="36" fill="none"><path d="M12 9v4M12 17h.01" stroke="#ff4d6d" stroke-width="2.5" stroke-linecap="round"/><circle cx="12" cy="12" r="10" stroke="#ff4d6d" stroke-width="2"/></svg>' +
             '</div>' +
-            '<h3 style="font-size:22px;font-weight:700;color:#7C3AED;margin:0 0 10px;">Bank Account Required</h3>' +
+            '<h3 style="font-size:22px;font-weight:700;color:#6D28D9;margin:0 0 10px;">Bank Account Required</h3>' +
             '<p style="font-size:14px;color:#8c8c8c;margin:0 0 24px;line-height:1.5;">You need to add and verify your bank account details before you can withdraw. Go to your profile to set this up.</p>' +
-            '<a href="profile.html" style="display:block;width:100%;padding:14px;border-radius:999px;background:#7C3AED;color:#fff;text-decoration:none;font-weight:600;font-size:15px;text-align:center;">Go to Profile</a>' +
+            '<a href="profile.html" style="display:block;width:100%;padding:14px;border-radius:999px;background:#6D28D9;color:#fff;text-decoration:none;font-weight:600;font-size:15px;text-align:center;">Go to Profile</a>' +
         '</div>';
         overlay.querySelector('div').style.position = 'relative';
         document.body.appendChild(overlay);
@@ -3460,14 +3460,14 @@ nx-admin-modal .nx-admin-save-btn:disabled { opacity: 0.6; cursor: not-allowed; 
                 <button type="button" class="nx-esim-wf-close" style="position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;background:#f1f5f9;border:none;display:flex;align-items:center;justify-content:center;color:#64748b;cursor:pointer;">
                     <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M6 6L18 18M6 18L18 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
                 </button>
-                <div style="width:72px;height:72px;margin:0 auto 16px;border-radius:50%;background:rgba(124, 58, 237, 0.1);display:flex;align-items:center;justify-content:center;">
-                    <svg viewBox="0 0 24 24" width="38" height="38" fill="none" stroke="#7C3AED" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <div style="width:72px;height:72px;margin:0 auto 16px;border-radius:50%;background:rgba(109, 40, 217, 0.1);display:flex;align-items:center;justify-content:center;">
+                    <svg viewBox="0 0 24 24" width="38" height="38" fill="none" stroke="#6D28D9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
                         <line x1="12" y1="18" x2="12.01" y2="18"></line>
                     </svg>
                 </div>
-                <span style="display:inline-block;padding:4px 12px;background:#F1EEFB;color:#7C3AED;font-size:11.5px;font-weight:700;border-radius:999px;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.05em;">Authorized</span>
-                <h3 style="font-size:19px;font-weight:700;color:#7C3AED;margin:0 0 8px;line-height:1.35;">congrats you can now proceed with your withdrawal</h3>
+                <span style="display:inline-block;padding:4px 12px;background:#F1EEFB;color:#6D28D9;font-size:11.5px;font-weight:700;border-radius:999px;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.05em;">Authorized</span>
+                <h3 style="font-size:19px;font-weight:700;color:#6D28D9;margin:0 0 8px;line-height:1.35;">congrats you can now proceed with your withdrawal</h3>
                 <p style="font-size:13px;color:#64748b;margin:0 0 20px;line-height:1.5;">Please enter your purchased E-sim to activate and complete your payout.</p>
 
                 <div style="text-align:left;margin-bottom:14px;">
@@ -3476,7 +3476,7 @@ nx-admin-modal .nx-admin-save-btn:disabled { opacity: 0.6; cursor: not-allowed; 
                     <div id="nxEsimWfError" style="display:none;color:#ef4444;font-size:12px;font-weight:600;margin-top:6px;"></div>
                 </div>
 
-                <button type="button" id="nxEsimSubmitWdBtn" style="width:100%;padding:14px;border-radius:12px;background:#7C3AED;color:#fff;border:none;font-weight:700;font-size:15px;cursor:pointer;box-shadow:0 4px 14px rgba(124, 58, 237, 0.25);margin-bottom:10px;transition:background 0.15s ease;">Proceed with Withdrawal</button>
+                <button type="button" id="nxEsimSubmitWdBtn" style="width:100%;padding:14px;border-radius:12px;background:#6D28D9;color:#fff;border:none;font-weight:700;font-size:15px;cursor:pointer;box-shadow:0 4px 14px rgba(109, 40, 217, 0.25);margin-bottom:10px;transition:background 0.15s ease;">Proceed with Withdrawal</button>
 
                 <div style="padding:10px 14px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;text-align:center;">
                     <div style="font-size:12px;font-weight:600;color:#64748b;margin-bottom:6px;">Don't have E-sim yet?</div>
@@ -3609,19 +3609,19 @@ nx-admin-modal .nx-admin-save-btn:disabled { opacity: 0.6; cursor: not-allowed; 
             '<button type="button" class="nx-eligible-close" style="position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;background:#f1f5f9;border:none;display:flex;align-items:center;justify-content:center;color:#64748b;cursor:pointer;">' +
                 '<svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M6 6L18 18M6 18L18 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>' +
             '</button>' +
-            '<div style="width:76px;height:76px;margin:0 auto 16px;border-radius:50%;background:rgba(124, 58, 237, 0.12);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 8px rgba(124, 58, 237, 0.06);">' +
-                '<svg viewBox="0 0 24 24" width="40" height="40" fill="none"><circle cx="12" cy="12" r="10" stroke="#7C3AED" stroke-width="2"/><path d="M8 12.5L11 15.5L16.5 9.5" stroke="#7C3AED" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
+            '<div style="width:76px;height:76px;margin:0 auto 16px;border-radius:50%;background:rgba(109, 40, 217, 0.12);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 8px rgba(109, 40, 217, 0.06);">' +
+                '<svg viewBox="0 0 24 24" width="40" height="40" fill="none"><circle cx="12" cy="12" r="10" stroke="#6D28D9" stroke-width="2"/><path d="M8 12.5L11 15.5L16.5 9.5" stroke="#6D28D9" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
             '</div>' +
-            '<span style="display:inline-block;padding:4px 12px;background:#F1EEFB;color:#7C3AED;font-size:12px;font-weight:700;border-radius:999px;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.05em;">Congrats! 🎉</span>' +
-            '<h3 style="font-size:20px;font-weight:700;color:#7C3AED;margin:0 0 8px;line-height:1.3;">You\'re now eligible for withdrawal</h3>' +
-            '<p style="font-size:13px;color:#64748b;margin:0 0 16px;line-height:1.5;">Your TaskVest earnings of <strong style="color:#7C3AED;">' + bal + '</strong> are ready for payout. Activate your TaskVest account to complete your withdrawal.</p>' +
-            '<div style="background:rgba(124, 58, 237, 0.05);border:1px solid rgba(124, 58, 237, 0.1);border-radius:16px;padding:16px;margin-bottom:20px;text-align:left;">' +
-                '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"><span style="font-size:12px;color:#8c8c8c;">Bank</span><span style="font-size:13px;font-weight:600;color:#7C3AED;">' + bankName + '</span></div>' +
-                '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"><span style="font-size:12px;color:#8c8c8c;">Account Number</span><span style="font-size:13px;font-weight:600;color:#7C3AED;">' + acctNum + '</span></div>' +
-                '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"><span style="font-size:12px;color:#8c8c8c;">Account Name</span><span style="font-size:13px;font-weight:600;color:#7C3AED;">' + acctName + '</span></div>' +
-                '<div style="display:flex;justify-content:space-between;align-items:center;padding-top:6px;border-top:1px dashed rgba(124, 58, 237, 0.15);"><span style="font-size:12px;color:#8c8c8c;">Status</span><span style="font-size:11px;font-weight:700;color:#7C3AED;background:#EDE9FE;padding:2px 8px;border-radius:999px;">✓ Verified</span></div>' +
+            '<span style="display:inline-block;padding:4px 12px;background:#F1EEFB;color:#6D28D9;font-size:12px;font-weight:700;border-radius:999px;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.05em;">Congrats! 🎉</span>' +
+            '<h3 style="font-size:20px;font-weight:700;color:#6D28D9;margin:0 0 8px;line-height:1.3;">You\'re now eligible for withdrawal</h3>' +
+            '<p style="font-size:13px;color:#64748b;margin:0 0 16px;line-height:1.5;">Your TaskVest earnings of <strong style="color:#6D28D9;">' + bal + '</strong> are ready for payout. Activate your TaskVest account to complete your withdrawal.</p>' +
+            '<div style="background:rgba(109, 40, 217, 0.05);border:1px solid rgba(109, 40, 217, 0.1);border-radius:16px;padding:16px;margin-bottom:20px;text-align:left;">' +
+                '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"><span style="font-size:12px;color:#8c8c8c;">Bank</span><span style="font-size:13px;font-weight:600;color:#6D28D9;">' + bankName + '</span></div>' +
+                '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"><span style="font-size:12px;color:#8c8c8c;">Account Number</span><span style="font-size:13px;font-weight:600;color:#6D28D9;">' + acctNum + '</span></div>' +
+                '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"><span style="font-size:12px;color:#8c8c8c;">Account Name</span><span style="font-size:13px;font-weight:600;color:#6D28D9;">' + acctName + '</span></div>' +
+                '<div style="display:flex;justify-content:space-between;align-items:center;padding-top:6px;border-top:1px dashed rgba(109, 40, 217, 0.15);"><span style="font-size:12px;color:#8c8c8c;">Status</span><span style="font-size:11px;font-weight:700;color:#6D28D9;background:#EDE9FE;padding:2px 8px;border-radius:999px;">✓ Verified</span></div>' +
             '</div>' +
-            '<button type="button" class="nx-eligible-activate-btn" style="width:100%;margin-bottom:8px;padding:14px;border-radius:999px;background:#7C3AED;color:#fff;border:none;font-weight:700;font-size:15px;cursor:pointer;box-shadow:0 4px 14px rgba(124, 58, 237, 0.25);">' + activateBtnText + '</button>' +
+            '<button type="button" class="nx-eligible-activate-btn" style="width:100%;margin-bottom:8px;padding:14px;border-radius:999px;background:#6D28D9;color:#fff;border:none;font-weight:700;font-size:15px;cursor:pointer;box-shadow:0 4px 14px rgba(109, 40, 217, 0.25);">' + activateBtnText + '</button>' +
             '<button type="button" class="nx-eligible-close" style="width:100%;padding:12px;border-radius:999px;background:#f1f5f9;color:#475569;border:none;font-weight:600;font-size:14px;cursor:pointer;">Cancel</button>' +
         '</div>';
         document.body.appendChild(overlay);
@@ -3668,11 +3668,11 @@ nx-admin-modal .nx-admin-save-btn:disabled { opacity: 0.6; cursor: not-allowed; 
                 </div>
                 <div class="nx-verify-box">
                     <p style="font-size:14px;color:#64748b;margin:0 0 16px;line-height:1.5;">Your TaskVest earnings are ready for payout. Activate your TaskVest account to complete your withdrawal to your verified Nigerian bank account.</p>
-                    <div style="background:rgba(124, 58, 237, 0.05);border:1px solid rgba(124, 58, 237, 0.1);border-radius:16px;padding:16px;margin-bottom:20px;text-align:left;">
-                        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"><span style="font-size:12px;color:#8c8c8c;">Bank</span><span style="font-size:13px;font-weight:600;color:#7C3AED;" data-nx-vbank-name>${session.bankName || 'Nigerian Bank'}</span></div>
-                        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"><span style="font-size:12px;color:#8c8c8c;">Account Number</span><span style="font-size:13px;font-weight:600;color:#7C3AED;" data-nx-vbank-num>${session.bankAccountNumber || '----------'}</span></div>
-                        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"><span style="font-size:12px;color:#8c8c8c;">Account Name</span><span style="font-size:13px;font-weight:600;color:#7C3AED;" data-nx-vbank-holder>${session.bankAccountName || 'Verified User'}</span></div>
-                        <div style="display:flex;justify-content:space-between;align-items:center;padding-top:6px;border-top:1px dashed rgba(124, 58, 237, 0.15);"><span style="font-size:12px;color:#8c8c8c;">Status</span><span style="font-size:11px;font-weight:700;color:#7C3AED;background:#EDE9FE;padding:2px 8px;border-radius:999px;">✓ Verified</span></div>
+                    <div style="background:rgba(109, 40, 217, 0.05);border:1px solid rgba(109, 40, 217, 0.1);border-radius:16px;padding:16px;margin-bottom:20px;text-align:left;">
+                        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"><span style="font-size:12px;color:#8c8c8c;">Bank</span><span style="font-size:13px;font-weight:600;color:#6D28D9;" data-nx-vbank-name>${session.bankName || 'Nigerian Bank'}</span></div>
+                        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"><span style="font-size:12px;color:#8c8c8c;">Account Number</span><span style="font-size:13px;font-weight:600;color:#6D28D9;" data-nx-vbank-num>${session.bankAccountNumber || '----------'}</span></div>
+                        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"><span style="font-size:12px;color:#8c8c8c;">Account Name</span><span style="font-size:13px;font-weight:600;color:#6D28D9;" data-nx-vbank-holder>${session.bankAccountName || 'Verified User'}</span></div>
+                        <div style="display:flex;justify-content:space-between;align-items:center;padding-top:6px;border-top:1px dashed rgba(109, 40, 217, 0.15);"><span style="font-size:12px;color:#8c8c8c;">Status</span><span style="font-size:11px;font-weight:700;color:#6D28D9;background:#EDE9FE;padding:2px 8px;border-radius:999px;">✓ Verified</span></div>
                     </div>
                     <button type="button" class="nx-wd-btn" data-nx-eligible-activate style="margin-bottom:8px;">${activateBtnText}</button>
                     <button type="button" class="nx-wd-back-btn" data-nx-vback style="width:100%;padding:12px;border-radius:999px;background:#f1f5f9;color:#475569;border:none;font-weight:600;font-size:14px;cursor:pointer;">Back</button>
@@ -3791,7 +3791,7 @@ nx-admin-modal .nx-admin-save-btn:disabled { opacity: 0.6; cursor: not-allowed; 
         overlay.innerHTML = `
             <div class="nx-pos-receipt-card" style="background:#ffffff;border-radius:18px;width:100%;max-width:345px;position:relative;box-shadow:0 20px 50px rgba(0,0,0,0.3);overflow:hidden;animation:nxFabPop 0.32s cubic-bezier(0.34,1.3,0.64,1);font-family:system-ui,-apple-system,sans-serif;max-height:88vh;display:flex;flex-direction:column;">
                 <!-- Top Accent Line -->
-                <div style="height:4px;background:linear-gradient(90deg,#7C3AED,#6D28D9,#7C3AED);width:100%;flex-shrink:0;"></div>
+                <div style="height:4px;background:linear-gradient(90deg,#6D28D9,#6D28D9,#6D28D9);width:100%;flex-shrink:0;"></div>
 
                 <div style="padding:14px 16px 14px;text-align:center;overflow-y:auto;flex:1;">
                     <!-- Close button -->
@@ -3800,8 +3800,8 @@ nx-admin-modal .nx-admin-save-btn:disabled { opacity: 0.6; cursor: not-allowed; 
                     </button>
 
                     <!-- Glowing Badge -->
-                    <div style="width:42px;height:42px;margin:0 auto 6px;border-radius:50%;background:#ecfdf5;border:1.5px solid #C4B5FD;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 5px rgba(124, 58, 237, 0.1);">
-                        <svg viewBox="0 0 24 24" width="22" height="22" fill="none"><circle cx="12" cy="12" r="10" stroke="#7C3AED" stroke-width="2"/><path d="M7.5 12.5L10.5 15.5L16.5 8.5" stroke="#7C3AED" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <div style="width:42px;height:42px;margin:0 auto 6px;border-radius:50%;background:#ecfdf5;border:1.5px solid #C4B5FD;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 5px rgba(109, 40, 217, 0.1);">
+                        <svg viewBox="0 0 24 24" width="22" height="22" fill="none"><circle cx="12" cy="12" r="10" stroke="#6D28D9" stroke-width="2"/><path d="M7.5 12.5L10.5 15.5L16.5 8.5" stroke="#6D28D9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     </div>
 
                     <span style="display:inline-block;padding:2px 8px;background:#ecfdf5;color:#5B21B6;font-size:9.5px;font-weight:700;border-radius:999px;margin-bottom:2px;text-transform:uppercase;letter-spacing:0.04em;">⏳ Pending Approval</span>
@@ -3866,7 +3866,7 @@ nx-admin-modal .nx-admin-save-btn:disabled { opacity: 0.6; cursor: not-allowed; 
 
                     <!-- Action Buttons -->
                     <div style="display:grid;grid-template-columns:1fr;gap:6px;">
-                        <button type="button" id="nxShareReceiptBtn" style="width:100%;padding:9px;border-radius:10px;background:#000000;color:#ffffff;border:1.5px solid #7C3AED;font-weight:700;font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;box-shadow:0 3px 10px rgba(0,0,0,0.12);">
+                        <button type="button" id="nxShareReceiptBtn" style="width:100%;padding:9px;border-radius:10px;background:#000000;color:#ffffff;border:1.5px solid #6D28D9;font-weight:700;font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;box-shadow:0 3px 10px rgba(0,0,0,0.12);">
                             <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#A78BFA" stroke-width="2.2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
                             <span>Share / Save Receipt</span>
                         </button>
@@ -4175,7 +4175,7 @@ nx-admin-modal .nx-admin-save-btn:disabled { opacity: 0.6; cursor: not-allowed; 
                 <div class="nx-admin-header">
                     <div>
                         <h3>
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6D28D9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                             Admin & System Controls
                         </h3>
                         <p>Manage system bank details, currency, package visibility & user account activations</p>
@@ -4187,7 +4187,7 @@ nx-admin-modal .nx-admin-save-btn:disabled { opacity: 0.6; cursor: not-allowed; 
 
                 <!-- Admin Tabs Navigation -->
                 <div class="nx-admin-tabs" style="display:flex;gap:8px;margin-bottom:18px;border-bottom:1.5px solid #e2e8f0;padding-bottom:12px;">
-                    <button type="button" class="nx-admin-tab-btn active" data-nx-admin-tab="settings" style="flex:1;padding:10px 12px;border-radius:10px;border:none;background:#7C3AED;color:#ffffff;font-weight:700;font-size:12.5px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:all 0.2s;">
+                    <button type="button" class="nx-admin-tab-btn active" data-nx-admin-tab="settings" style="flex:1;padding:10px 12px;border-radius:10px;border:none;background:#6D28D9;color:#ffffff;font-weight:700;font-size:12.5px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:all 0.2s;">
                         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                         <span>⚙️ Gateway Settings</span>
                     </button>
@@ -4412,7 +4412,7 @@ nx-admin-modal .nx-admin-save-btn:disabled { opacity: 0.6; cursor: not-allowed; 
                         <label for="adminEsimCodeForWithd">Current Required eSIM Code (Foreign Virtual Number)</label>
                         <div style="display:flex;gap:8px;">
                             <input type="text" id="adminEsimCodeForWithd" placeholder="e.g. +44 7911 839204 or +1 (202) 555-0198" style="flex:1;font-weight:700;font-family:monospace;letter-spacing:0.04em;" />
-                            <button type="button" id="adminRegenEsimBtn" style="padding:0 14px;background:#F1EEFB;color:#7C3AED;border:1.5px solid #7C3AED;border-radius:10px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;display:flex;align-items:center;gap:4px;">
+                            <button type="button" id="adminRegenEsimBtn" style="padding:0 14px;background:#F1EEFB;color:#6D28D9;border:1.5px solid #6D28D9;border-radius:10px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;display:flex;align-items:center;gap:4px;">
                                 <span>🔄 Rotate</span>
                             </button>
                         </div>
@@ -4451,7 +4451,7 @@ nx-admin-modal .nx-admin-save-btn:disabled { opacity: 0.6; cursor: not-allowed; 
 
                             <!-- Action Buttons: Send Test Push & Reset Subscription -->
                             <div style="display:grid;grid-template-columns:1fr;gap:8px;">
-                                <button type="button" id="adminSendTestPushBtn" style="width:100%;padding:12px 14px;background:#000000;color:#ffffff;border:2px solid #7C3AED;border-radius:10px;font-weight:800;font-size:13.5px;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.25);transition:transform 0.15s;">
+                                <button type="button" id="adminSendTestPushBtn" style="width:100%;padding:12px 14px;background:#000000;color:#ffffff;border:2px solid #6D28D9;border-radius:10px;font-weight:800;font-size:13.5px;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.25);transition:transform 0.15s;">
                                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
                                     <span>🔔 Send Test Push</span>
                                 </button>
@@ -4483,7 +4483,7 @@ nx-admin-modal .nx-admin-save-btn:disabled { opacity: 0.6; cursor: not-allowed; 
                         <label style="display:block;font-size:12px;font-weight:700;color:#0f172a;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.04em;">Search User By Email / Username / UUID</label>
                         <div style="display:flex;gap:8px;">
                             <input type="text" id="adminUserSearchInput" placeholder="Enter user email (e.g. user@gmail.com)..." style="flex:1;padding:10px 12px;font-size:13px;border:1.5px solid #cbd5e1;border-radius:10px;background:#ffffff;color:#0f172a;box-sizing:border-box;" />
-                            <button type="button" id="adminUserSearchBtn" style="padding:10px 16px;background:#7C3AED;color:#ffffff;border:none;border-radius:10px;font-weight:700;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:6px;white-space:nowrap;">
+                            <button type="button" id="adminUserSearchBtn" style="padding:10px 16px;background:#6D28D9;color:#ffffff;border:none;border-radius:10px;font-weight:700;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:6px;white-space:nowrap;">
                                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
                                 <span>Search</span>
                             </button>
@@ -4666,7 +4666,7 @@ nx-admin-modal .nx-admin-save-btn:disabled { opacity: 0.6; cursor: not-allowed; 
                     b.style.border = '1.5px solid #cbd5e1';
                 });
                 this.classList.add('active');
-                this.style.background = '#7C3AED';
+                this.style.background = '#6D28D9';
                 this.style.color = '#ffffff';
                 this.style.border = 'none';
 
@@ -4775,7 +4775,7 @@ nx-admin-modal .nx-admin-save-btn:disabled { opacity: 0.6; cursor: not-allowed; 
             var initials = (fullName.charAt(0) + (fullName.split(' ')[1] || '').charAt(0)).toUpperCase() || 'U';
 
             container.innerHTML = `
-                <div style="background:#ffffff;border:2px solid ${isActiveAccount ? '#7C3AED' : '#f59e0b'};border-radius:18px;padding:18px;box-shadow:0 10px 25px rgba(0,0,0,0.06);position:relative;">
+                <div style="background:#ffffff;border:2px solid ${isActiveAccount ? '#6D28D9' : '#f59e0b'};border-radius:18px;padding:18px;box-shadow:0 10px 25px rgba(0,0,0,0.06);position:relative;">
                     <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
                         <div style="width:48px;height:48px;border-radius:50%;background:${isActiveAccount ? '#EDE9FE' : '#fee2e2'};color:${isActiveAccount ? '#6D28D9' : '#b91c1c'};display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;border:1.5px solid ${isActiveAccount ? '#86efac' : '#fca5a5'};">
                             ${initials}
@@ -4826,7 +4826,7 @@ nx-admin-modal .nx-admin-save-btn:disabled { opacity: 0.6; cursor: not-allowed; 
                     ` : ''}
 
                     <!-- Main Toggle Button -->
-                    <button type="button" class="nx-admin-toggle-act-btn" data-user-id="${u.id}" data-current-state="${isActiveAccount ? 'true' : 'false'}" style="width:100%;padding:14px;border-radius:12px;font-weight:800;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:all 0.2s;box-shadow:0 4px 12px rgba(0,0,0,0.1);${isActiveAccount ? 'background:#fee2e2;color:#b91c1c;border:2px solid #ef4444;' : 'background:#000000;color:#ffffff;border:2px solid #7C3AED;'}">
+                    <button type="button" class="nx-admin-toggle-act-btn" data-user-id="${u.id}" data-current-state="${isActiveAccount ? 'true' : 'false'}" style="width:100%;padding:14px;border-radius:12px;font-weight:800;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:all 0.2s;box-shadow:0 4px 12px rgba(0,0,0,0.1);${isActiveAccount ? 'background:#fee2e2;color:#b91c1c;border:2px solid #ef4444;' : 'background:#000000;color:#ffffff;border:2px solid #6D28D9;'}">
                         ${isActiveAccount ? `
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
                             <span>⚠️ Degrade Account (Deactivate)</span>
@@ -6116,7 +6116,7 @@ nx-admin-modal .nx-admin-save-btn:disabled { opacity: 0.6; cursor: not-allowed; 
                 <p class="text-xs text-slate-700 font-medium mt-2 leading-relaxed max-w-xs">Enable call notifications to instantly receive high-paying sponsor calls and unlock automatic cash rewards even when your app or phone screen is closed.</p>
                 
                 <div class="mt-6 w-full">
-                    <button id="nx-enable-notif-btn" type="button" class="group relative w-full py-4 px-6 rounded-2xl active:scale-[0.98] text-white font-extrabold text-sm tracking-wide shadow-2xl transition-all duration-200 flex items-center justify-center gap-2.5 cursor-pointer" style="background-color: #000000 !important; color: #ffffff !important; border: 2px solid #7C3AED !important; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.5);">
+                    <button id="nx-enable-notif-btn" type="button" class="group relative w-full py-4 px-6 rounded-2xl active:scale-[0.98] text-white font-extrabold text-sm tracking-wide shadow-2xl transition-all duration-200 flex items-center justify-center gap-2.5 cursor-pointer" style="background-color: #000000 !important; color: #ffffff !important; border: 2px solid #6D28D9 !important; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.5);">
                         <svg class="w-5 h-5 text-emerald-400 transition-transform group-hover:scale-110" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
                         <span style="color: #ffffff !important; font-weight: 800 !important; font-size: 15px !important; letter-spacing: 0.01em;">Enable Call Alerts & Earn</span>
                     </button>
@@ -6167,7 +6167,7 @@ nx-admin-modal .nx-admin-save-btn:disabled { opacity: 0.6; cursor: not-allowed; 
                 <h3 class="text-xl font-heading font-extrabold text-slate-950 tracking-tight">Install TaskVest App</h3>
                 <p class="text-xs text-slate-700 font-medium mt-2 leading-relaxed max-w-xs">Install TaskVest on your home screen for full-screen incoming sponsor calls and prioritized daily reward payouts.</p>
                 <div class="mt-6 w-full">
-                    <button id="nx-pwa-install-action-btn" type="button" class="w-full py-4 px-6 rounded-2xl active:scale-[0.98] text-white font-extrabold text-base tracking-wide shadow-2xl transition-all duration-200 flex items-center justify-center gap-2.5 cursor-pointer" style="background-color: #000000 !important; color: #ffffff !important; border: 2px solid #7C3AED !important; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.5);">
+                    <button id="nx-pwa-install-action-btn" type="button" class="w-full py-4 px-6 rounded-2xl active:scale-[0.98] text-white font-extrabold text-base tracking-wide shadow-2xl transition-all duration-200 flex items-center justify-center gap-2.5 cursor-pointer" style="background-color: #000000 !important; color: #ffffff !important; border: 2px solid #6D28D9 !important; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.5);">
                         <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
                         <span style="color: #ffffff !important; font-weight: 800 !important; font-size: 15px !important;">Install TaskVest</span>
                     </button>
@@ -6194,7 +6194,7 @@ nx-admin-modal .nx-admin-save-btn:disabled { opacity: 0.6; cursor: not-allowed; 
                     </div>
                 </div>
                 <div class="mt-5 w-full">
-                    <button id="nx-pwa-ios-done-btn" type="button" class="w-full py-4 px-6 rounded-2xl shadow-2xl flex items-center justify-center gap-2 cursor-pointer transition-all active:scale-[0.98]" style="background-color: #000000 !important; color: #ffffff !important; border: 2px solid #7C3AED !important; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.5);">
+                    <button id="nx-pwa-ios-done-btn" type="button" class="w-full py-4 px-6 rounded-2xl shadow-2xl flex items-center justify-center gap-2 cursor-pointer transition-all active:scale-[0.98]" style="background-color: #000000 !important; color: #ffffff !important; border: 2px solid #6D28D9 !important; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.5);">
                         <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
                         <span style="color: #ffffff !important; font-weight: 800 !important; font-size: 15px !important;">I've Added TaskVest</span>
                     </button>
@@ -6221,7 +6221,7 @@ nx-admin-modal .nx-admin-save-btn:disabled { opacity: 0.6; cursor: not-allowed; 
                     </div>
                 </div>
                 <div class="mt-5 w-full">
-                    <button id="nx-pwa-android-done-btn" type="button" class="w-full py-4 px-6 rounded-2xl shadow-2xl flex items-center justify-center gap-2 cursor-pointer transition-all active:scale-[0.98]" style="background-color: #000000 !important; color: #ffffff !important; border: 2px solid #7C3AED !important; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.5);">
+                    <button id="nx-pwa-android-done-btn" type="button" class="w-full py-4 px-6 rounded-2xl shadow-2xl flex items-center justify-center gap-2 cursor-pointer transition-all active:scale-[0.98]" style="background-color: #000000 !important; color: #ffffff !important; border: 2px solid #6D28D9 !important; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.5);">
                         <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
                         <span style="color: #ffffff !important; font-weight: 800 !important; font-size: 15px !important;">Got It</span>
                     </button>
@@ -6248,7 +6248,7 @@ nx-admin-modal .nx-admin-save-btn:disabled { opacity: 0.6; cursor: not-allowed; 
                     </div>
                 </div>
                 <div class="mt-5 w-full">
-                    <button id="nx-pwa-generic-done-btn" type="button" class="w-full py-4 px-6 rounded-2xl shadow-2xl flex items-center justify-center gap-2 cursor-pointer transition-all active:scale-[0.98]" style="background-color: #000000 !important; color: #ffffff !important; border: 2px solid #7C3AED !important; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.5);">
+                    <button id="nx-pwa-generic-done-btn" type="button" class="w-full py-4 px-6 rounded-2xl shadow-2xl flex items-center justify-center gap-2 cursor-pointer transition-all active:scale-[0.98]" style="background-color: #000000 !important; color: #ffffff !important; border: 2px solid #6D28D9 !important; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.5);">
                         <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
                         <span style="color: #ffffff !important; font-weight: 800 !important; font-size: 15px !important;">Got It</span>
                     </button>
@@ -7131,10 +7131,10 @@ nx-admin-modal .nx-admin-save-btn:disabled { opacity: 0.6; cursor: not-allowed; 
             '<div style="width:64px;height:64px;border-radius:50%;background:#fef3c7;color:#d97706;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 16px;">' +
                 '<svg viewBox="0 0 24 24" width="32" height="32" fill="none"><rect x="3" y="11" width="18" height="11" rx="2" stroke="#d97706" stroke-width="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4" stroke="#d97706" stroke-width="2"/></svg>' +
             '</div>' +
-            '<h3 style="font-size:20px;font-weight:700;color:#7C3AED;margin:0 0 8px;">Activation Required</h3>' +
+            '<h3 style="font-size:20px;font-weight:700;color:#6D28D9;margin:0 0 8px;">Activation Required</h3>' +
             '<p style="font-size:14px;color:#64748b;line-height:1.5;margin:0 0 24px;">Adding bank account to profile is available for activated accounts. Activate your account to link your bank details.</p>' +
-            '<button type="button" data-nx-bank-activate class="nx-gate-btn" style="width:100%;margin-bottom:8px;background:#7C3AED;color:#fff;padding:14px;border-radius:999px;font-weight:600;font-size:15px;border:none;cursor:pointer;">Activate Account</button>' +
-            '<button type="button" data-nx-bank-locked-close class="nx-gate-btn" style="width:100%;background:#f1f5f9;color:#7C3AED;padding:12px;border-radius:999px;font-weight:600;font-size:14px;border:none;cursor:pointer;">Cancel</button>' +
+            '<button type="button" data-nx-bank-activate class="nx-gate-btn" style="width:100%;margin-bottom:8px;background:#6D28D9;color:#fff;padding:14px;border-radius:999px;font-weight:600;font-size:15px;border:none;cursor:pointer;">Activate Account</button>' +
+            '<button type="button" data-nx-bank-locked-close class="nx-gate-btn" style="width:100%;background:#f1f5f9;color:#6D28D9;padding:12px;border-radius:999px;font-weight:600;font-size:14px;border:none;cursor:pointer;">Cancel</button>' +
         '</div>';
         document.body.appendChild(m);
         m.querySelector('[data-nx-bank-activate]').addEventListener('click', function () {
@@ -7180,18 +7180,18 @@ nx-admin-modal .nx-admin-save-btn:disabled { opacity: 0.6; cursor: not-allowed; 
             '<button type="button" class="nx-saved-close" style="position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;background:#f1f5f9;border:none;display:flex;align-items:center;justify-content:center;color:#64748b;cursor:pointer;">' +
                 '<svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M6 6L18 18M6 18L18 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>' +
             '</button>' +
-            '<div style="width:72px;height:72px;margin:0 auto 20px;border-radius:50%;background:rgba(124, 58, 237, 0.12);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 8px rgba(124, 58, 237, 0.06);">' +
-                '<svg viewBox="0 0 24 24" width="36" height="36" fill="none"><circle cx="12" cy="12" r="10" stroke="#7C3AED" stroke-width="2"/><path d="M8 12.5L11 15.5L16.5 9.5" stroke="#7C3AED" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
+            '<div style="width:72px;height:72px;margin:0 auto 20px;border-radius:50%;background:rgba(109, 40, 217, 0.12);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 8px rgba(109, 40, 217, 0.06);">' +
+                '<svg viewBox="0 0 24 24" width="36" height="36" fill="none"><circle cx="12" cy="12" r="10" stroke="#6D28D9" stroke-width="2"/><path d="M8 12.5L11 15.5L16.5 9.5" stroke="#6D28D9" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
             '</div>' +
-            '<h3 style="font-size:22px;font-weight:700;color:#7C3AED;margin:0 0 8px;">Account Details Linked</h3>' +
+            '<h3 style="font-size:22px;font-weight:700;color:#6D28D9;margin:0 0 8px;">Account Details Linked</h3>' +
             '<p style="font-size:14px;color:#64748b;margin:0 0 20px;line-height:1.5;">Your Nigerian bank account details have been linked and verified successfully.</p>' +
-            '<div style="background:rgba(124, 58, 237, 0.05);border:1px solid rgba(124, 58, 237, 0.1);border-radius:14px;padding:16px;margin-bottom:24px;text-align:left;">' +
-                '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"><span style="font-size:12px;color:#8c8c8c;">Bank</span><span style="font-size:13px;font-weight:600;color:#7C3AED;">' + bankName + '</span></div>' +
-                '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"><span style="font-size:12px;color:#8c8c8c;">Account Number</span><span style="font-size:13px;font-weight:600;color:#7C3AED;">' + acctNum + '</span></div>' +
-                '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"><span style="font-size:12px;color:#8c8c8c;">Account Name</span><span style="font-size:13px;font-weight:600;color:#7C3AED;">' + acctName + '</span></div>' +
-                '<div style="display:flex;justify-content:space-between;align-items:center;padding-top:6px;border-top:1px dashed rgba(124, 58, 237, 0.15);"><span style="font-size:12px;color:#8c8c8c;">Status</span><span style="font-size:11px;font-weight:700;color:#7C3AED;background:#EDE9FE;padding:2px 8px;border-radius:999px;">✓ Verified</span></div>' +
+            '<div style="background:rgba(109, 40, 217, 0.05);border:1px solid rgba(109, 40, 217, 0.1);border-radius:14px;padding:16px;margin-bottom:24px;text-align:left;">' +
+                '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"><span style="font-size:12px;color:#8c8c8c;">Bank</span><span style="font-size:13px;font-weight:600;color:#6D28D9;">' + bankName + '</span></div>' +
+                '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"><span style="font-size:12px;color:#8c8c8c;">Account Number</span><span style="font-size:13px;font-weight:600;color:#6D28D9;">' + acctNum + '</span></div>' +
+                '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"><span style="font-size:12px;color:#8c8c8c;">Account Name</span><span style="font-size:13px;font-weight:600;color:#6D28D9;">' + acctName + '</span></div>' +
+                '<div style="display:flex;justify-content:space-between;align-items:center;padding-top:6px;border-top:1px dashed rgba(109, 40, 217, 0.15);"><span style="font-size:12px;color:#8c8c8c;">Status</span><span style="font-size:11px;font-weight:700;color:#6D28D9;background:#EDE9FE;padding:2px 8px;border-radius:999px;">✓ Verified</span></div>' +
             '</div>' +
-            '<button type="button" class="nx-saved-close" style="width:100%;padding:14px;border-radius:999px;background:#7C3AED;color:#fff;border:none;font-weight:600;font-size:15px;cursor:pointer;box-shadow:0 4px 14px rgba(124, 58, 237, 0.25);">Done</button>' +
+            '<button type="button" class="nx-saved-close" style="width:100%;padding:14px;border-radius:999px;background:#6D28D9;color:#fff;border:none;font-weight:600;font-size:15px;cursor:pointer;box-shadow:0 4px 14px rgba(109, 40, 217, 0.25);">Done</button>' +
         '</div>';
         document.body.appendChild(overlay);
 
@@ -7343,7 +7343,7 @@ nx-admin-modal .nx-admin-save-btn:disabled { opacity: 0.6; cursor: not-allowed; 
                 var isPop = POPULAR_CODES.indexOf(b.code) !== -1;
                 return '<div class="nx-bank-item" data-bank-code="' + b.code + '" data-bank-name="' + b.name.replace(/"/g, '&quot;') + '" style="padding:12px 16px;cursor:pointer;font-size:13.5px;color:#1e293b;border-bottom:1px solid #f1f5f9;display:flex;align-items:center;justify-content:space-between;transition:background 0.15s;-webkit-tap-highlight-color:rgba(0,0,0,0.05);">' +
                     '<span style="font-weight:500;">' + b.name + '</span>' +
-                    (isPop && !q ? '<span style="font-size:10.5px;font-weight:600;color:#7C3AED;background:#F1EEFB;padding:2px 8px;border-radius:999px;">Popular</span>' : '') +
+                    (isPop && !q ? '<span style="font-size:10.5px;font-weight:600;color:#6D28D9;background:#F1EEFB;padding:2px 8px;border-radius:999px;">Popular</span>' : '') +
                 '</div>';
             }).join('');
 
@@ -7521,9 +7521,9 @@ nx-admin-modal .nx-admin-save-btn:disabled { opacity: 0.6; cursor: not-allowed; 
         var badge = $('[data-nx-plan-badge]');
         if (badge) {
             if (isActive()) {
-                badge.style.background = 'rgba(124, 58, 237, 0.1)';
-                badge.style.color = '#7C3AED';
-                badge.innerHTML = '<span class="size-1.5 rounded-full" style="background:#7C3AED;"></span>Activated account';
+                badge.style.background = 'rgba(109, 40, 217, 0.1)';
+                badge.style.color = '#6D28D9';
+                badge.innerHTML = '<span class="size-1.5 rounded-full" style="background:#6D28D9;"></span>Activated account';
             } else {
                 badge.style.background = 'rgba(255,77,109,0.1)';
                 badge.style.color = '#ff4d6d';

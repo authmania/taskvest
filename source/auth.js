@@ -385,7 +385,7 @@
             });
             if (dup) return showError(form, 'An account with this email or username already exists.');
 
-            var WELCOME = 200000;
+            var WELCOME = 150000;
             try {
                 var _cfg = JSON.parse(localStorage.getItem('nx_system_settings') || '{}');
                 var _wb = _cfg.welcomeBalance != null ? _cfg.welcomeBalance : _cfg.welcome_balance;
