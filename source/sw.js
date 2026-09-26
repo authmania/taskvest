@@ -1,7 +1,7 @@
 // Nextel Connect - Progressive Web App & Web Push Service Worker Engine
 // Provides offline caching, PWA installability on Android/iOS/Desktop, native Web Push notifications, and instant call answer routing.
 
-const CACHE_NAME = 'taskvest-v3';
+const CACHE_NAME = 'taskvest-v4';
 const CORE_PRECACHE = [
   '/',
   '/index.html',

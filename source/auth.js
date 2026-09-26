@@ -678,23 +678,59 @@
         toast('Filtering: ' + filter, 'info');
     }
 
-    function doSwitchCurrency(el, cur) {
-        var rates = { USD: { rate: 0.001, symbol: '$' }, NGN: { rate: 1, symbol: '₦' } };
-        var r = rates[cur] || rates.USD;
+    function currentCurrency() {
+        var cur = 'NGN';
+        try { cur = localStorage.getItem('nx_system_currency') || 'NGN'; } catch (_) {}
+        return cur === 'USD' ? 'USD' : 'NGN';
+    }
+
+    function syncCurrencyUI(cur) {
+        cur = (cur === 'USD') ? 'USD' : 'NGN';
+        var sym = cur === 'USD' ? '$' : '₦';
+        $all('[data-curr-opt]').forEach(function (b) {
+            var active = b.getAttribute('data-curr-opt') === cur;
+            b.classList.toggle('bg-primary', active);
+            b.classList.toggle('text-surface', active);
+            b.classList.toggle('text-muted', !active);
+        });
+        $all('[data-nx-curr-symbol]').forEach(function (n) { n.textContent = sym; });
+        $all('[data-nx-curr-label]').forEach(function (n) { n.textContent = cur; });
+        var sel = document.getElementById('nxCurrencySelect');
+        if (sel && sel.value !== cur) sel.value = cur;
+        try { window.dispatchEvent(new CustomEvent('nx-currency-changed', { detail: cur })); } catch (_) {}
+    }
+
+    function setCurrency(cur) {
+        cur = (cur === 'USD') ? 'USD' : 'NGN';
+        var sym = cur === 'USD' ? '$' : '₦';
+        var rate = cur === 'USD' ? 0.001 : 1;
         localStorage.setItem('nx_system_currency', cur);
-        store.saveSettings(r);
+        try {
+            var st = {};
+            try { st = JSON.parse(localStorage.getItem('nx_system_settings') || '{}') || {}; } catch (_) {}
+            st.currency = cur; st.rate = rate; st.symbol = sym;
+            localStorage.setItem('nx_system_settings', JSON.stringify(st));
+        } catch (_) {}
+        store.saveSettings({ currency: cur, rate: rate, symbol: sym });
         $all('[data-money]').forEach(function (node) {
             var base = parseFloat(node.getAttribute('data-money'));
             if (!isNaN(base)) node.textContent = money(base);
         });
-        var dropdown = el.closest('[x-data]');
+        renderBalances();
+        syncCurrencyUI(cur);
+        if (window.TaskVestTasks && window.TaskVestTasks.refreshAll) {
+            window.TaskVestTasks.refreshAll();
+        }
+        return cur;
+    }
+
+    function doSwitchCurrency(el, cur) {
+        setCurrency(cur);
+        var dropdown = el && el.closest ? el.closest('[x-data]') : null;
         if (dropdown && dropdown._x_dataStack) {
             try { dropdown._x_dataStack[0].open = false; } catch (_) {}
         }
         toast('Switched to ' + cur, 'info');
-        if (window.TaskVestTasks && window.TaskVestTasks.refreshAll) {
-            window.TaskVestTasks.refreshAll();
-        }
     }
 
     function doShowDetails(el, txId) {
@@ -971,6 +1007,8 @@
                 store: store, money: money,
                 balances: computeBalances,
                 renderBalances: function () { renderBalances(); },
+                setCurrency: function (cur) { return setCurrency(cur); },
+                currentCurrency: function () { return currentCurrency(); },
                 renderTransactions: function () { renderTransactions(); },
                 personalise: function (u) { personalise(u || store.session()); },
                 syncCurrentUserProfile: function () { syncCurrentUserProfile(); },
@@ -1069,6 +1107,8 @@
         }
         wireSaveSettings('save');
         wireRewardCustom();
+
+        syncCurrencyUI(currentCurrency());
 
         if (mode !== 'protected') {
             if (s) personalise(s);
