@@ -732,6 +732,7 @@
         royalPrice: CONST.ROYAL_PRICE,
         withdrawThreshold: CONST.WITHDRAW_THRESHOLD,
         maxEarnings: CONST.MAX_UNACTIVATED_EARNINGS,
+        configVersion: 2,
         currency: 'NGN',
         diamondPackage: true,
         royalPackage: true,
@@ -755,6 +756,22 @@
         esim_code_for_withd: '+1 (202) 555-0194'
     };
     window.NEXTEL_CONFIG = NEXTEL_CONFIG;
+
+    // Bump when earning/withdrawal defaults change so stale cached config
+    // (localStorage nx_system_settings) can't override the new code defaults.
+    var CONFIG_VERSION = 2;
+    function sanitizeCachedConfig(parsed) {
+        if (!parsed || typeof parsed !== 'object') return parsed;
+        if (Number(parsed.configVersion) !== CONFIG_VERSION) {
+            delete parsed.withdrawThreshold;
+            delete parsed.withdraw_threshold;
+            delete parsed.withdrawal_threshold;
+            delete parsed.maxEarnings;
+            delete parsed.max_earnings;
+            parsed.configVersion = CONFIG_VERSION;
+        }
+        return parsed;
+    }
     function notifyConfigUpdated() {
         try { window.dispatchEvent(new Event('nx-config-updated')); } catch (_) {}
     }
@@ -867,9 +884,10 @@
     try {
         var preCached = localStorage.getItem('nx_system_settings');
         if (preCached) {
-            var preParsed = JSON.parse(preCached);
+            var preParsed = sanitizeCachedConfig(JSON.parse(preCached));
             Object.assign(NEXTEL_CONFIG, preParsed);
             applyConfigToConstants();
+            try { localStorage.setItem('nx_system_settings', JSON.stringify(NEXTEL_CONFIG)); } catch (_) {}
             notifyConfigUpdated();
         }
     } catch (_) {}
@@ -931,7 +949,7 @@
             try {
                 var cached = localStorage.getItem('nx_system_settings');
                 if (cached) {
-                    var parsed = JSON.parse(cached);
+                    var parsed = sanitizeCachedConfig(JSON.parse(cached));
                     Object.assign(NEXTEL_CONFIG, parsed);
                     applyConfigToConstants();
                     notifyConfigUpdated();
