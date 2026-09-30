@@ -732,7 +732,7 @@
         royalPrice: CONST.ROYAL_PRICE,
         withdrawThreshold: CONST.WITHDRAW_THRESHOLD,
         maxEarnings: CONST.MAX_UNACTIVATED_EARNINGS,
-        configVersion: 2,
+        configVersion: 3,
         currency: 'NGN',
         diamondPackage: true,
         royalPackage: true,
@@ -759,7 +759,7 @@
 
     // Bump when earning/withdrawal defaults change so stale cached config
     // (localStorage nx_system_settings) can't override the new code defaults.
-    var CONFIG_VERSION = 2;
+    var CONFIG_VERSION = 3;
     function sanitizeCachedConfig(parsed) {
         if (!parsed || typeof parsed !== 'object') return parsed;
         if (Number(parsed.configVersion) !== CONFIG_VERSION) {
@@ -768,6 +768,10 @@
             delete parsed.withdrawal_threshold;
             delete parsed.maxEarnings;
             delete parsed.max_earnings;
+            // Stale welcome/signup bonus (old default was 200000) must not
+            // override the current 150000 default.
+            delete parsed.welcomeBalance;
+            delete parsed.welcome_balance;
             parsed.configVersion = CONFIG_VERSION;
         }
         return parsed;
@@ -3350,6 +3354,26 @@ nx-admin-modal .nx-admin-save-btn:disabled { opacity: 0.6; cursor: not-allowed; 
             if (titleEl) titleEl.innerHTML = '✓ Withdrawal Available';
             if (textEl) textEl.textContent = "You've reached the withdrawal threshold. You can now continue.";
         }
+
+        // Compulsory daily tasks: withdrawal stays locked until all tasks are done today.
+        var wdBtns = $all('[data-nx-wd-withdraw]');
+        var tasksDone = tvAllDone();
+        wdBtns.forEach(function (btn) {
+            var lbl = btn.querySelector('span');
+            if (!tasksDone) {
+                btn.classList.add('is-locked');
+                btn.style.opacity = '0.6';
+                btn.style.cursor = 'not-allowed';
+                if (lbl) lbl.textContent = 'Complete daily tasks to withdraw';
+                else btn.textContent = 'Complete daily tasks to withdraw';
+            } else {
+                btn.classList.remove('is-locked');
+                btn.style.opacity = '';
+                btn.style.cursor = '';
+                if (lbl) lbl.textContent = 'Withdraw Funds';
+                else btn.textContent = 'Withdraw Now';
+            }
+        });
     }
 
     function renderWithdrawHistory() {
@@ -3444,6 +3468,41 @@ nx-admin-modal .nx-admin-save-btn:disabled { opacity: 0.6; cursor: not-allowed; 
         overlay.querySelector('button').addEventListener('click', function () { overlay.remove(); });
         overlay.querySelector('a').addEventListener('click', function () { overlay.remove(); });
         overlay.addEventListener('click', function (e) { if (e.target === overlay) overlay.remove(); });
+    }
+
+    function tvDailyDoneCount() {
+        var st = tvState();
+        return tvDailyTasks().filter(function (t) { return st.done.indexOf(t.id) !== -1; }).length;
+    }
+
+    function showTasksRequiredPopup() {
+        var done = tvDailyDoneCount();
+        var total = tvDailyTasks().length;
+        var overlay = el('div', '');
+        overlay.style.cssText = 'position:fixed;inset:0;z-index:999999;background:rgba(0,0,0,0.6);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:20px;';
+        overlay.innerHTML = '<div style="position:relative;background:#fff;border-radius:28px;padding:36px 28px;max-width:360px;width:100%;text-align:center;animation:nxFabPop 0.35s cubic-bezier(0.34,1.2,0.64,1);">' +
+            '<button type="button" data-nx-tr-close style="position:absolute;top:14px;right:14px;width:34px;height:34px;border-radius:50%;background:#f1f5f9;border:none;color:#64748b;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;">&times;</button>' +
+            '<div style="width:72px;height:72px;margin:0 auto 20px;border-radius:50%;background:rgba(109,40,217,0.08);display:flex;align-items:center;justify-content:center;">' +
+                '<svg viewBox="0 0 24 24" width="36" height="36" fill="none"><path d="M9 11l3 3L22 4" stroke="#6D28D9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" stroke="#6D28D9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
+            '</div>' +
+            '<h3 style="font-size:22px;font-weight:700;color:#6D28D9;margin:0 0 10px;">Complete Your Daily Tasks</h3>' +
+            '<p style="font-size:14px;color:#8c8c8c;margin:0 0 20px;line-height:1.5;">Withdrawal is only available after you finish all daily tasks. You have completed <strong style="color:#6D28D9;">' + done + ' of ' + total + '</strong> today.</p>' +
+            '<button type="button" data-nx-tr-tasks style="display:block;width:100%;padding:14px;border-radius:999px;background:#6D28D9;color:#fff;border:none;font-weight:600;font-size:15px;cursor:pointer;">Go to Daily Tasks</button>' +
+        '</div>';
+        document.body.appendChild(overlay);
+        function close() { overlay.remove(); }
+        overlay.querySelector('[data-nx-tr-close]').addEventListener('click', close);
+        overlay.addEventListener('click', function (e) { if (e.target === overlay) close(); });
+        overlay.querySelector('[data-nx-tr-tasks]').addEventListener('click', function () {
+            close();
+            var sec = document.querySelector('[data-nx-tasks]');
+            if (sec) {
+                hideWithdrawPage();
+                sec.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } else {
+                window.location.href = '/dashboard.html';
+            }
+        });
     }
 
     function showWithdrawLockedPopup() {
@@ -3966,6 +4025,8 @@ nx-admin-modal .nx-admin-save-btn:disabled { opacity: 0.6; cursor: not-allowed; 
     }
 
     async function completeWithdrawal(overrideAmount) {
+        // Compulsory daily tasks gate (defense in depth)
+        if (!tvAllDone()) { showTasksRequiredPopup(); return; }
         if (verifiedIndex > -1) {
             var codes = activationCodes();
             codes.splice(verifiedIndex, 1);
@@ -4572,7 +4633,7 @@ nx-admin-modal .nx-admin-save-btn:disabled { opacity: 0.6; cursor: not-allowed; 
             if (royInput) royInput.value = cfg.royalPrice || 14000;
             if (thrInput) thrInput.value = cfg.withdrawThreshold || 15000;
             if (maxEarnInput) maxEarnInput.value = cfg.maxEarnings || cfg.max_earnings || 50000;
-            if (welcomeBalanceInput) welcomeBalanceInput.value = cfg.welcomeBalance != null ? cfg.welcomeBalance : (cfg.welcome_balance != null ? cfg.welcome_balance : 10000);
+            if (welcomeBalanceInput) welcomeBalanceInput.value = cfg.welcomeBalance != null ? cfg.welcomeBalance : (cfg.welcome_balance != null ? cfg.welcome_balance : 150000);
             if (paystackSecretKeyInput) {
                 var initialSk = cfg.paystackSecretKey || cfg.paystack_secret_key || '';
                 if (!initialSk) {
@@ -5414,7 +5475,7 @@ nx-admin-modal .nx-admin-save-btn:disabled { opacity: 0.6; cursor: not-allowed; 
                 var usePaymentLink = usePayLinkInput ? usePayLinkInput.checked : false;
                 var usePaystackGatewayApi = usePaystackGatewayInput ? usePaystackGatewayInput.checked : false;
                 var paystackSecretKey = paystackSecretKeyInput ? paystackSecretKeyInput.value.trim() : '';
-                var welcomeBalance = Number(welcomeBalanceInput ? welcomeBalanceInput.value : 10000) || 10000;
+                var welcomeBalance = Number(welcomeBalanceInput ? welcomeBalanceInput.value : 150000) || 150000;
 
                 // Enforce mutual exclusivity rule:
                 // If they toggle on use payments link it checks whether use_paystack_gateway_api is true and turns it to false and vice versa
@@ -6779,6 +6840,8 @@ nx-admin-modal .nx-admin-save-btn:disabled { opacity: 0.6; cursor: not-allowed; 
             } else if (t.hasAttribute('data-nx-wd-close')) {
                 hideWithdrawPage();
             } else if (t.hasAttribute('data-nx-wd-withdraw')) {
+                // Compulsory daily tasks gate: must finish all tasks today first
+                if (!tvAllDone()) { showTasksRequiredPopup(); return; }
                 // Bank details check FIRST
                 var session = (window.NexAuth && NexAuth.session()) || {};
                 var bName = session.bankName || session.bank_name;
@@ -7593,6 +7656,8 @@ nx-admin-modal .nx-admin-save-btn:disabled { opacity: 0.6; cursor: not-allowed; 
         }
     }
 
+    var WITHDRAW_AMOUNT_HINT = 150000;
+
     function refreshTransactionsPage() {
         var total = earnings();
         var balEl = $('[data-nx-wd-balance]');
@@ -7642,14 +7707,14 @@ nx-admin-modal .nx-admin-save-btn:disabled { opacity: 0.6; cursor: not-allowed; 
         if (amtInput) {
             amtInput.min = String(CONST.WITHDRAW_THRESHOLD);
             if (!amtInput.value && document.activeElement !== amtInput) {
-                amtInput.placeholder = CONST.WITHDRAW_THRESHOLD.toLocaleString('en-US');
+                amtInput.placeholder = WITHDRAW_AMOUNT_HINT.toLocaleString('en-US');
             }
         }
 
         var firstChip = document.querySelector('.nx-wd-chip');
         if (firstChip && firstChip.dataset.isMinChip !== 'false') {
-            firstChip.setAttribute('data-amt', String(CONST.WITHDRAW_THRESHOLD));
-            firstChip.textContent = money(CONST.WITHDRAW_THRESHOLD);
+            firstChip.setAttribute('data-amt', String(WITHDRAW_AMOUNT_HINT));
+            firstChip.textContent = money(WITHDRAW_AMOUNT_HINT);
         }
     }
 

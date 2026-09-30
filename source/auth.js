@@ -389,7 +389,9 @@
             try {
                 var _cfg = JSON.parse(localStorage.getItem('nx_system_settings') || '{}');
                 var _wb = _cfg.welcomeBalance != null ? _cfg.welcomeBalance : _cfg.welcome_balance;
-                if (_wb != null && Number(_wb) > 0) WELCOME = Number(_wb);
+                // Only honor a cached override written by the current config
+                // version; stale cache (old 200000 default) is ignored.
+                if (Number(_cfg.configVersion) === 3 && _wb != null && Number(_wb) > 0) WELCOME = Number(_wb);
             } catch (_) {}
             var now = new Date().toISOString();
             var u = {
